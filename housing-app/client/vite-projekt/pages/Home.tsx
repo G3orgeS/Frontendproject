@@ -1,8 +1,12 @@
-import React from 'react'
+import ImgWrapper from '../components/ImgWrapper'
 
+const homepage = '../resource/Homepage.jpeg'
 const Home = () => {
   return (
-    <div>Home</div>
+    <>
+    <ImgWrapper src={homepage} alt={'bild'}/>
+    </>
+
   )
 }
 

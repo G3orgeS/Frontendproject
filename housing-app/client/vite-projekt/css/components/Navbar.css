@@ -1,0 +1,75 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    width: auto;
+    /* max-width: 1440px; */
+    height: 150px;
+    border: 1px solid #C0C0C0;
+  }
+  .navlink {
+    display: flex;
+    gap: 30px;
+    margin-left: auto;
+    padding-right: 100px;
+    align-items: center;
+  }
+  .navlink a {
+    text-decoration: none;
+    color: #000;
+    font-family: 'Phetsarath', sans-serif;
+    font-weight: bold;
+  }
+  .plain-link {
+    text-decoration: none;
+    color: inherit;
+    font-weight: inherit;
+  }
+  .hamburger-menu {
+    margin: 5px;
+    width: 30px; /* Bredd på hamburgemenyn */
+    height: 3px; /* Höjd på varje linje */
+    background-color: #000; /* Färgen på linjerna */
+    display: block;
+    cursor: pointer;
+  }
+  
+.navHB {
+    display: flex;
+    justify-content: space-between;
+    width: 90px;
+    align-items: center;
+}  
+.icon-text {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 5px; /* Justera avståndet mellan ikon och text */
+  }
+  .profile-button {
+    background: none; /* Ta bort bakgrundsfärgen */
+    border: none;
+    cursor: pointer;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* Stil för profilikon */
+  .profile-icon {
+    fill: #D9863B; /* Färga ikonen helt svart */
+    width: 100%; /* Bredden ska täcka hela knappen */
+    height: 100%; /* Höjden ska täcka hela knappen */
+  }
+.blackcover {
+    background: black;
+    clip-path: circle(30% at center); /* Använd clip-path istället för mask */
+    z-index: -1; /* Placera blackcover bakom profileIconBackground */
+  }
+  .profile-button svg {
+    width: 50px; /* Justera storleken här enligt dina önskemål */
+    height: 50px; /* Justera storleken här enligt dina önskemål */
+  }
+  
