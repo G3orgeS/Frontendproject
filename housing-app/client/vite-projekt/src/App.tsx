@@ -10,7 +10,7 @@ import Register from '../pages/Register'
 const App = () => {
   return (
     <>
-       <Router> {/* Lägg Router runt hela applikationen */}
+       <Router> 
     <Navbar />
     <Routes>
         <Route path='/' element={<Home />} />

@@ -1,0 +1,23 @@
+.filterwrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    height: 5vh;
+    width: 50vw;
+}
+.filterwrapperparent {
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    color: black;
+}
+.filtericon {
+    display: flex;
+    text-decoration: none;
+    color: black;
+    flex-direction: column;
+}
+
+.filtericon:hover {
+    cursor: pointer;
+}
