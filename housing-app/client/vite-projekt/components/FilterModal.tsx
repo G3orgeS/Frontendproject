@@ -11,7 +11,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose }) => {
     const [minPrice, setMinPrice] = useState<string>('');
     const [maxPrice, setMaxPrice] = useState<string>('');
     const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
-    const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
+    // const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
 
     const handleOutsideClick = (e: MouseEvent) => {
         const modal = document.querySelector('.modal-content')
@@ -54,20 +54,20 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose }) => {
         }
     };
 
-    const handleAmenitySelection = (amenity: string) => {
-        if (selectedAmenities.includes(amenity)) {
-            setSelectedAmenities(selectedAmenities.filter((selected) => selected !== amenity));
-        } else {
-            setSelectedAmenities([...selectedAmenities, amenity]);
-        }
-    };
+    // const handleAmenitySelection = (amenity: string) => {
+    //     if (selectedAmenities.includes(amenity)) {
+    //         setSelectedAmenities(selectedAmenities.filter((selected) => selected !== amenity));
+    //     } else {
+    //         setSelectedAmenities([...selectedAmenities, amenity]);
+    //     }
+    // };
 
 const clearFilters = () => {
     setSelectedType('');
     setMinPrice('');
     setMaxPrice('');
     setSelectedRooms([]);
-    setSelectedAmenities([]);
+    // setSelectedAmenities([]);
 };
 
 return (

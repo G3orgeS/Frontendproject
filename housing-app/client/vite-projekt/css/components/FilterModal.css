@@ -1,8 +1,8 @@
 .modal-content {
   width: 600px;
   max-height: 80vh;
-  overflow-y: scroll; /* Visa scrollbaren om det behövs */
-  scrollbar-width: none; /* Dölj standard scrollbaren i Firefox */
+  overflow-y: scroll; 
+  scrollbar-width: none; 
   -ms-overflow-style: none; 
   background-color: #FFFFFF;
   border-radius: 16px;
@@ -11,13 +11,8 @@
   flex-direction: column;
 }
 .modal-content::-webkit-scrollbar {
-  width: 0 !important; /* Dölj standard scrollbaren i WebKit-baserade webbläsare (t.ex. Chrome och Safari) */
+  width: 0 !important; 
 }
-
-
-
-
-
 
 .modal {
   position: fixed;

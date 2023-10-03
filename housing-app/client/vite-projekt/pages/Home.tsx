@@ -8,11 +8,6 @@ const Home = () => {
     <>
     <ImgWrapper src={homepage} alt={'bild'}/>
     <Filterbar />
-    <ImgWrapper src={homepage} alt={'bild'}/>
-    <ImgWrapper src={homepage} alt={'bild'}/>
-    <ImgWrapper src={homepage} alt={'bild'}/>
-    <ImgWrapper src={homepage} alt={'bild'}/>
-    <ImgWrapper src={homepage} alt={'bild'}/>
     </>
 
   )
