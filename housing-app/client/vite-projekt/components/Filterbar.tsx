@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouse, faBuilding, faDoorOpen, faUsers, faFilter } from '@fortawesome/free-solid-svg-icons';
 import '../css/components/Filterbar.css';
@@ -35,7 +35,8 @@ const Filterbar = () => {
         <FontAwesomeIcon icon={faFilter} />
         <p>filter</p>
       </div>
-        {isModalOpen && <FilterModal onClose={() => setIsModalOpen(false)} isOpen={false} />}
+      {isModalOpen && <FilterModal onClose={() => setIsModalOpen(false)} isOpen={isModalOpen} />}
+
     </div>
     </div>
   );
