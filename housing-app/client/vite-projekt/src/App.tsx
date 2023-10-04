@@ -6,6 +6,7 @@ import HouseDetail from '../pages/HouseDetail'
 import HouseList from '../pages/HouseList'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import Footer from '../components/Footer'
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path='/register' element={<Register />} />
         <Route path='/houselist' element={<HouseList />} />
     </Routes>
+    <Footer />
     </Router>
       </>
   );

@@ -1,8 +1,10 @@
 import '../css/components/Navbar.css';
 import HamburgerMenu from './HamburgerMenu';
-import HouseIcon from '../components/icons/HouseIcon'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse } from '@fortawesome/free-solid-svg-icons';
+// import HouseIcon from '../components/icons/HouseIcon'
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 const logo = '../resource/studystay-logo 2.jpg';
 
@@ -12,12 +14,33 @@ const profileIconBackground = (
   </svg>
 );
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navHBRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        navHBRef.current &&
+        !navHBRef.current.contains(event.target as Node) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
-  }
+  };
 
   return (
     <nav className='navbar'>
@@ -28,29 +51,35 @@ const Navbar = () => {
       </div>
       <div className="navlink">
         <a href="#" className="plain-link">Om oss</a>
-        <Link to="/houselist" className="plain-link">
+        <Link to="/" className="plain-link">
+          {/* Ska ändra Link så att jag kommer till en annan plats */}
           <span className="icon-text">
-            <HouseIcon />
+          <FontAwesomeIcon icon={faHouse} />
             Hyr ut
           </span>
         </Link>
       </div>
-      <div className="navHB">
+      <div className={`navHB ${isDropdownOpen ? 'open' : ''}`} ref={navHBRef}>
         <button className="hamburger-button" onClick={toggleDropdown}>
           <HamburgerMenu />
         </button>
-        {isDropdownOpen && (
-          <div className="dropdown-menu">
-            <Link to="/houselist">Houselist</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </div>
-        )}
-        <button className="profile-button">
+        <button className="profile-button"><Link to='/profil'>
           <div className='blackcover'>
             {profileIconBackground}
           </div>
+          </Link>
         </button>
+        {isDropdownOpen && (
+          <div className="dropdown-menu" ref={dropdownRef}>
+            <Link to="/profil" className='dropdownLink'>Min profil</Link>
+            <Link to="/houselist" className='dropdownLink'>Bostäder</Link>
+            <Link to="/register" className='dropdownLink'>Ansökningar</Link>
+            <Link to='/contact' className='dropdownLink'>Kontakt</Link>
+            <Link to='/info' className='dropdownLink'>Villkor</Link>
+            <Link to='/rent' className='dropdownLink'>Hyr ut</Link>
+            <button className='dropbtn'>LOGGA UT</button>
+          </div>
+        )}
       </div>
     </nav>
   );

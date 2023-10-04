@@ -1,3 +1,18 @@
 .homeHeight {
     height: 100vh;
 }
+
+/* Uppdaterad Card.css */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Justera bredden efter behov */
+    gap: 20px;
+    justify-items: center;
+    padding: 10px;
+  }
+.btnwrap {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    padding-bottom: 50px;
+} 

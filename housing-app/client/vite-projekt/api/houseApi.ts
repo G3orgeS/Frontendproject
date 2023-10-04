@@ -1,0 +1,51 @@
+import axios from 'axios';
+import { House } from '../types/house'
+
+const baseURL = 'http://localhost:3000'; // Ändra detta till din serveradress och port
+
+const api = axios.create({
+  baseURL,
+  timeout: 5000, 
+});
+
+export const houseApi = {
+  getAllHouses: async (): Promise<House[]> => {
+    try {
+      const response = await api.get('/api/house');
+      return response.data;
+    } catch (error) {
+      console.error('Något gick fel vid hämtning av hus:', error);
+      throw error;
+    }
+  },
+
+  createHouse: async (formData: House): Promise<{ message: string; insertedId: string }> => {
+    try {
+      const response = await api.post('/api/house', formData);
+      return response.data;
+    } catch (error) {
+      console.error('Något gick fel vid skapande av hus:', error);
+      throw error;
+    }
+  },
+
+  updateHouse: async (id: string, updatedData: Partial<House>): Promise<{ message: string; modifiedCount: number }> => {
+    try {
+      const response = await api.put(`/api/house/${id}`, updatedData);
+      return response.data;
+    } catch (error) {
+      console.error('Något gick fel vid uppdatering av hus:', error);
+      throw error;
+    }
+  },
+
+  deleteHouse: async (id: string): Promise<{ message: string; deletedCount: number }> => {
+    try {
+      const response = await api.delete(`/api/house/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Något gick fel vid borttagning av hus:', error);
+      throw error;
+    }
+  },
+};

@@ -28,9 +28,9 @@
   }
   .hamburger-menu {
     margin: 5px;
-    width: 30px; /* Bredd på hamburgemenyn */
-    height: 3px; /* Höjd på varje linje */
-    background-color: #000; /* Färgen på linjerna */
+    width: 30px; 
+    height: 3px; 
+    background-color: #000; 
     display: block;
     cursor: pointer;
   }
@@ -45,10 +45,10 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
-    gap: 5px; /* Justera avståndet mellan ikon och text */
+    gap: 5px; 
   }
   .profile-button {
-    background: none; /* Ta bort bakgrundsfärgen */
+    background: none; 
     border: none;
     cursor: pointer;
     outline: none;
@@ -57,19 +57,58 @@
     justify-content: center;
   }
   
-  /* Stil för profilikon */
   .profile-icon {
-    fill: #D9863B; /* Färga ikonen helt svart */
-    width: 100%; /* Bredden ska täcka hela knappen */
-    height: 100%; /* Höjden ska täcka hela knappen */
+    fill: #D9863B; 
+    width: 100%; 
+    height: 100%; 
   }
 .blackcover {
     background: black;
-    clip-path: circle(30% at center); /* Använd clip-path istället för mask */
-    z-index: -1; /* Placera blackcover bakom profileIconBackground */
+    clip-path: circle(30% at center); 
+    z-index: -1; 
   }
   .profile-button svg {
-    width: 50px; /* Justera storleken här enligt dina önskemål */
-    height: 50px; /* Justera storleken här enligt dina önskemål */
+    width: 50px; 
+    height: 50px; 
   }
+
+  .dropdown-menu {
+    position: absolute;
+    top: 125px;
+    right: 0; 
+    width: 25vw;
+    height: auto;
+    background-color: rgb(255, 255, 255, 0.7);
+    padding: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: column;
+    z-index: 2;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  
+.dropdownLink {
+  text-decoration: none;
+  color: #000;
+  padding: 5px 0;
+  border-bottom: solid 1px;
+  width: 25vw;
+  padding: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+.dropdownLink:hover {
+  color: #C0C0C0;
+}
+.dropbtn {
+  margin-top: 20px;
+  border-radius: 30px;
+  background: #E78121;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
+  padding: 10px 30px;
+
+}
   
