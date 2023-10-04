@@ -54,20 +54,12 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose }) => {
         }
     };
 
-    const handleAmenitySelection = (amenity: string) => {
-        if (selectedAmenities.includes(amenity)) {
-            setSelectedAmenities(selectedAmenities.filter((selected) => selected !== amenity));
-        } else {
-            setSelectedAmenities([...selectedAmenities, amenity]);
-        }
-    };
 
 const clearFilters = () => {
     setSelectedType('');
     setMinPrice('');
     setMaxPrice('');
     setSelectedRooms([]);
-    setSelectedAmenities([]);
 };
 
 return (
