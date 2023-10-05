@@ -1,5 +1,3 @@
-// houseController.js
-
 // Hämta alla hus
 exports.getAllHouses = async (req, res) => {
     try {
@@ -51,4 +49,21 @@ exports.getAllHouses = async (req, res) => {
       res.status(500).json({ error: 'Något gick fel på servern' });
     }
   };
+
+  exports.getHouseById = async (req, res) => {
+    try {
+      const houseCollection = res.locals.houseCollection;
+      const { id } = req.params;
   
+      const house = await houseCollection.findOne({ _id: id });
+  
+      if (!house) {
+        return res.status(404).json({ error: 'Huset kunde inte hittas' });
+      }
+  
+      res.json(house);
+    } catch (error) {
+      console.error('Något gick fel vid hämtning av hus:', error);
+      res.status(500).json({ error: 'Något gick fel på servern' });
+    }
+  };

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { House } from '../types/house'
 
 const baseURL = 'http://localhost:3000'; // Ändra detta till din serveradress och port
@@ -18,7 +18,26 @@ export const houseApi = {
       throw error;
     }
   },
-
+  
+  getHouseById: async (id: string): Promise<House | null> => {
+    try {
+      const response = await api.get(`/api/house/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Något gick fel vid hämtning av husdetaljer:', error);
+  
+      if (axios.isAxiosError(error)) {
+        const axiosError = error as AxiosError;
+  
+        if (axiosError.response && axiosError.response.status === 404) {
+          return null; // Returnera null om huset inte hittades
+        }
+      }
+  
+      throw error;
+    }
+  },
+  
   createHouse: async (formData: House): Promise<{ message: string; insertedId: string }> => {
     try {
       const response = await api.post('/api/house', formData);

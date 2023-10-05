@@ -1,9 +1,13 @@
 import '../css/components/Showbtn.css'
 
-const Showbtn = () => {
-  return (
-    <button className='showbtn'>Visa fler</button>
-  )
+interface ShowbtnProps {
+  onClick: () => void;
 }
 
-export default Showbtn
+const Showbtn: React.FC<ShowbtnProps> = ({ onClick }) => {
+  return (
+    <button className='showbtn' onClick={onClick}>Show More</button>
+  );
+}
+
+export default Showbtn;

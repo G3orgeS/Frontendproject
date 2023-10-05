@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const { MongoClient } = require('mongodb');
+const { ObjectId } = require('mongodb');
+
 
 // Anslutning till MongoDB
 const uri = 'mongodb+srv://GS:BytMig123@cluster0.9csxogu.mongodb.net/test';
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
-// Middleware för att hantera anslutning till databasen
 router.use(async (req, res, next) => {
   try {
     await client.connect();
@@ -33,6 +34,27 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Hämta ett enskilt hus baserat på ID
+router.get('/:id', async (req, res) => {
+  try {
+    const houseCollection = res.locals.houseCollection;
+    const { id } = req.params;
+
+    const objectId = new ObjectId(id);
+
+    const house = await houseCollection.findOne({ _id: objectId });
+
+    if (!house) {
+      return res.status(404).json({ error: 'Huset kunde inte hittas' });
+    }
+
+    res.json(house);
+  } catch (error) {
+    console.error('Något gick fel vid hämtning av hus:', error);
+    res.status(500).json({ error: 'Något gick fel på servern' });
+  }
+});
+
 // Skapa ett nytt hus
 router.post('/', async (req, res) => {
   try {
@@ -45,7 +67,5 @@ router.post('/', async (req, res) => {
     res.status(500).json({ error: 'Något gick fel på servern' });
   }
 });
-
-// Övriga routes och kontroller för hus kan läggas till här
 
 module.exports = router;

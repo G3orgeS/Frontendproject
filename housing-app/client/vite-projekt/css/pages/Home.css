@@ -1,18 +1,29 @@
+/* Uppdaterad Home.css */
 .homeHeight {
-    height: 100vh;
-}
-
-/* Uppdaterad Card.css */
-.card-grid {
+    height: 100vh; /* Använd min-height istället för height för att undvika klippning av innehållet */
+  }
+  
+  .card-display {
+    display: flex;
+    flex-direction: column; /* Visa korten i en kolumn */
+    align-items: center; /* Centrera innehållet horisontellt */
+  }
+  
+  .card-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Justera bredden efter behov */
-    gap: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 5px;
     justify-items: center;
     padding: 10px;
+    max-width: 1200px; /* Begränsa bredden till ett maxvärde för bättre läsbarhet på stora skärmar */
+    width: 100%; /* Fyll hela bredden av föräldern */
   }
-.btnwrap {
+  
+  .btnwrap {
     display: flex;
     justify-content: center;
-    height: 100%;
-    padding-bottom: 50px;
-} 
+    padding: 20px 0; /* Lägg till mer mellanrum för att förbättra utseendet */
+  }
+  
