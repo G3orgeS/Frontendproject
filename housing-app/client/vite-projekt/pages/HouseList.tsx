@@ -1,40 +1,49 @@
-import { useEffect, useState } from 'react';
-import { houseApi } from '../api/houseApi'; // Ändra sökvägen till houseApi
-import { House } from '../types/house'
+import '../css/pages/Home.css';
+import { useState, useEffect } from 'react';
+import { House } from '../types/house'; // Importera House-typen
+import { houseApi } from '../api/houseApi';
+import Card from '../components/Card'
 
-function HouseList() {
-  const [houses, setHouses] = useState<House[]>([]);
+const HouseList = () => {
+  const [currentIndexes, setCurrentIndexes] = useState<number[]>([]);
+  const [houses, setHouses] = useState<House[]>([]); // Lägg till houses här
 
   useEffect(() => {
-    // Anropa API för att hämta alla hus
     async function fetchHouses() {
       try {
         const allHouses = await houseApi.getAllHouses();
         setHouses(allHouses);
+        setCurrentIndexes(Array(allHouses.length).fill(0));
       } catch (error) {
         console.error('Något gick fel vid hämtning av hus:', error);
       }
     }
 
-    // Kör funktionen för att hämta hus när komponenten mountas
     fetchHouses();
   }, []);
 
+  const handleIndicatorClick = (index: number, imgIndex: number) => {
+    setCurrentIndexes((prevIndexes) => {
+      const updatedIndexes = [...prevIndexes];
+      updatedIndexes[index] = imgIndex;
+      return updatedIndexes;
+    });
+  };
+
   return (
-    <div>
-      <h1>Huslista</h1>
-      <ul>
-        {houses.map((house) => (
-          <li key={house._id}>
-            <h2>{house.title}</h2>
-            <p>Adress: {house.adress}</p>
-            <p>Postnummer: {house.zipcode}</p>
-            {/* Lägg till mer information om huset här */}
-          </li>
-        ))}
-      </ul>
+    <>
+    <div className="card-display">
+    <Card
+      houses={houses} // Skicka med houses till Card-komponenten
+      currentIndexes={currentIndexes}
+      handleIndicatorClick={handleIndicatorClick}
+    />
     </div>
-  );
+  </>
+);
 }
+Card.defaultProps = {
+  limit: 42, // Om ingen gräns anges kommer 10 kort att visas som standard
+};
 
 export default HouseList;
