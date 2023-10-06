@@ -14,4 +14,7 @@ export interface House {
   city: string;
   zipcode: string;
   titel: string; 
+  firstDate: Date;
+  floor: Int32;
+  recommendation: Int32;
 }
