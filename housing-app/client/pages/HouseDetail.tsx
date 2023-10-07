@@ -8,6 +8,7 @@ const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
   const [house, setHouse] = useState<House | null>(null);
 
+
   useEffect(() => {
     if (id) {
       houseApi.getHouseById(id).then((data) => {
@@ -21,6 +22,9 @@ const HouseDetail = () => {
   if (!house) {
     return <div>Loading...</div>;
   }
+
+  const parsedDate = new Date(house.firstDate); // Omvandlar strängen till ett Date-objekt
+  const formattedDate = parsedDate.toLocaleDateString();
 
   return (
     <div className="houseDetailContainer">
@@ -67,6 +71,7 @@ const HouseDetail = () => {
         <div className="space"><p>Size: {house.size}</p></div>
         <div className="date"><p>Period: {house.period} months</p></div>
         <div className="type"><p>Type: {house.type}</p></div>
+
       </div>
       <button className="applybtn">Till ansökan</button>
       <div className="imgContainer2">
@@ -95,6 +100,9 @@ const HouseDetail = () => {
         </div>
         <div className="description">
           <p>Description: {house.description}</p>
+          <div className="date"><p>First Available Date: {formattedDate}</p></div>
+        <div className="floor"><p>Floor: {house.floor}</p></div>
+        <div className="recommendation"><p>Recommendation: {house.recommendation}</p></div>
         </div>
       </div>
     </div>
