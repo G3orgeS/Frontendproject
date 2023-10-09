@@ -1,0 +1,55 @@
+.formwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-bottom: 15vh;
+
+}
+
+.infosection1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.inputsection1 {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 7vh;
+}
+
+.input {
+    display: flex;
+    flex-direction: row;
+    gap: 45px;
+}
+
+input[type="email"],
+input[type="password"] {
+  background-color: #F2F2F2;
+  border: 1px solid #00000066;
+  padding: 10px;
+  margin: 5px 0;
+  height: 10px;
+  width: 20vw;
+}
+.pass {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#pp {
+    text-decoration: none;
+    color: black;
+    flex-grow: 1; /* Låter texten ta upp all tillgänglig plats bredvid lösenordsfältet */
+  }
+
+.showbtn {
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.error {
+    color: #D21313;
+}

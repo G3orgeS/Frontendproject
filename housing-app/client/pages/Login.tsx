@@ -1,7 +1,15 @@
+import ImgWrapper from '../components/ImgWrapper';
+import LoginForm from '../components/LoginForm'
 
 const Login = () => {
+
+  const homepage = '../resource/login.jpg';
+
   return (
-<div></div>
+<>
+  <ImgWrapper src={homepage} alt={'bild'} />
+  <LoginForm />
+</>
     )
 }
 

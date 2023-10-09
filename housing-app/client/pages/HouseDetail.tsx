@@ -3,6 +3,10 @@ import { useParams } from 'react-router-dom';
 import { House } from '../types/house';
 import { houseApi } from '../api/houseApi';
 import '../css/pages/HouseDetail.css';
+import InfoContainer from '../components/InfoContainer'
+import DetailImg from '../components/DetailImg'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -23,89 +27,38 @@ const HouseDetail = () => {
     return <div>Loading...</div>;
   }
 
-  const parsedDate = new Date(house.firstDate); // Omvandlar strängen till ett Date-objekt
-  const formattedDate = parsedDate.toLocaleDateString();
+  const parsedDate = new Date(house.firstDate);
+  const day = parsedDate.getDate();
+  const month = parsedDate.getMonth() + 1;
+  const year = parsedDate.getFullYear();
+  const formattedDate = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}-${year}`;
 
   return (
-    <div className="houseDetailContainer">
-      <div className="imgContainer">
-        <div className="imgLeft">
-          {house.img && house.img.length > 0 && (
-            <img
-              className='imgDetail'
-              src={house.img[0]} // Ladda den första bilden här
-              alt={house.titel}
-            />
-          )}
-        </div>
-        <div className="imgMid">
-          {house.img && house.img.length > 1 && (
-            <img
-              className='imgDetail'
-              src={house.img[1]} // Ladda den andra bilden här
-              alt={house.titel}
-            />
-          )}
-        </div>
-        <div className="imgRight">
-          {house.img && house.img.length > 2 && (
-            <img
-              className='imgDetail'
-              src={house.img[2]} // Ladda den tredje bilden här
-              alt={house.titel}
-            />
-          )}
-          {house.img && house.img.length > 3 && (
-            <img
-              className='imgDetail'
-              src={house.img[3]} // Ladda den fjärde bilden här
-              alt={house.titel}
-            />
-          )}
-        </div>
+    <>
+      <div className="houseDetailContainer">
+        <DetailImg house={house} />
+        <InfoContainer house={house} formattedDate={formattedDate} />
       </div>
-      <div className="infoContainer">
-        <div className="adress"><p>Address: {house.adress}</p></div>
-        <div className="rent"><p>Cost: {house.cost} kr</p></div>
-        <div className="room"><p>Number of Rooms: {house.numberOfRooms}</p></div>
-        <div className="space"><p>Size: {house.size}</p></div>
-        <div className="date"><p>Period: {house.period} months</p></div>
-        <div className="type"><p>Type: {house.type}</p></div>
-
-      </div>
-      <button className="applybtn">Till ansökan</button>
-      <div className="imgContainer2">
-        {/* Här kan du inkludera de resterande bilderna om du vill */}
-        {house.img && house.img.length > 4 && (
-          <img
-            className='imgDetail'
-            src={house.img[4]}
-            alt={house.titel}
-          />
-        )}
-        {house.img && house.img.length > 5 && (
-          <img
-            className='imgDetail'
-            src={house.img[5]}
-            alt={house.titel}
-          />
-        )}
+      <div className="btncont">
+        <button className="applybtn">Till ansökan 
+          <FontAwesomeIcon icon={faArrowRight}/>
+        </button>
       </div>
       <div className="descriptionContainer">
         <h1>{house.titel}</h1>
         <div className="infowrapper">
-          <p>Cost: {house.cost} kr</p>
-          <p>Number of Rooms: {house.numberOfRooms}</p>
-          <p>Size: {house.size}</p>
+          <p>{house.cost} kr</p>
+          <p>{house.numberOfRooms} RoK</p>
+          <p>{house.size} kvm</p>
         </div>
         <div className="description">
           <p>Description: {house.description}</p>
           <div className="date"><p>First Available Date: {formattedDate}</p></div>
-        <div className="floor"><p>Floor: {house.floor}</p></div>
-        <div className="recommendation"><p>Recommendation: {house.recommendation}</p></div>
+          <div className="floor"><p>Floor: {house.floor}</p></div>
+          <div className="recommendation"><p>Recommendation: {house.recommendation}</p></div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

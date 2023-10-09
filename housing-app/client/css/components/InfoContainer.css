@@ -1,0 +1,13 @@
+.infoContainer {
+    display: flex;
+    gap: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px; 
+    align-self: center;
+  }
+  .infoContainer * {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }

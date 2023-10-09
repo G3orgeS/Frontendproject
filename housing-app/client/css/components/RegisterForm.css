@@ -1,0 +1,82 @@
+/* RegisterForm.css */
+.infosection1 {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    align-items: flex-start;
+}
+.rightwrap {
+    display: flex;
+    align-items: flex-start;
+}
+
+.register-formwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .register-infosection {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .reg-inputsection {
+    padding-top: 10vh;
+    display: flex;
+    gap: 40px;
+    justify-content: space-around; /* Skapar två kolumner */
+    width: 50vw;
+    padding-bottom: 10vh;
+  }
+  
+  .reg-input {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .reg-input input[type="text"],
+  .reg-input input[type="email"],
+  .reg-input input[type="password"] {
+    background-color: #F2F2F2;
+    border: 1px solid #00000066;
+    height: 10px;
+    padding: 10px;
+    margin: 5px 0;
+    width: 100%; /* Fyller tillgängligt utrymme */
+  }
+  
+  .reg-termsCheckbox {
+    margin-top: 5px;
+
+  }
+.checkboxen {
+    display: flex;
+    padding-top: 20px;
+}
+  
+  .reg-error {
+    margin-top: 10px;
+    color: red;
+  }
+  
+  .reg-showbtn {
+    color: white;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  .loginLink {
+    width: 90%;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .regformwrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 10vh;
+  }

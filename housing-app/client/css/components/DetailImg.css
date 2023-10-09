@@ -1,0 +1,39 @@
+.DetailImgContainer {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.imgDetailsize {
+    height: 20rem;
+    width: 20rem;
+}
+
+.imgLeft img {
+    width: 15rem;
+    height: 20rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.imgMid img {
+    width: 15rem;
+    height: 20rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.imgRight {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.imgRight img {
+    width: 15rem;
+    height: 9.8rem;
+    border-radius: 10px;
+    object-fit: cover;
+}
