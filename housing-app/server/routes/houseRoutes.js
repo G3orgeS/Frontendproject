@@ -2,10 +2,9 @@ const express = require('express');
 const router = express.Router();
 const { MongoClient } = require('mongodb');
 const { ObjectId } = require('mongodb');
+require('dotenv').config(); // Ladda miljövariabler från .env-filen
 
-
-// Anslutning till MongoDB
-const uri = 'mongodb+srv://GS:BytMig123@cluster0.9csxogu.mongodb.net/test';
+const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 router.use(async (req, res, next) => {

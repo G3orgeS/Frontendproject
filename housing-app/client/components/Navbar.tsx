@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div className="navlink">
-        <a href="#" className="plain-link">Om oss</a>
+        <Link to={'/about'}>Om oss</Link>
         <Link to="/" className="plain-link">
           {/* Ska ändra Link så att jag kommer till en annan plats */}
           <span className="icon-text">

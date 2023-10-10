@@ -1,0 +1,12 @@
+.textaboutwrap {
+    padding-top: 10vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 70vw;
+}
+.wrap {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 30vh;
+}

@@ -3,14 +3,16 @@ import '../css/components/ImgWrapper.css' // Importera den externa CSS-filen
 
 interface ImgWrapperProps {
   src: string;
-  alt: string; // Ange typtypen som string för alt
+  alt: string; 
+  style?: React.CSSProperties;
 }
 
-const ImgWrapper: React.FC<ImgWrapperProps> = ({ src, alt }) => {
+const ImgWrapper: React.FC<ImgWrapperProps> = ({ src, alt, style }) => {
   return (
     <img
       src={src}
       alt={alt}
+      style={style}
       className="img-wrapper"
     />
   );
