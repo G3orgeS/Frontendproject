@@ -9,6 +9,7 @@ const api = axios.create({
 });
 
 export const houseApi = {
+  
   getAllHouses: async (): Promise<House[]> => {
     try {
       const response = await api.get('/api/house');

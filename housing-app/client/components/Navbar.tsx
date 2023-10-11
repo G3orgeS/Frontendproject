@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
         <button className="hamburger-button" onClick={toggleDropdown}>
           <HamburgerMenu />
         </button>
-        <button className="profile-button"><Link to='/profil'>
+        <button className="profile-button"><Link to='/login'>
           <div className='blackcover'>
             {profileIconBackground}
           </div>

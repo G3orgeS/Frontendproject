@@ -7,6 +7,7 @@ import HouseList from '../pages/HouseList'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import About from '../pages/About'
+// import Profil from '../pages/Profil'
 import Footer from '../components/Footer'
 
 const App = () => {
@@ -21,7 +22,8 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/houselist' element={<HouseList />} />
-          <Route path='about' element={<About />} />
+          <Route path='/about' element={<About />} />
+          {/* <Route path='/profil' element={<Profil />} /> */}
         </Routes>
         <Footer />
       </Router>

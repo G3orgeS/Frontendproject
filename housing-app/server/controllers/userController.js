@@ -1,7 +1,38 @@
 const User = require('../models/User');
-const express = require('express');
-const router = express.Router();
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const secretKey = process.env.SECRET_KEY;
 
+const registerUser = async (req, res) => {
+  try {
+  } catch (error) {
+    console.error('Fel vid registrering av användare:', error);
+    res.status(500).json({ message: 'Ett fel inträffade vid registreringen.' });
+  }
+};
+const loginUser = async (req, res) => {
+  try {
+  } catch (error) {
+    console.error('Fel vid inloggning:', error);
+    res.status(500).json({ message: 'Ett fel inträffade vid inloggningen.' });
+  }
+};
+// const getSingleUserById = async (req, res) => {
+//   try {
+//     const userId = req.params.userId;
+
+//     const user = await User.findById(userId).select('-password');
+
+//     if (!user) {
+//       return res.status(404).json({ message: 'Användaren hittades inte.' });
+//     }
+
+//     res.status(200).json(user);
+//   } catch (error) {
+//     console.error('Fel vid hämtning av användarinformation:', error);
+//     res.status(500).json({ message: 'Ett fel inträffade vid hämtning av användarinformation.' });
+//   }
+// };
 const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
@@ -11,25 +42,9 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-const registerUser = async (req, res) => {
-  try {
-    const { firstname, lastname, email, username } = req.body;
-    console.log('Registrerar en ny användare...');
-
-    const newUser = new User({ firstname, lastname, email, username });
-    await newUser.save();
-
-    res.status(201).json({ message: 'Användaren har registrerats.' });
-  } catch (error) {
-    console.error('Fel vid registrering av användare:', error);
-    res.status(500).json({ message: 'Ett fel inträffade vid registreringen.' });
-  }
-};
-
-router.get('/', getAllUsers);
-router.post('/register', registerUser);
-
 module.exports = {
   getAllUsers,
   registerUser,
+  loginUser,
+  // getSingleUserById,
 };
