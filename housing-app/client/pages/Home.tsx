@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
 import ImgWrapper from '../components/ImgWrapper';
 import Filterbar from '../components/Filterbar';
-import '../css/pages/Home.css';
+import Showbtn from '../components/Showbtn';
 import Card from '../components/Card';
+import '../css/pages/Home.css';
 import { House } from '../types/house';
 import { houseApi } from '../api/houseApi';
-import Showbtn from '../components/Showbtn';
 
 const homepage = '../resource/Homepage.jpeg';
 
 const Home = () => {
   const [currentIndexes, setCurrentIndexes] = useState<number[]>([]);
   const [houses, setHouses] = useState<House[]>([]);
-  const [displayedCardCount, setDisplayedCardCount] = useState<number>(12); // Antal kort som visas
+  const [displayedCardCount, setDisplayedCardCount] = useState<number>(12);
+  const [filteredHouses, setFilteredHouses] = useState<House[]>([]);
+  const [selectedType, setSelectedType] = useState<string | null>(null);
 
   useEffect(() => {
     async function fetchHouses() {
@@ -28,6 +30,15 @@ const Home = () => {
     fetchHouses();
   }, []);
 
+  useEffect(() => {
+    if (selectedType) {
+      const filtered = houses.filter((house) => house.type === selectedType);
+      setFilteredHouses(filtered);
+    } else {
+      setFilteredHouses(houses);
+    }
+  }, [selectedType, houses]);
+
   const handleIndicatorClick = (index: number, imgIndex: number) => {
     setCurrentIndexes((prevIndexes) => {
       const updatedIndexes = [...prevIndexes];
@@ -41,13 +52,23 @@ const Home = () => {
     setDisplayedCardCount(displayedCardCount + 12);
   };
 
+  const handleFilter = (type: string) => {
+    if (selectedType === type) {
+      // Om samma typ redan är vald, återställ filtret
+      setSelectedType(null);
+    } else {
+      // Uppdatera den valda typen
+      setSelectedType(type);
+    }
+  };  
+
   return (
     <>
       <ImgWrapper src={homepage} alt={'bild'} />
-      <Filterbar />
+      <Filterbar onFilter={handleFilter} />
       <div className="card-display">
         <Card
-          houses={houses}
+          houses={filteredHouses}
           currentIndexes={currentIndexes}
           handleIndicatorClick={handleIndicatorClick}
           limit={displayedCardCount}
@@ -61,5 +82,4 @@ const Home = () => {
 }
 
 export default Home;
-
 

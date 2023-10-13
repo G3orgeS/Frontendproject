@@ -16,7 +16,7 @@ export async function loginUser(userName: string, passwordHash: string) {
       localStorage.setItem('token', token);
 
       // const userInfo = await fetchUserInfo(token);
-      return token; // Returnera token direkt efter att det har sparats
+      return token; 
     } else {
       console.error('Inloggning misslyckades');
       return null;
