@@ -1,6 +1,7 @@
 .houseDetailContainer {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
   .detailWrap1 {
     display: flex;
@@ -45,4 +46,14 @@
 .descriptionContainer h1 {
   display: flex;
   justify-content: center;
+}
+.imageRow {
+  display: flex;
+  justify-content: space-evenly;
+  width: 60vw;
+}
+.imageRow img {
+  width: 150px; 
+  height: 200px; 
+  border-radius: 5px;
 }

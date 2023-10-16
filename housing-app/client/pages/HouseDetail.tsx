@@ -3,15 +3,14 @@ import { useParams } from 'react-router-dom';
 import { House } from '../types/house';
 import { houseApi } from '../api/houseApi';
 import '../css/pages/HouseDetail.css';
-import InfoContainer from '../components/InfoContainer'
-import DetailImg from '../components/DetailImg'
+import InfoContainer from '../components/InfoContainer';
+import DetailImg from '../components/DetailImg';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
   const [house, setHouse] = useState<House | null>(null);
-
 
   useEffect(() => {
     if (id) {
@@ -38,10 +37,16 @@ const HouseDetail = () => {
       <div className="houseDetailContainer">
         <DetailImg house={house} />
         <InfoContainer house={house} formattedDate={formattedDate} />
+        <div className="imageRow">
+          {house.img.slice(0, 4).map((img, index) => (
+            <img key={index} src={img} alt={`Image ${index + 1}`} />
+          ))}
+        </div>
       </div>
       <div className="btncont">
-        <button className="applybtn">Till ansökan 
-          <FontAwesomeIcon icon={faArrowRight}/>
+        <button className="applybtn">
+          Till ansökan
+          <FontAwesomeIcon icon={faArrowRight} />
         </button>
       </div>
       <div className="descriptionContainer">
@@ -57,9 +62,11 @@ const HouseDetail = () => {
           <div className="floor"><p>Floor: {house.floor}</p></div>
           <div className="recommendation"><p>Recommendation: {house.recommendation}</p></div>
         </div>
+
       </div>
     </>
   );
 };
 
 export default HouseDetail;
+
