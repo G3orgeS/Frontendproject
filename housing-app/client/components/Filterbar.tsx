@@ -1,18 +1,15 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import '../css/components/Filterbar.css';
 import FilterModal from '../components/FilterModal';
 import FontAw from '../components/icons/FontAw';
 
 interface FilterbarProps {
-  onFilter: (type: string) => void; // Typ för onFilter-funktionen
+  onFilter: (type: string) => void;
 }
 
 const Filterbar: React.FC<FilterbarProps> = ({ onFilter }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleFilterClick = (type: string) => { // Specificera typen för 'type'
-    onFilter(type);
-  };
+  const handleFilterClick = (type: string) => { onFilter(type) };
 
   return (
     <div className="filterwrapperparent">
