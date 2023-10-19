@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { House } from '../types/house';
-import { houseApi } from '../api/houseApi';
+import { houseApi } from '../data/houseApi';
 import '../css/pages/HouseDetail.css';
 import InfoContainer from '../components/InfoContainer';
 import DetailImg from '../components/DetailImg';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useEffect, useState } from 'react';
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -44,10 +44,11 @@ const HouseDetail = () => {
         </div>
       </div>
       <div className="btncont">
-        <button className="applybtn">
+        {/* Använd Link-komponenten för att navigera till Application.tsx med id */}
+        <Link to={`/application/${id}`} className="applybtn">
           Till ansökan
           <FontAwesomeIcon icon={faArrowRight} />
-        </button>
+        </Link>
       </div>
       <div className="descriptionContainer">
         <h1>{house.titel}</h1>
@@ -61,8 +62,8 @@ const HouseDetail = () => {
           <div className="date"><p>First Available Date: {formattedDate}</p></div>
           <div className="floor"><p>Floor: {house.floor}</p></div>
           <div className="recommendation"><p>Recommendation: {house.recommendation}</p></div>
+          <div className="landlord">Company: {house.landlord[0]}</div>
         </div>
-
       </div>
     </>
   );

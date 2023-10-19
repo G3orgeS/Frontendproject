@@ -38,7 +38,10 @@ const Card = ({ limit, currentIndexes, handleIndicatorClick, houses }: CardProps
             <div className="info">
               <div className="titel">{house.titel}</div>
               <div className="adress">{house.adress}</div>
-              <div className="cost">{house.cost} kr</div>
+              <div className="cost">{house.cost}kr/mån</div>
+              <div className="room">{house.numberOfRooms} RoK</div>
+              <div className="city">{house.city}</div>
+              <div className="size">{house.size}kvm</div>
             </div>
           </div>
         </Link>

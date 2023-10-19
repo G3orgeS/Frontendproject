@@ -15,7 +15,6 @@ function verifyToken(req, res, next) {
   if (!token) {
     return res.status(401).json({ message: 'Åtkomst nekad. Ingen token tillhandahållen.' });
   }
-
   try {
     const decoded = jwt.verify(token, secretKey);
     req.user = decoded;

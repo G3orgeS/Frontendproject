@@ -12,6 +12,7 @@
     color: black;
 }
 .filtericon {
+    align-items: center;
     display: flex;
     text-decoration: none;
     color: black;

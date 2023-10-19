@@ -4,9 +4,10 @@ import '../css/index.css'
 import Home from '../pages/Home'
 import HouseDetail from '../pages/HouseDetail'
 import Login from '../pages/Login'
+import Profil from '../pages/Profil'
 import Register from '../pages/Register'
 import Footer from '../components/Footer'
-import Aplication from '../pages/Aplication';
+import Application from '../pages/Application';
 
 const App = () => {
 
@@ -19,9 +20,9 @@ const App = () => {
           <Route path='/housedetail/:id' element={<HouseDetail />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          <Route path='/about' element={<Aplication />} />
+          <Route path='/application/:id' element={<Application />} />
           {/* <Route path='/houselist' element={<HouseList />} /> */}
-          {/* <Route path='/profil' element={<Profil />} /> */}
+          <Route path='/profil' element={<Profil />} />
         </Routes>
         <Footer />
       </Router>

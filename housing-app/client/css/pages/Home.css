@@ -1,14 +1,11 @@
-/* Uppdaterad Home.css */
 .homeHeight {
     height: 100vh;
   }
-  
   .card-display {
     display: flex;
     flex-direction: column; 
     align-items: center; 
   }
-  
   .card-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -20,10 +17,46 @@
     max-width: 1200px; 
     width: 100%; 
   }
-  
   .btnwrap {
     display: flex;
     justify-content: center;
-    padding: 20px 0; /* Lägg till mer mellanrum för att förbättra utseendet */
+    padding: 20px 0; 
   }
+  .overlay {
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 100%;
+    height: 400px;
+    background: rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff; 
+    text-align: center;
+  }
+  .overlay h2 {
+    font-size: 44px;
+    font-weight: bold;
+  }
+  .overlay p {
+    font-size: 26px;
+  }
+  @media screen and (max-width: 768px) {
+    .card-grid {
+      grid-template-columns: repeat(1, 1fr); /* Ändra till tre kolumner på mindre skärmar */
+    }
   
+    .overlay {
+      height: 300px; /* Justera höjden för mindre skärmar */
+    }
+  
+    .overlay h2 {
+      font-size: 32px; /* Justera textstorleken för mindre skärmar */
+    }
+  
+    .overlay p {
+      font-size: 18px; /* Justera textstorleken för mindre skärmar */
+    }
+  }

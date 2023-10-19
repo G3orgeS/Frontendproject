@@ -18,4 +18,5 @@ export interface House {
   floor:          number;
   recommendation: number;
   extras:         string[];
+  landlord:       string[];
 }
