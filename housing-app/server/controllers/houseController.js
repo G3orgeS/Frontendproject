@@ -1,5 +1,6 @@
-// Hämta alla hus
-exports.getAllHouses = async (req, res) => {
+const { ObjectId } = require('mongodb');
+
+const getAllHouses = async (req, res) => {
     try {
       const houseCollection = res.locals.houseCollection;
       const houses = await houseCollection.find({}).toArray();
@@ -10,8 +11,7 @@ exports.getAllHouses = async (req, res) => {
     }
   };
   
-  // Skapa ett nytt hus
-  exports.createHouse = async (req, res) => {
+const createHouse = async (req, res) => {
     try {
       const houseCollection = res.locals.houseCollection;
       const formData = req.body;
@@ -23,8 +23,7 @@ exports.getAllHouses = async (req, res) => {
     }
   };
   
-  // Uppdatera ett hus
-  exports.updateHouse = async (req, res) => {
+const updateHouse = async (req, res) => {
     try {
       const houseCollection = res.locals.houseCollection;
       const { id } = req.params;
@@ -37,8 +36,7 @@ exports.getAllHouses = async (req, res) => {
     }
   };
   
-  // Ta bort ett hus
-  exports.deleteHouse = async (req, res) => {
+const deleteHouse = async (req, res) => {
     try {
       const houseCollection = res.locals.houseCollection;
       const { id } = req.params;
@@ -50,12 +48,14 @@ exports.getAllHouses = async (req, res) => {
     }
   };
 
-  exports.getHouseById = async (req, res) => {
+const getHouseById = async (req, res) => {
     try {
       const houseCollection = res.locals.houseCollection;
       const { id } = req.params;
   
-      const house = await houseCollection.findOne({ _id: id });
+      const objectId = new ObjectId(id);
+  
+      const house = await houseCollection.findOne({ _id: objectId });
   
       if (!house) {
         return res.status(404).json({ error: 'Huset kunde inte hittas' });
@@ -66,4 +66,12 @@ exports.getAllHouses = async (req, res) => {
       console.error('Något gick fel vid hämtning av hus:', error);
       res.status(500).json({ error: 'Något gick fel på servern' });
     }
+  };
+
+module.exports = {
+    getAllHouses,
+    createHouse,
+    updateHouse,
+    deleteHouse,
+    getHouseById,
   };

@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const houseController = require('../controllers/houseController');
 const { MongoClient } = require('mongodb');
-const { ObjectId } = require('mongodb');
-require('dotenv').config(); // Ladda miljövariabler från .env-filen
+require('dotenv').config(); 
 
 const uri = process.env.MONGODB_URI;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
@@ -21,50 +21,11 @@ router.use(async (req, res, next) => {
   }
 });
 
-// Hämta alla hus
-router.get('/', async (req, res) => {
-  try {
-    const houseCollection = res.locals.houseCollection;
-    const houses = await houseCollection.find({}).toArray();
-    res.json(houses);
-  } catch (error) {
-    console.error('Något gick fel vid hämtning av hus:', error);
-    res.status(500).json({ error: 'Något gick fel på servern' });
-  }
-});
+router.get('/', houseController.getAllHouses);
+router.post('/', houseController.createHouse);
+router.put('/:id', houseController.updateHouse);
+router.delete('/:id', houseController.deleteHouse);
+router.get('/:id', houseController.getHouseById);
 
-// Hämta ett enskilt hus baserat på ID
-router.get('/:id', async (req, res) => {
-  try {
-    const houseCollection = res.locals.houseCollection;
-    const { id } = req.params;
-
-    const objectId = new ObjectId(id);
-
-    const house = await houseCollection.findOne({ _id: objectId });
-
-    if (!house) {
-      return res.status(404).json({ error: 'Huset kunde inte hittas' });
-    }
-
-    res.json(house);
-  } catch (error) {
-    console.error('Något gick fel vid hämtning av hus:', error);
-    res.status(500).json({ error: 'Något gick fel på servern' });
-  }
-});
-
-// Skapa ett nytt hus
-router.post('/', async (req, res) => {
-  try {
-    const houseCollection = res.locals.houseCollection;
-    const formData = req.body;
-    const result = await houseCollection.insertOne(formData);
-    res.status(201).json({ message: 'Huset har lagts till i databasen', insertedId: result.insertedId });
-  } catch (error) {
-    console.error('Något gick fel vid läggning till hus:', error);
-    res.status(500).json({ error: 'Något gick fel på servern' });
-  }
-});
 
 module.exports = router;
