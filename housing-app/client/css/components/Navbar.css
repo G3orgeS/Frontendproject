@@ -102,6 +102,7 @@
   color: #C0C0C0;
 }
 .dropbtn {
+  cursor: pointer;
   margin-top: 20px;
   border-radius: 30px;
   background: #E78121;
@@ -112,13 +113,13 @@
 }
 @media screen and (max-width: 768px) {
   .navbar {
-    flex-direction: column; /* Ändra till staplad layout för mindre skärmar */
-    align-items: flex-start; /* Justera inriktningen för mindre skärmar */
-    height: auto; /* Ta bort fast höjd för mindre skärmar */
+    flex-direction: column; 
+    align-items: flex-start;
+    height: auto; 
   }
 
   .navlink {
-    flex-direction: column; /* Ändra länkarna till en staplad lista för mindre skärmar */
-    gap: 10px; /* Justera avståndet mellan länkarna */
+    flex-direction: column; 
+    gap: 10px; 
   }
 }

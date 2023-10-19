@@ -1,6 +1,6 @@
 import '../css/components/Navbar.css';
 import HamburgerMenu from './HamburgerMenu';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 import React, { useState, useEffect, useRef } from 'react';
 import FontAw from '../components/icons/FontAw'; 
 
@@ -34,6 +34,15 @@ const Navbar: React.FC = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
+  const token = localStorage.getItem('token');
+  const profileLink = token ? '/profil' : '/login';
+  const profileAply = token ? 'userapplication' : '/login';
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
   return (
     <nav className='navbar'>
       <div>
@@ -42,26 +51,25 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div className="navlink">
-        {/* Här var det en onödig </Link> som togs bort */}
       </div>
       <div className={`navHB ${isDropdownOpen ? 'open' : ''}`} ref={navHBRef}>
         <button className="hamburger-button" onClick={toggleDropdown}>
           <HamburgerMenu />
         </button>
         <button className="profile-button">
-          <Link to='/login'>
-          <FontAw iconName="user"  />
+          <Link to={profileLink}>
+            <FontAw iconName="user" />
           </Link>
         </button>
         {isDropdownOpen && (
           <div className="dropdown-menu" ref={dropdownRef}>
-            <Link to="/profil" className='dropdownLink'>Min profil</Link>
+            <Link to={profileLink} className='dropdownLink'>Min profil</Link>
             <Link to="/" className='dropdownLink'>Bostäder</Link>
-            <Link to="/register" className='dropdownLink'>Ansökningar</Link>
+            <Link to={profileAply} className='dropdownLink'>Ansökningar</Link>
             <Link to='/contact' className='dropdownLink'>Kontakt</Link>
             <Link to='/info' className='dropdownLink'>Villkor</Link>
             <Link to='/rent' className='dropdownLink'>Hyr ut</Link>
-            <button className='dropbtn'>LOGGA UT</button>
+            <button className='dropbtn' onClick={handleLogout}>LOGGA UT</button>
           </div>
         )}
       </div>

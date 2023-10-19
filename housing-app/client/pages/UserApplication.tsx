@@ -1,8 +1,9 @@
-import React from 'react'
 
 const UserApplication = () => {
   return (
-    <div>UserApplication</div>
+    <div><h1>här visas alla bostäder som användaren har ansökt till, de ska
+      hämtas från applications från databasen och de är kopplade
+      till användarens id. </h1></div>
   )
 }
 

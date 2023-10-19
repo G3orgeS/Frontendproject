@@ -8,6 +8,7 @@ import Profil from '../pages/Profil'
 import Register from '../pages/Register'
 import Footer from '../components/Footer'
 import Application from '../pages/Application';
+import UserApplication from '../pages/UserApplication'
 
 const App = () => {
 
@@ -21,6 +22,7 @@ const App = () => {
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route path='/application/:id' element={<Application />} />
+          <Route path='/userApplication' element={<UserApplication />}/>
           {/* <Route path='/houselist' element={<HouseList />} /> */}
           <Route path='/profil' element={<Profil />} />
         </Routes>
