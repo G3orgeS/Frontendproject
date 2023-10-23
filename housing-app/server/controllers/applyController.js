@@ -1,12 +1,11 @@
 const Application = require('../models/Apply');
 
-exports.createApplication = async (req, res) => {
+const createApplication = async (req, res) => {
   try {
-    const { period, userId, houseselection } = req.body;
+    const { user, houseselection } = req.body; // Uppdatera detta för att hämta rätt data
 
     const newApplication = new Application({
-      period,
-      user: userId,
+      user,
       houseselection,
       status: '', 
     });
@@ -20,7 +19,8 @@ exports.createApplication = async (req, res) => {
   }
 };
 
-exports.getApplicationsByUser = async (req, res) => {
+
+const getApplicationsByUser = async (req, res) => {
   try {
     const { userId } = req.params;
     const applications = await Application.find({ user: userId });
@@ -31,7 +31,7 @@ exports.getApplicationsByUser = async (req, res) => {
   }
 };
 
-exports.updateApplicationStatus = async (req, res) => {
+const updateApplicationStatus = async (req, res) => {
   try {
     const { applicationId } = req.params;
     const { status } = req.body;
@@ -51,3 +51,20 @@ exports.updateApplicationStatus = async (req, res) => {
     res.status(500).json({ message: 'Ett fel inträffade vid uppdateringen av ansökans status.' });
   }
 };
+
+const getAllApplications = async (req, res) => {
+  try {
+    const applications = await Application.find();
+    res.status(200).json(applications);
+  } catch (error) {
+    console.error('Fel vid hämtning av alla ansökningar:', error);
+    res.status(500).json({ message: 'Ett fel inträffade vid hämtningen av alla ansökningar.' });
+  }
+};
+
+module.exports = {
+  updateApplicationStatus,
+  getApplicationsByUser,
+  createApplication,
+  getAllApplications
+}

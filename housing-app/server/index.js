@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const houseRoutes = require('./routes/houseRoutes');
 const userRoutes = require('./routes/userRoutes');
+const applyRoutes = require('./routes/applyRoutes')
 const app = express();
 
 const port = process.env.PORT || 3000;
@@ -24,6 +25,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 app.use('/api/house', houseRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/application', applyRoutes);
 
 app.listen(port, () => {
   console.log(`Server lyssnar på port ${port}`);

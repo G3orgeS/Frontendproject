@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { House } from '../types/house';
 
-const baseURL = 'http://localhost:3000'; // Ändra detta till din serveradress och port
+const baseURL = 'http://localhost:3000'; 
 
 const api = axios.create({
   baseURL,
