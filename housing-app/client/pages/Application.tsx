@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { houseApi } from '../data/houseApi';
 import { House } from '../types/house';
 import { Application } from '../types/application';
@@ -15,6 +15,8 @@ const ApplicationPage: React.FC = () => {
   const [allConditionsAccepted, setAllConditionsAccepted] = useState(false);
   const [userInfo, setUserInfo] = useState<Users | null>(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const token = localStorage.getItem('token');
 
@@ -23,7 +25,6 @@ const ApplicationPage: React.FC = () => {
         .then((data) => {
           if (data) {
             setUserInfo(data);
-
           } else {
             console.error('Något gick fel vid hämtning av användarinformation.');
           }
@@ -32,7 +33,6 @@ const ApplicationPage: React.FC = () => {
           console.error(error.message);
         });
     }
-
   }, [userId]);
 
   useEffect(() => {
@@ -40,10 +40,10 @@ const ApplicationPage: React.FC = () => {
       houseApi.getHouseById(id)
         .then((houseData) => {
           setHouse(houseData);
-          console.log('Husinfo hämtad:', houseData);
+          // console.log('Husinfo hämtad:', houseData);
         })
         .catch((error) => {
-          console.error('Error fetching house data:', error);
+          // console.error('Error fetching house data:', error);
         });
     }
   }, [id]);
@@ -55,7 +55,7 @@ const ApplicationPage: React.FC = () => {
   const submitApplication = () => {
     if (!userInfo || !house) {
       console.log(userInfo?.userName);
-      console.error('Användarnamn eller hus saknas.');
+      // console.error('Användarnamn eller hus saknas.');
       return;
     }
 
@@ -70,47 +70,63 @@ const ApplicationPage: React.FC = () => {
     createApplication(applicationData, userInfo?.userName) // Lägg till användarnamn som andra argument
       .then((response) => {
         console.log('Ansökan skickades:', response);
+        navigate('/userapplication');
       })
       .catch((error) => {
         console.error('Fel vid skickande av ansökan:', error);
       });
   };
 
+  const houseTitle = house?.titel;
+  const houseImage = house ? house.img[0] : '';
+  const houseCity = house ? house.city : '';
+  const houseZipCode = house ? house.zipcode : '';
+  const houseCost = house ? house.cost : '';
+  const houseFloor = house ? house.floor : '';
+  const houseFirstDate = house ? house.firstDate : new Date(); 
+  const houseLandlord = house ? house.landlord[0] : '';
+  const houseRecommendation = house ? house.recommendation : '';
+
+  const formattedHouseFirstDate = houseFirstDate instanceof Date ? houseFirstDate.toLocaleDateString() : '';
+
   return (
     <>
+    <div className="applycontainer">
+      <h2 className="house-title">{houseTitle}</h2>
+      <div className="fullerhouse">
+      <div className="fullhousewrapperapply">
       {house && (
         <div className='housecardapplyinfo'>
-          <h2>{house.titel}</h2>
-          <img className='imgappli' src={house.img[0]} alt="House Image" />
+          <div className="house-image">
+            <img src={houseImage} alt="House Image" />
+          </div>
           <div className="overview">
+            <h3>Översikt</h3>
             <div className="papplywrap">
-          <h3>Översikt</h3>
-          </div>
-          <div className="papplywrap">
-          <p>Stad:</p><p>{house.city}, {house.zipcode}</p>
-          </div>
-          <div className="papplywrap">
-          <p>Adress:</p><p>{house.adress}</p>
-          </div>
-          <div className="papplywrap">
-          <p>Våning:</p><p>{house.floor} av 10</p>
-          </div>
-          <div className="papplywrap">
-          <p>Hyresvärd:</p><p>{house.landlord[0]}</p>
-          </div>
-          <div className="papplywrap">
-          <p>Hyra:</p><p>{house.cost} kr</p>
-          </div>
-          <div className="papplywrap">
-          <p>Betyg:</p><p>{house.recommendation}</p>
-          </div>
+              <p>hyra:</p><p>{houseCost}kr/mån</p>
+            </div>
+            <div className="papplywrap">
+              <p>Stad:</p><p>{houseCity}, {houseZipCode}</p>
+            </div>
+            <div className="papplywrap">
+              <p>Våning: </p><p>{houseFloor}</p>
+            </div>
+            <div className="papplywrap">
+              <p>Inflytt: </p><p>{formattedHouseFirstDate}</p>
+            </div>
+            <div className="papplywrap">
+              <p>Hyresvärd: </p><p>{houseLandlord}</p>
+            </div>
+            <div className="papplywrap">
+              <p>Betyg </p><p>{houseRecommendation}</p>
+            </div>
           </div>
         </div>
       )}
-          <div className='applicationbodywrapper'>
-      <div className='textwrap2info'>
+      <div className='applicationbodywrapper'>
+        <div className='textwrap2info'>
         <p>
-          Viktiga krav och villkor från hyresföreningen:
+        <strong>Viktiga krav och villkor från hyresföreningen:</strong>
         </p>
         <p>
           <strong>1. Deposition:</strong> En deposition om 5 000 kr måste betalas inom 7 dagar från acceptdatumet. Denna summa återbetalas när du flyttar ut, förutsatt att bostaden lämnas i ursprungligt skick.
@@ -130,6 +146,7 @@ const ApplicationPage: React.FC = () => {
         <label>
           Vänligen läs igenom alla villkor noga. Om du har några frågor eller funderingar, kontakta hyresföreningen innan du tackar ja.
         </label>
+        <div className="checkapplyer">
         <div className="checkboxwrapperapply">
         <input
           type="checkbox"
@@ -137,12 +154,16 @@ const ApplicationPage: React.FC = () => {
           onChange={handleMainCheckboxChange}
           />
           <label>Jag godkänner alla villkor</label>
+          <button className='applybtn'  onClick={submitApplication}>Skicka in ansökan</button>
+          </div>
           </div>
       </div>
-
+      </div>
+      </div>
     </div>
-      <button onClick={submitApplication}>Skicka in ansökan</button>
-      </>
+    
+    </div>
+    </>
   );
 };
 

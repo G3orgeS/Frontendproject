@@ -1,62 +1,81 @@
-.textaboutwrap {
-    padding-top: 10vh;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    width: 70vw;
-}
-.wrap {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 30vh;
-}
-.imgappli {
-    border-radius: 5px;
-    height: 300px;
-    width: 225px;
-}
-.textwrap2info {
+.applycontainer {
     display: flex;
     flex-direction: column;
-    /* padding-left: 10rem; */
-    width: 50vw;
 }
 .housecardapplyinfo {
-    float: left;
-    flex-direction: column;
+    padding-left: 40px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 600px;
     width: 50%;
 }
-.housecardapplyinfo h2 {
-    height: 50px;
-    padding: 0;
-    width: 100vw;
-    margin-top: 10px;
+.house-image img {
+    height: 300px;
+    width: 300px;
+    border-radius: 5px;
 }
 .overview {
-    display: flex;
+    align-items: center;
+    width: 300px;
     flex-direction: column;
-    background-color: #E9E9E9;
-    width: 225px;
-    justify-content: space-between;
-}
-.overview p {
     display: flex;
-    margin: 2px;
-    gap: 10px; 
-    padding: 0px 10px; 
+    height: 200px;
+    background-color: #E9E9E9;
+}
+.overview h3 {
+    display: flex;
+    justify-content: flex-start;
+    width: 250px;
 }
 .papplywrap {
     display: flex;
     justify-content: space-between;
-    padding-left: 10px
+    width: 250px;
 }
-.papplywrap h3 {
-    padding-left: 10px;
+.papplywrap p {
+    margin: 0;
 }
-.applicationbodywrapper {
+.fullhousewrapperapply {
+    align-items: flex-start;
     display: flex;
-    width: 50%;
-    float: left;
-    padding-top: 60px;
+    gap: 50px;
+    width: 70vw;
 }
+.textwrap2info {
+    padding-top: 15px;
+}
+.checkapplyer {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 50px;
+gap: 20px;
+}
+  
+.applybtn {
+    background-color: #E78121;
+    color: #FFFFFF;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    border: none;
+    border-radius: 24px;
+    cursor: pointer;
+    width: 180px;
+    height: 44px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .applybtn:hover {
+    background-color: darkorange;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .applybtn:active {
+    background-color: orangered;
+  }
+  .fullerhouse {
+    display: flex;
+    justify-content: center;
+  }
