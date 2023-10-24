@@ -56,6 +56,10 @@ const LoginForm: React.FC = () => {
       <button className="showbtn" onClick={handleLogin}>
         Logga in
       </button>
+      <div className="loginLink">
+        <h2>Står du redan i vår kö?</h2>
+        <p><a href="/register">Klicka här</a> för att logga in på ditt konto</p>
+      </div>
     </div>
   );
 };

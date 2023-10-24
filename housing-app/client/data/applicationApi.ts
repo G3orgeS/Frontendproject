@@ -46,3 +46,20 @@ export async function createApplication(applicationData: Application, userId: st
     return null;
   }
 }
+
+export async function getApplicationByUser(username: string): Promise<Application[] | null> {
+  try {
+    const response: AxiosResponse<Application[]> = await api.get(`/api/application/getapplicationbyuser?username=${username}`);
+    
+    if (response.status === 200) {
+      const applications = response.data;
+      return applications;
+    } else {
+      console.error('Kunde inte hämta ansökningar');
+      return null;
+    }
+  } catch (error) {
+    console.error('Något gick fel vid hämtning av ansökningar:', error);
+    return null;
+  }
+}

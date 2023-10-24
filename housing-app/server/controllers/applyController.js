@@ -19,7 +19,6 @@ const createApplication = async (req, res) => {
   }
 };
 
-
 const getApplicationsByUser = async (req, res) => {
   try {
     const { userId } = req.params;

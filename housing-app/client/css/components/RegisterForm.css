@@ -67,13 +67,6 @@
     cursor: pointer;
     margin-top: 20px;
   }
-  .loginLink {
-    width: 90%;
-    display: flex;
-    justify-content: flex-start;
-    flex-direction: column;
-    align-items: flex-start;
-  }
   .regformwrapper {
     display: flex;
     flex-direction: column;

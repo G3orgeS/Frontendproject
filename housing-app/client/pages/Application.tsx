@@ -52,61 +52,97 @@ const ApplicationPage: React.FC = () => {
     setAllConditionsAccepted(!allConditionsAccepted);
   };
 
-const submitApplication = () => {
-  if (!userInfo || !house) {
-    console.log(userInfo?.userName);
-    console.error('Användarnamn eller hus saknas.');
-    return;
-  }
+  const submitApplication = () => {
+    if (!userInfo || !house) {
+      console.log(userInfo?.userName);
+      console.error('Användarnamn eller hus saknas.');
+      return;
+    }
 
-  const applicationData: Application = {
-    _id: '',
-    user: userInfo.userName,
-    houseselection: [String(id)],
+    const applicationData: Application = {
+      _id: '',
+      user: userInfo.userName,
+      houseselection: [String(id)],
+    };
+
+    console.log(userInfo?.userName);
+
+    createApplication(applicationData, userInfo?.userName) // Lägg till användarnamn som andra argument
+      .then((response) => {
+        console.log('Ansökan skickades:', response);
+      })
+      .catch((error) => {
+        console.error('Fel vid skickande av ansökan:', error);
+      });
   };
 
-  console.log(userInfo?.userName);
-
-  createApplication(applicationData, userInfo?.userName) // Lägg till användarnamn som andra argument
-    .then((response) => {
-      console.log('Ansökan skickades:', response);
-    })
-    .catch((error) => {
-      console.error('Fel vid skickande av ansökan:', error);
-    });
-};
-
   return (
-    <div>
+    <>
       {house && (
-        <div>
-          <img className='imgappli' src={house.img[0]} alt="House Image" />
+        <div className='housecardapplyinfo'>
           <h2>{house.titel}</h2>
-          <p>Adress: {house.adress}</p>
-          <p>Landlord: {house.landlord[0]}</p>
-          <p>Cost: {house.cost} kr</p>
+          <img className='imgappli' src={house.img[0]} alt="House Image" />
+          <div className="overview">
+            <div className="papplywrap">
+          <h3>Översikt</h3>
+          </div>
+          <div className="papplywrap">
+          <p>Stad:</p><p>{house.city}, {house.zipcode}</p>
+          </div>
+          <div className="papplywrap">
+          <p>Adress:</p><p>{house.adress}</p>
+          </div>
+          <div className="papplywrap">
+          <p>Våning:</p><p>{house.floor} av 10</p>
+          </div>
+          <div className="papplywrap">
+          <p>Hyresvärd:</p><p>{house.landlord[0]}</p>
+          </div>
+          <div className="papplywrap">
+          <p>Hyra:</p><p>{house.cost} kr</p>
+          </div>
+          <div className="papplywrap">
+          <p>Betyg:</p><p>{house.recommendation}</p>
+          </div>
+          </div>
         </div>
       )}
-      <div>
+          <div className='applicationbodywrapper'>
+      <div className='textwrap2info'>
         <p>
           Viktiga krav och villkor från hyresföreningen:
-          Deposition: En deposition om 5 000 kr måste betalas inom 7 dagar från acceptdatumet. Denna summa återbetalas när du flyttar ut, förutsatt att bostaden lämnas i ursprungligt skick.
-          Husdjur: Husdjur är tillåtna, men en särskild avgift om 200 kr/månad tillkommer.
-          Rökning: Rökning är strikt förbjuden inom bostadens område, inklusive balkonger och gemensamma utrymmen.
-          Inflyttningsdatum: Om inflyttningsdatum infaller på en helgdag så är inflyttningsdatumet första vardagen på kommande vecka. Var god se till att koordinera med fastighetsskötaren för att undvika kollisioner.
-          Uppsägningstid: Uppsägningstiden är tre månader från och med den första i nästa månad efter att uppsägning har gjorts.
-          Vänligen läs igenom alla villkor noga. Om du har några frågor eller funderingar, kontakta hyresföreningen innan du tackar ja.
         </p>
+        <p>
+          <strong>1. Deposition:</strong> En deposition om 5 000 kr måste betalas inom 7 dagar från acceptdatumet. Denna summa återbetalas när du flyttar ut, förutsatt att bostaden lämnas i ursprungligt skick.
+        </p>
+        <p>
+          <strong>2. Husdjur:</strong> Husdjur är tillåtna, men en särskild avgift om 200 kr/månad tillkommer.
+        </p>
+        <p>
+          <strong>3. Rökning:</strong> Rökning är strikt förbjuden inom bostadens område, inklusive balkonger och gemensamma utrymmen.
+        </p>
+        <p>
+          <strong>4. Inflyttningsdatum:</strong> Om inflyttningsdatum infaller på en helgdag så är inflyttningsdatumet första vardagen på kommande vecka. Var god se till att koordinera med fastighetsskötaren för att undvika kollisioner.
+        </p>
+        <p>
+          <strong>5. Uppsägningstid:</strong> Uppsägningstiden är tre månader från och med den första i nästa månad efter att uppsägning har gjorts.
+        </p>
+        <label>
+          Vänligen läs igenom alla villkor noga. Om du har några frågor eller funderingar, kontakta hyresföreningen innan du tackar ja.
+        </label>
+        <div className="checkboxwrapperapply">
         <input
           type="checkbox"
           checked={allConditionsAccepted}
           onChange={handleMainCheckboxChange}
-        />
-        <label>Jag godkänner alla villkor</label>
+          />
+          <label>Jag godkänner alla villkor</label>
+          </div>
       </div>
 
-      <button onClick={submitApplication}>Skicka in ansökan</button>
     </div>
+      <button onClick={submitApplication}>Skicka in ansökan</button>
+      </>
   );
 };
 

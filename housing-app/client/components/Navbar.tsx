@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
             <Link to="/" className='dropdownLink'>Bostäder</Link>
             <Link to={profileAply} className='dropdownLink'>Ansökningar</Link>
             <Link to='/contact' className='dropdownLink'>Kontakt</Link>
-            <Link to='/info' className='dropdownLink'>Villkor</Link>
+            <Link to='/about' className='dropdownLink'>Villkor</Link>
             <Link to='/rent' className='dropdownLink'>Hyr ut</Link>
             <button className='dropbtn' onClick={handleLogout}>LOGGA UT</button>
           </div>

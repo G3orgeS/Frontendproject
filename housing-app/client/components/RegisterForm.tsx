@@ -41,7 +41,7 @@ const RegisterForm = () => {
   </button>
       <div className="loginLink rightwrap">
         <h2>Står du redan i vår kö?</h2>
-        <p><a href="#">Klicka här</a> för att logga in på ditt konto</p>
+        <p><a href="/login">Klicka här</a> för att logga in på ditt konto</p>
       </div>
     </div>
   )

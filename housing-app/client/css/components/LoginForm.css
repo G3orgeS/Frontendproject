@@ -53,3 +53,9 @@ input[type="password"] {
 .error {
     color: #D21313;
 }
+.loginLink {
+    padding-top: 5rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
