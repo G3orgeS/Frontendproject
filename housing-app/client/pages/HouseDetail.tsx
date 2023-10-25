@@ -1,6 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
 import { House } from '../types/house';
-import { houseApi } from '../data/houseApi';
+import { getHouseById } from '../data/houseApi'; 
 import '../css/pages/HouseDetail.css';
 import InfoContainer from '../components/InfoContainer';
 import DetailImg from '../components/DetailImg';
@@ -14,11 +14,13 @@ const HouseDetail = () => {
 
   useEffect(() => {
     if (id) {
-      houseApi.getHouseById(id).then((data) => {
-        setHouse(data);
-      }).catch((error) => {
-        console.error('Error fetching house data:', error);
-      });
+      getHouseById(id)
+        .then((data) => {
+          setHouse(data);
+        })
+        .catch((error) => {
+          console.error('Error fetching house data:', error);
+        });
     }
   }, [id]);
 
@@ -44,7 +46,6 @@ const HouseDetail = () => {
         </div>
       </div>
       <div className="btncont">
-        {/* Använd Link-komponenten för att navigera till Application.tsx med id */}
         <Link to={`/application/${id}`} className="applybtn">
           Till ansökan
           <FontAwesomeIcon icon={faArrowRight} />
@@ -59,9 +60,15 @@ const HouseDetail = () => {
         </div>
         <div className="description">
           <p>Description: {house.description}</p>
-          <div className="date"><p>First Available Date: {formattedDate}</p></div>
-          <div className="floor"><p>Floor: {house.floor}</p></div>
-          <div className="recommendation"><p>Recommendation: {house.recommendation}</p></div>
+          <div className="date">
+            <p>First Available Date: {formattedDate}</p>
+          </div>
+          <div className="floor">
+            <p>Floor: {house.floor}</p>
+          </div>
+          <div className="recommendation">
+            <p>Recommendation: {house.recommendation}</p>
+          </div>
           <div className="landlord">Company: {house.landlord[0]}</div>
         </div>
       </div>
@@ -70,4 +77,3 @@ const HouseDetail = () => {
 };
 
 export default HouseDetail;
-

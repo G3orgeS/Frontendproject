@@ -11,6 +11,10 @@ const Navbar: React.FC = () => {
   const navHBRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -30,13 +34,8 @@ const Navbar: React.FC = () => {
     };
   }, []);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
-
   const token = localStorage.getItem('token');
   const profileLink = token ? '/profil' : '/login';
-  const profileAply = token ? 'userapplication' : '/login';
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -44,37 +43,49 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className='navbar'>
+    <nav className="navbar">
       <div>
         <Link to={'/'}>
           <img src={logo} alt="" />
         </Link>
       </div>
       <div className="navlink">
+        {/* Lägg till dina andra länkar här */}
       </div>
       <div className={`navHB ${isDropdownOpen ? 'open' : ''}`} ref={navHBRef}>
         <button className="hamburger-button" onClick={toggleDropdown}>
           <HamburgerMenu />
         </button>
         <button className="profile-button">
-          <Link to={profileLink}>
+          <Link to={token ? '/profil' : '/login'}>
             <FontAw iconName="user" />
           </Link>
         </button>
         {isDropdownOpen && (
           <div className="dropdown-menu" ref={dropdownRef}>
-            <Link to={profileLink} className='dropdownLink'>Min profil</Link>
-            <Link to="/" className='dropdownLink'>Bostäder</Link>
-            <Link to={profileAply} className='dropdownLink'>Ansökningar</Link>
-            <Link to='/contact' className='dropdownLink'>Kontakt</Link>
-            <Link to='/about' className='dropdownLink'>Villkor</Link>
-            <Link to='/rent' className='dropdownLink'>Hyr ut</Link>
-            <button className='dropbtn' onClick={handleLogout}>LOGGA UT</button>
+            <Link to={token ? '/profil' : '/login'} className="dropdownLink">
+              Min profil
+            </Link>
+            <Link to="/" className="dropdownLink">
+              Bostäder
+            </Link>
+            <Link to="/contact" className="dropdownLink">
+              Kontakt
+            </Link>
+            <Link to="/about" className="dropdownLink">
+              Villkor
+            </Link>
+            <Link to="/rent" className="dropdownLink">
+              Hyr ut
+            </Link>
+            <button className="dropbtn" onClick={handleLogout}>
+              LOGGA UT
+            </button>
           </div>
         )}
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

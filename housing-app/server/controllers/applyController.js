@@ -2,15 +2,26 @@ const Application = require('../models/Apply');
 
 const createApplication = async (req, res) => {
   try {
-    const { user, houseselection } = req.body; // Uppdatera detta för att hämta rätt data
+    const { user, houseselection } = req.body;
+
+    console.log('Mottagen användardata:', user);
+    console.log('Mottagen houseselection-data:', houseselection);
+
+    if (!Array.isArray(houseselection)) {
+      console.log('Houseselection är inte en array:', houseselection);
+      return res.status(400).json({ message: 'Houseselection måste vara en array.' });
+    }
 
     const newApplication = new Application({
       user,
       houseselection,
-      status: '', 
     });
 
+    console.log('Ny ansökan som skapas:', newApplication);
+
     await newApplication.save();
+
+    console.log('Ansökan sparades utan problem.');
 
     res.status(201).json({ message: 'Ansökan har skickats.' });
   } catch (error) {
@@ -19,11 +30,19 @@ const createApplication = async (req, res) => {
   }
 };
 
+
 const getApplicationsByUser = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const applications = await Application.find({ user: userId });
-    res.status(200).json(applications);
+    const { username } = req.params;
+
+    const applications = await Application.find({ user: username });
+
+    if (applications && applications.length > 0) {
+      const houseselections = applications.flatMap(application => application.houseselection);
+      res.status(200).json(houseselections);
+    } else {
+      res.status(200).json([]);
+    }
   } catch (error) {
     console.error('Fel vid hämtning av användarens ansökningar:', error);
     res.status(500).json({ message: 'Ett fel inträffade vid hämtningen av ansökningar.' });

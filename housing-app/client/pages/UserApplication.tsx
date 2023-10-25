@@ -1,57 +1,43 @@
-import { useEffect, useState } from "react";
-import { fetchUserByToken } from "../data/userApi";
-import { Users } from "../types/user";
-import { getApplicationByUser } from "../data/applicationApi"; // Importera funktionen
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getApplicationByUser } from "../data/applicationApi";
 import { Application } from "../types/application";
+import { HouseSelection } from '../types/application'
 
 const UserApplication = () => {
-  const [userInfo, setUserInfo] = useState<Users | null>(null);
-  const [userApplications, setUserApplications] = useState<Application[] | null>(null); // State för ansökningar
+  const { username } = useParams<{ username: string }>();
+  const [userApplications, setUserApplications] = useState<Application[] | null>(null);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-
-    if (token) {
-      fetchUserByToken(token)
-        .then((data) => {
-          if (data) {
-            setUserInfo(data);
-            // Hämta ansökningar när användarinformation är tillgänglig
-            // console.log("Användarens username:", data.userName);
-            getApplicationsForUser(data.userName);
-          } else {
-            console.error('Något gick fel vid hämtning av användarinformation.');
-          }
-        })
-        .catch((error) => {
-          console.error(error.message);
-        });
-    }
-  }, []);
-
-  const getApplicationsForUser = (username: string) => {
-    // console.log("Användarens username som skickas till API:", username); // Lägg till denna rad
-    getApplicationByUser(username)
-      .then((applications) => {
-        if (applications) {
-          console.log("Hämtade ansökningar:", applications);
+    const fetchData = async () => {
+      try {
+        if (username) {
+          const applications = await getApplicationByUser(username);
           setUserApplications(applications);
-        } else {
-          console.error('Något gick fel vid hämtning av ansökningar.');
         }
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
-  };
-  
+      } catch (error) {
+        console.error("Ett fel uppstod: ", error);
+      }
+    };
+    fetchData();
+  }, [username]);
 
+if (userApplications && userApplications.length > 0) {
+  const userhouse = userApplications[0];
+  console.log(userhouse)
   return (
     <div>
-      <h1>här visas alla bostäder som användaren har ansökt till:</h1>
-
+      <h2>Användarens Hus</h2>
+    </div>
+  );
+} else {
+  // Om det inte finns några användaransökningar
+  return (
+    <div>
+      <p>Inga ansökningar hittades för användaren.</p>
     </div>
   );
 }
+};
 
 export default UserApplication;

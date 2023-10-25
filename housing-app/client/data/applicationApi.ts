@@ -31,7 +31,7 @@ export async function createApplication(applicationData: Application, userId: st
     applicationData.user = userId;
 
     console.log('Försöker skapa ansökan...');
-    const response: AxiosResponse<Application> = await api.post('api/application/createApplication', applicationData);
+    const response: AxiosResponse<Application> = await api.post('/api/application/createApplication', applicationData);
 
     if (response.status === 201) {
       console.log('Ansökan skapad framgångsrikt.');
@@ -49,7 +49,7 @@ export async function createApplication(applicationData: Application, userId: st
 
 export async function getApplicationByUser(username: string): Promise<Application[] | null> {
   try {
-    const response: AxiosResponse<Application[]> = await api.get(`/api/application/getapplicationbyuser?username=${username}`);
+    const response: AxiosResponse<Application[]> = await api.get(`/api/application/${username}`);
     
     if (response.status === 200) {
       const applications = response.data;

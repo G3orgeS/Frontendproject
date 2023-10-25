@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { houseApi } from '../data/houseApi';
+import { getHouseById } from '../data/houseApi'; // Updated import
 import { House } from '../types/house';
 import { Application } from '../types/application';
 import { fetchUserByToken } from '../data/userApi';
@@ -10,7 +10,7 @@ import '../css/pages/Application.css';
 
 const ApplicationPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [userId, setUserId] = useState<string | null>(null);
+  const [userId] = useState<string | null>(null);
   const [house, setHouse] = useState<House | null>(null);
   const [allConditionsAccepted, setAllConditionsAccepted] = useState(false);
   const [userInfo, setUserInfo] = useState<Users | null>(null);
@@ -37,12 +37,12 @@ const ApplicationPage: React.FC = () => {
 
   useEffect(() => {
     if (id) {
-      houseApi.getHouseById(id)
+      getHouseById(id)
         .then((houseData) => {
           setHouse(houseData);
           // console.log('Husinfo hämtad:', houseData);
         })
-        .catch((error) => {
+        .catch(() => {
           // console.error('Error fetching house data:', error);
         });
     }
@@ -62,19 +62,30 @@ const ApplicationPage: React.FC = () => {
     const applicationData: Application = {
       _id: '',
       user: userInfo.userName,
-      houseselection: [String(id)],
+      houseselection: [
+        {
+          id: id || '', 
+          title: houseTitle || '',
+          address: `${houseCity}, ${houseZipCode}` || '',
+          img: houseImage || '',
+          landlord: houseLandlord || '',
+          size: house.size || '',
+          room: house.numberOfRooms || '',
+        },
+      ],
     };
-
+// lägg till objekt i houseselection. all info för varje boende. 
     console.log(userInfo?.userName);
 
-    createApplication(applicationData, userInfo?.userName) // Lägg till användarnamn som andra argument
-      .then((response) => {
-        console.log('Ansökan skickades:', response);
-        navigate('/userapplication');
-      })
-      .catch((error) => {
-        console.error('Fel vid skickande av ansökan:', error);
-      });
+    createApplication(applicationData, userInfo?.userName) 
+    .then((response) => {
+      console.log('Ansökan skickades:', response);
+      navigate(`/ua/${userInfo?.userName}`);
+    })
+    .catch((error) => {
+      console.error('Fel vid skickande av ansökan:', error);
+    });
+  
   };
 
   const houseTitle = house?.titel;

@@ -6,7 +6,7 @@ import Card from '../components/Card';
 import Loader from '../components/Loader'; 
 import '../css/pages/Home.css';
 import { House } from '../types/house';
-import { houseApi } from '../data/houseApi';
+import { getAllHouses } from '../data/houseApi'; // Updated import
 
 const homepage = '../resource/Homepage.jpeg';
 
@@ -21,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     async function fetchHouses() {
       try {
-        const allHouses = await houseApi.getAllHouses();
+        const allHouses = await getAllHouses();
         setHouses(allHouses);
         setCurrentIndexes(Array(allHouses.length).fill(0));
         setLoading(false); 
