@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { Application } from '../types/application'
+import { Application, HouseSelection } from '../types/application'
 
 const baseURL = 'http://localhost:3000';
 
@@ -47,9 +47,9 @@ export async function createApplication(applicationData: Application, userId: st
   }
 }
 
-export async function getApplicationByUser(username: string): Promise<Application[] | null> {
+export async function getApplicationByUser(username: string): Promise<HouseSelection[] | null> {
   try {
-    const response: AxiosResponse<Application[]> = await api.get(`/api/application/${username}`);
+    const response: AxiosResponse<HouseSelection[]> = await api.get(`/api/application/${username}`);
     
     if (response.status === 200) {
       const applications = response.data;
