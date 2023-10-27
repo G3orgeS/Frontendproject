@@ -10,6 +10,9 @@ import ApplicationPage from '../pages/Application';
 import UserApplication from '../pages/UserApplication'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
+// import Confirm from '../pages/Confirmed'
+import AcceptOffer from '../pages/AcceptOffer'
+import Payment from '../pages/Payment'
 import '../css/index.css'
 
 const App = () => {
@@ -19,15 +22,17 @@ const App = () => {
       <Router>
         <Navbar />
         <Routes>
-          <Route path='/'                 element={<Home />}            />
-          <Route path='/housedetail/:id'  element={<HouseDetail />}     />
-          <Route path='/login'            element={<Login />}           />
-          <Route path='/register'         element={<Register />}        />
+          <Route path='/'                 element={<Home            />} />
+          <Route path='/housedetail/:id'  element={<HouseDetail     />} />
+          <Route path='/login'            element={<Login           />} />
+          <Route path='/register'         element={<Register        />} />
           <Route path='/application/:id'  element={<ApplicationPage />} />
-          <Route path='/ua/:username'     element={<UserApplication />} />
-          <Route path='/profil'           element={<Profil />}          />
-          <Route path='/about'            element={<About />}           />
-          <Route path='/contact'          element={<Contact />}         />
+          <Route path='/profil'           element={<Profil          />} />
+          <Route path='/about'            element={<About           />} />
+          <Route path='/contact'          element={<Contact         />} />
+          <Route path='/payment'          element={<Payment         />} />
+          <Route path='/acceptoffer/:username/'        element={<AcceptOffer      />} />
+          <Route path='/userapplication/:username'     element={<UserApplication  />} />
           {/* <Route path='/houselist' element={<HouseList />} /> */}
         </Routes>
         <Footer />

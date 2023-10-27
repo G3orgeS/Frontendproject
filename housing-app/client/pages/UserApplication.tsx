@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
 import { getApplicationByUser } from "../data/applicationApi";
 import { HouseSelection } from '../types/application';
 import '../css/pages/UserApplication.css';
@@ -7,6 +7,7 @@ import '../css/pages/UserApplication.css';
 const UserApplication = () => {
   const { username } = useParams<{ username: string }>();
   const [userApplications, setUserApplications] = useState<HouseSelection[] | null>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,6 +23,10 @@ const UserApplication = () => {
     fetchData();
   }, [username]);
 
+  const handleNavigation = () => {
+    navigate(`/acceptoffer/${username}`); 
+  };
+
   if (userApplications && userApplications.length > 0) {
     const userhouse = userApplications[0];
 
@@ -36,23 +41,23 @@ const UserApplication = () => {
         </div>
 
         <div className="user-application-info">
-        <div className="user-application-image-container">
-    <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
-  </div>
-  <div className="user-application-text-container">
-    <h3 className="user-application-title">{userhouse.title}</h3>
-    <p className="user-application-text">Adress: {userhouse.address}</p>
-    <p className="user-application-text">Hyresvärd: {userhouse.landlord}</p>
-    <p className="user-application-text">Storlek: {userhouse.size}</p>
-    <p className="user-application-text">Rum: {userhouse.room}</p>
-  </div>
+          <div className="user-application-image-container">
+            <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
+          </div>
+          <div className="user-application-text-container">
+            <h3 className="user-application-title">{userhouse.title}</h3>
+            <p className="user-application-text">Adress: {userhouse.address}</p>
+            <p className="user-application-text">Hyresvärd: {userhouse.landlord}</p>
+            <p className="user-application-text">Storlek: {userhouse.size}</p>
+            <p className="user-application-text">Rum: {userhouse.room}</p>
+          </div>
 
-  <div className="user-application-button-container">
-    <button className="user-application-button">Gå Vidare</button>
-  </div>
-</div>
-
+          <div className="user-application-button-container">
+            <button className="user-application-button" onClick={handleNavigation}>Gå Vidare</button>
+          </div>
         </div>
+
+      </div>
     );
   } else {
     return (

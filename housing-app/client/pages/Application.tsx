@@ -74,13 +74,12 @@ const ApplicationPage: React.FC = () => {
         },
       ],
     };
-// lägg till objekt i houseselection. all info för varje boende. 
     console.log(userInfo?.userName);
 
     createApplication(applicationData, userInfo?.userName) 
     .then((response) => {
       console.log('Ansökan skickades:', response);
-      navigate(`/ua/${userInfo?.userName}`);
+      navigate(`/userapplication/${userInfo?.userName}`);
     })
     .catch((error) => {
       console.error('Fel vid skickande av ansökan:', error);

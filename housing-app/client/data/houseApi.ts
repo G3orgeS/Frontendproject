@@ -29,7 +29,7 @@ export async function getHouseById(id: string): Promise<House | null> {
       const axiosError = error as AxiosError;
 
       if (axiosError.response && axiosError.response.status === 404) {
-        return null; // Returnera null om huset inte hittades
+        return null; 
       }
     }
 
