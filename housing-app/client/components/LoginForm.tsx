@@ -57,8 +57,8 @@ const LoginForm: React.FC = () => {
         Logga in
       </button>
       <div className="loginLink">
-        <h2>Står du redan i vår kö?</h2>
-        <p><a href="/register">Klicka här</a> för att logga in på ditt konto</p>
+        <h2>Inte medlem ännu?</h2>
+        <p><a href="/register">Klicka här</a> för att registrera ett konto</p>
       </div>
     </div>
   );

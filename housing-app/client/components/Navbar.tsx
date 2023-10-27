@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('tokenExpiration');
     window.location.href = '/';
   };
 
@@ -50,7 +51,6 @@ const Navbar: React.FC = () => {
         </Link>
       </div>
       <div className="navlink">
-        {/* Lägg till dina andra länkar här */}
       </div>
       <div className={`navHB ${isDropdownOpen ? 'open' : ''}`} ref={navHBRef}>
         <button className="hamburger-button" onClick={toggleDropdown}>

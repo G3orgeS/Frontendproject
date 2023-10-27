@@ -7,18 +7,21 @@ const registerUser = async (req, res) => {
   try {
     const { firstName, lastName, email, userName, password } = req.body;
 
-    // Kontrollera om användaren redan existerar
-    const existingUser = await User.findOne({ userName });
+    const existingUserByUserName = await User.findOne({ userName });
 
-    if (existingUser) {
+    if (existingUserByUserName) {
       return res.status(400).json({ message: 'Användarnamnet är redan upptaget.' });
     }
 
-    // Skapa en hash av lösenordet
+    const existingUserByEmail = await User.findOne({ email });
+
+    if (existingUserByEmail) {
+      return res.status(400).json({ message: 'E-postadressen är redan registrerad.' });
+    }
+
     const salt = await bcrypt.genSalt(10);
     const passwordHash = await bcrypt.hash(password, salt);
 
-    // Skapa en ny användare
     const newUser = new User({
       firstName,
       lastName,

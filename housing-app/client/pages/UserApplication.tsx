@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getApplicationByUser } from "../data/applicationApi";
-import { Application } from "../types/application";
-import { HouseSelection } from '../types/application'
+import { HouseSelection } from '../types/application';
+import '../css/pages/UserApplication.css';
 
 const UserApplication = () => {
   const { username } = useParams<{ username: string }>();
@@ -13,8 +13,6 @@ const UserApplication = () => {
       try {
         if (username) {
           const applications = await getApplicationByUser(username);
-          // console.log("Applications")
-          // console.log(applications)
           setUserApplications(applications);
         }
       } catch (error) {
@@ -24,28 +22,45 @@ const UserApplication = () => {
     fetchData();
   }, [username]);
 
-if (userApplications && userApplications.length > 0) {
-  const userhouse = userApplications[0];
-  // console.log(userhouse)
-  // console.log(userApplications[0])
-  console.log("userhouse")
-  console.log(userhouse.title)
-  // console.log(userhouse.title)
-  
-  return (
-    <div>
-      <h2>Användarens Hus</h2>
-      <p>{userhouse.title}</p>
-    </div>
-  );
-} else {
-  // Om det inte finns några användaransökningar
-  return (
-    <div>
-      <p>Inga ansökningar hittades för användaren.</p>
-    </div>
-  );
-}
+  if (userApplications && userApplications.length > 0) {
+    const userhouse = userApplications[0];
+
+    return (
+      <div className="user-application-container">
+        <div className="user-application-welcome">
+          <p>
+            Välkommen till översikten av dina lägenhetsansökningar. Här kan du enkelt hålla koll på alla de bostäder du har visat intresse för.
+            För varje ansökan kan du se aktuell status, vilket ger dig en tydlig uppfattning om var i processen din ansökan befinner sig.
+            Vi uppdaterar informationen löpande så att du alltid har den senaste informationen till hands.
+          </p>
+        </div>
+
+        <div className="user-application-info">
+        <div className="user-application-image-container">
+    <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
+  </div>
+  <div className="user-application-text-container">
+    <h3 className="user-application-title">{userhouse.title}</h3>
+    <p className="user-application-text">Adress: {userhouse.address}</p>
+    <p className="user-application-text">Hyresvärd: {userhouse.landlord}</p>
+    <p className="user-application-text">Storlek: {userhouse.size}</p>
+    <p className="user-application-text">Rum: {userhouse.room}</p>
+  </div>
+
+  <div className="user-application-button-container">
+    <button className="user-application-button">Gå Vidare</button>
+  </div>
+</div>
+
+        </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>Inga ansökningar hittades för användaren.</p>
+      </div>
+    );
+  }
 };
 
 export default UserApplication;
