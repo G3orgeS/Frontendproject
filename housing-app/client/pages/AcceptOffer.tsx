@@ -96,7 +96,7 @@ const AcceptOffer = () => {
   }
 
   function handlePayment() {
-    navigate('/payment');
+    navigate(`/payment/${username}`);
   }
 }
 

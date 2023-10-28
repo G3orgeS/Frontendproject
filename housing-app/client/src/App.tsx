@@ -10,6 +10,7 @@ import ApplicationPage from '../pages/Application';
 import UserApplication from '../pages/UserApplication'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
+import Confirmed from '../pages/Confirmed'
 // import Confirm from '../pages/Confirmed'
 import AcceptOffer from '../pages/AcceptOffer'
 import Payment from '../pages/Payment'
@@ -30,9 +31,10 @@ const App = () => {
           <Route path='/profil'           element={<Profil          />} />
           <Route path='/about'            element={<About           />} />
           <Route path='/contact'          element={<Contact         />} />
-          <Route path='/payment'          element={<Payment         />} />
-          <Route path='/acceptoffer/:username/'        element={<AcceptOffer      />} />
-          <Route path='/userapplication/:username'     element={<UserApplication  />} />
+          <Route path='/confirmed/:username'        element={<Confirmed         />} />
+          <Route path='/payment/:username'          element={<Payment           />} />
+          <Route path='/acceptoffer/:username'      element={<AcceptOffer       />} />
+          <Route path='/userapplication/:username'  element={<UserApplication   />} />
           {/* <Route path='/houselist' element={<HouseList />} /> */}
         </Routes>
         <Footer />
