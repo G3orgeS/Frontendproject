@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getApplicationByUser } from "../data/applicationApi";
 import { HouseSelection } from '../types/application';
 import '../css/pages/UserApplication.css';
+import StatusBadge from '../components/StatusBadge'
 
 const UserApplication = () => {
   const { username } = useParams<{ username: string }>();
@@ -23,49 +24,48 @@ const UserApplication = () => {
     fetchData();
   }, [username]);
 
-  const handleNavigation = () => {
-    navigate(`/acceptoffer/${username}`); 
+  const handleNavigation = (house: HouseSelection) => {
+    navigate(`/acceptoffer/${username}/${house.id}`);
   };
 
-  if (userApplications && userApplications.length > 0) {
-    const userhouse = userApplications[0];
-
-    return (
-      <div className="user-application-container">
-        <div className="user-application-welcome">
-          <p>
-            Välkommen till översikten av dina lägenhetsansökningar. Här kan du enkelt hålla koll på alla de bostäder du har visat intresse för.
-            För varje ansökan kan du se aktuell status, vilket ger dig en tydlig uppfattning om var i processen din ansökan befinner sig.
-            Vi uppdaterar informationen löpande så att du alltid har den senaste informationen till hands.
-          </p>
-        </div>
-
-        <div className="user-application-info">
-          <div className="user-application-image-container">
-            <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
-          </div>
-          <div className="user-application-text-container">
-            <h3 className="user-application-title">{userhouse.title}</h3>
-            <p className="user-application-text">Adress: {userhouse.address}</p>
-            <p className="user-application-text">Hyresvärd: {userhouse.landlord}</p>
-            <p className="user-application-text">Storlek: {userhouse.size}</p>
-            <p className="user-application-text">Rum: {userhouse.room}</p>
-          </div>
-
-          <div className="user-application-button-container">
-            <button className="user-application-button" onClick={handleNavigation}>Gå Vidare</button>
-          </div>
-        </div>
-
+  return (
+    <div className="user-application-container">
+      <div className="user-application-welcome">
+        <p>
+          Välkommen till översikten av dina lägenhetsansökningar. Här kan du enkelt hålla koll på alla de bostäder du har visat intresse för.
+          För varje ansökan kan du se aktuell status, vilket ger dig en tydlig uppfattning om var i processen din ansökan befinner sig.
+          Vi uppdaterar informationen löpande så att du alltid har den senaste informationen till hands.
+        </p>
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Inga ansökningar hittades för användaren.</p>
-      </div>
-    );
-  }
+
+      {userApplications && userApplications.length > 0 ? (
+        <div className="user-application-list">
+          {userApplications.map((userhouse, index) => (
+            <div className="user-application-info" key={index}>
+              <div className="user-application-image-container">
+                <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
+              </div>
+              <div className="user-application-text-container">
+                <h3 className="user-application-title">{userhouse.title}</h3>
+                <p className="user-application-text">Adress: {userhouse.address}</p>
+                <p className="user-application-text">Hyresvärd: {userhouse.landlord}</p>
+                <p className="user-application-text">Storlek: {userhouse.size}</p>
+                <p className="user-application-text">Rum: {userhouse.room}</p>
+                <p className="user-application-text">Status: <StatusBadge status={userhouse.status} /></p>
+              </div>
+              <div className="user-application-button-container">
+                <button className="user-application-button" onClick={() => handleNavigation(userhouse)}>Gå Vidare</button>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div>
+          <p>Inga ansökningar hittades för användaren.</p>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default UserApplication;

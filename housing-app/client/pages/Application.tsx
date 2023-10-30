@@ -7,6 +7,13 @@ import { fetchUserByToken } from '../data/userApi';
 import { createApplication } from '../data/applicationApi';
 import { Users } from '../types/user';
 import '../css/pages/Application.css';
+import Rating from '../components/Rating';
+
+function getRandomStatus() {
+  const statuses = ["untreated", "not approved", "approved"];
+  const randomIndex = Math.floor(Math.random() * statuses.length);
+  return statuses[randomIndex];
+}
 
 const ApplicationPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -40,10 +47,8 @@ const ApplicationPage: React.FC = () => {
       getHouseById(id)
         .then((houseData) => {
           setHouse(houseData);
-          // console.log('Husinfo hämtad:', houseData);
         })
         .catch(() => {
-          // console.error('Error fetching house data:', error);
         });
     }
   }, [id]);
@@ -52,31 +57,54 @@ const ApplicationPage: React.FC = () => {
     setAllConditionsAccepted(!allConditionsAccepted);
   };
 
-  const submitApplication = () => {
-    if (!userInfo || !house) {
-      console.log(userInfo?.userName);
-      // console.error('Användarnamn eller hus saknas.');
+const submitApplication = () => {
+  if (!userInfo || !house) {
+    console.error('Användarnamn eller hus saknas.');
+    return;
+  }
+
+  const cost = parseFloat(houseCost);
+  const costIsValid = !isNaN(cost);
+
+  if (!costIsValid) {
+    console.error('Kostnad är ogiltig.');
+    return;
+  }
+
+  if (userInfo && userInfo.applications) {
+    const isAlreadyApplied = userInfo.applications.some((application) => application.houseselection[0].id === id);
+  
+    if (isAlreadyApplied) {
+      console.error('En ansökan för detta boende finns redan.');
       return;
     }
+  }
 
-    const applicationData: Application = {
-      _id: '',
-      user: userInfo.userName,
-      houseselection: [
-        {
-          id: id || '', 
-          title: houseTitle || '',
-          address: `${houseCity}, ${houseZipCode}` || '',
-          img: houseImage || '',
-          landlord: houseLandlord || '',
-          size: house.size || '',
-          room: house.numberOfRooms || '',
-        },
-      ],
-    };
-    console.log(userInfo?.userName);
+  let status = getRandomStatus();
 
-    createApplication(applicationData, userInfo?.userName) 
+  if (userInfo?.userName === 'gman' && (!userInfo.applications || userInfo.applications.length === 0)) {
+    status = 'approved';
+  }
+
+  const applicationData: Application = {
+    _id: '',
+    user: userInfo?.userName || '',
+    houseselection: [
+      {
+        id: id || '',
+        title: houseTitle || '',
+        address: `${houseCity}, ${houseZipCode}` || '',
+        img: houseImage || '',
+        landlord: houseLandlord || '',
+        size: house.size || '',
+        room: house.numberOfRooms || '',
+        cost: cost,
+        status: status,
+      },
+    ],
+  };
+
+  createApplication(applicationData, userInfo?.userName)
     .then((response) => {
       console.log('Ansökan skickades:', response);
       navigate(`/userapplication/${userInfo?.userName}`);
@@ -84,8 +112,7 @@ const ApplicationPage: React.FC = () => {
     .catch((error) => {
       console.error('Fel vid skickande av ansökan:', error);
     });
-  
-  };
+};
 
   const houseTitle = house?.titel;
   const houseImage = house ? house.img[0] : '';
@@ -95,7 +122,6 @@ const ApplicationPage: React.FC = () => {
   const houseFloor = house ? house.floor : '';
   const houseFirstDate = house ? house.firstDate : new Date(); 
   const houseLandlord = house ? house.landlord[0] : '';
-  const houseRecommendation = house ? house.recommendation : '';
 
   const formattedHouseFirstDate = houseFirstDate instanceof Date ? houseFirstDate.toLocaleDateString() : '';
 
@@ -128,7 +154,7 @@ const ApplicationPage: React.FC = () => {
               <p>Hyresvärd: </p><p>{houseLandlord}</p>
             </div>
             <div className="papplywrap">
-              <p>Betyg </p><p>{houseRecommendation}</p>
+              <p>Betyg </p><p><Rating averageRating={house.recommendation} /></p>
             </div>
           </div>
         </div>

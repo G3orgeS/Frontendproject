@@ -1,5 +1,11 @@
 const Application = require('../models/Apply');
 
+function getRandomStatus() {
+  const statuses = ["untreated", "Not approved", "approved"];
+  const randomIndex = Math.floor(Math.random() * statuses.length);
+  return statuses[randomIndex];
+}
+
 const createApplication = async (req, res) => {
   try {
     const { user, houseselection } = req.body;
@@ -12,21 +18,45 @@ const createApplication = async (req, res) => {
       return res.status(400).json({ message: 'Houseselection måste vara en array.' });
     }
 
-    const newApplication = new Application({
-      user,
-      houseselection,
-    });
+    const existingApplication = await Application.findOne({ user });
 
-    console.log('Ny ansökan som skapas:', newApplication);
+    if (existingApplication) {
+      const newSelections = houseselection.filter((newSelection) => {
+        return !existingApplication.houseselection.some(
+          (existingSelection) => existingSelection.id === newSelection.id
+        );
+      });
 
-    await newApplication.save();
+      if (newSelections.length === 0) {
+        return res
+          .status(400)
+          .json({ message: 'Något av de valda husen finns redan i din ansökan.' });
+      }
+
+      existingApplication.houseselection.push(...newSelections);
+      await existingApplication.save();
+    } else {
+      let status = getRandomStatus();
+
+      const newApplication = new Application({
+        user,
+        houseselection,
+        status,
+      });
+
+      console.log('Ny ansökan som skapas:', newApplication);
+
+      await newApplication.save();
+    }
 
     console.log('Ansökan sparades utan problem.');
 
     res.status(201).json({ message: 'Ansökan har skickats.' });
   } catch (error) {
     console.error('Fel vid skapande av ansökan:', error);
-    res.status(500).json({ message: 'Ett fel inträffade vid skickandet av ansökan.' });
+    res
+      .status(500)
+      .json({ message: 'Ett fel inträffade vid skickandet av ansökan.' });
   }
 };
 

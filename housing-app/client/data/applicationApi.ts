@@ -27,22 +27,21 @@ export async function getApplications(): Promise<Application[] | null> {
 
 export async function createApplication(applicationData: Application, userId: string): Promise<Application | null> {
   try {
-    // Tilldela användarens ID till ansökningen
     applicationData.user = userId;
 
-    console.log('Försöker skapa ansökan...');
+    // console.log('Försöker skapa ansökan...');
     const response: AxiosResponse<Application> = await api.post('/api/application/createApplication', applicationData);
 
     if (response.status === 201) {
-      console.log('Ansökan skapad framgångsrikt.');
+      // console.log('Ansökan skapad framgångsrikt.');
       const createdApplication = response.data;
       return createdApplication;
     } else {
-      console.error('Kunde inte skapa ansökan');
+      // console.error('Kunde inte skapa ansökan');
       return null;
     }
   } catch (error) {
-    console.error('Något gick fel vid skapande av ansökan:', error);
+    // console.error('Något gick fel vid skapande av ansökan:', error);
     return null;
   }
 }

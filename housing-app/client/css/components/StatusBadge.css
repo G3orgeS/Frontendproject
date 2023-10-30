@@ -1,0 +1,27 @@
+.status-badge-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 105px;
+  }
+  
+  .status-badge-circle {
+    width: 20px; 
+    height: 20px; 
+    background-color: green; 
+    border: 2px solid green;
+    border-radius: 50%;
+  }
+
+  .badge-untreated {
+    background-color: #ccc; 
+  }
+  
+  .badge-not-approved {
+    background-color: #ff5733; 
+  }
+  
+  .badge-approved {
+    background-color: #4caf50; 
+  }
+  

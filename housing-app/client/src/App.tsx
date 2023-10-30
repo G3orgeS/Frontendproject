@@ -31,10 +31,10 @@ const App = () => {
           <Route path='/profil'           element={<Profil          />} />
           <Route path='/about'            element={<About           />} />
           <Route path='/contact'          element={<Contact         />} />
-          <Route path='/confirmed/:username'        element={<Confirmed         />} />
-          <Route path='/payment/:username'          element={<Payment           />} />
-          <Route path='/acceptoffer/:username'      element={<AcceptOffer       />} />
-          <Route path='/userapplication/:username'  element={<UserApplication   />} />
+          <Route path='/confirmed/:username/:houseId'   element={<Confirmed       />} />
+          <Route path='/payment/:username/:houseId'     element={<Payment         />} />
+          <Route path='/userapplication/:username'      element={<UserApplication />} />
+          <Route path='/acceptoffer/:username/:houseId' element={<AcceptOffer     />} />
           {/* <Route path='/houselist' element={<HouseList />} /> */}
         </Routes>
         <Footer />

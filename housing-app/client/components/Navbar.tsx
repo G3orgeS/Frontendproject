@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
 import FontAw from '../components/icons/FontAw'; 
 
-const logo = '../resource/studystay-logo 2.jpg';
+// const logo = '../resource/studystay-logo 2.jpg';
 
 const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   const token = localStorage.getItem('token');
-  const profileLink = token ? '/profil' : '/login';
+  // const profileLink = token ? '/profil' : '/login';
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -46,9 +46,9 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div>
-        <Link to={'/'}>
+        {/* <Link to={'/'}>
           <img src={logo} alt="" />
-        </Link>
+        </Link> */}
       </div>
       <div className="navlink">
       </div>

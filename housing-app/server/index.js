@@ -1,5 +1,5 @@
 const express = require('express');
-const cors = require('cors'); // Importera Cors middleware
+const cors = require('cors'); 
 const mongoose = require('mongoose');
 require('dotenv').config();
 const houseRoutes = require('./routes/houseRoutes');

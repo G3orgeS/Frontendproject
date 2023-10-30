@@ -1,0 +1,57 @@
+/* Confirmed.css */
+
+.confirmed-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .confirmed-info {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+  }
+  
+  .confirmed-info img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* För att bevara bildaspektratio */
+    margin-right: 20px;
+  }
+  
+  .confirmed-text {
+    text-align: center;
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 10px;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    background-color: #E78121;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

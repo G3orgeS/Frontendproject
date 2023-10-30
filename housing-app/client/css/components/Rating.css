@@ -1,0 +1,18 @@
+
+.star {
+    display: flex;
+    align-items: center;
+  }
+  
+  .star svg {
+    width: 20px;
+    height: 20px;
+    fill: #E78121; 
+  }
+  
+  .rating {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+  }
+  

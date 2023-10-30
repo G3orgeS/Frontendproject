@@ -6,6 +6,8 @@ export interface HouseSelection {
     landlord: string;
     size: string;
     room: string;
+    cost: number; 
+    status: string;
   }
   
   export interface Application {

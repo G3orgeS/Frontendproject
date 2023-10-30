@@ -1,5 +1,3 @@
-// house.d.ts
-
 export interface House {
   monthlyCost:    ReactNode;
   _id:            string;

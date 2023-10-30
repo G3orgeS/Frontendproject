@@ -7,6 +7,7 @@ import DetailImg from '../components/DetailImg';
 import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
+import Rating from '../components/Rating'
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -33,7 +34,6 @@ const HouseDetail = () => {
   const month = parsedDate.getMonth() + 1;
   const year = parsedDate.getFullYear();
   const formattedDate = `${String(day).padStart(2, '0')}/${String(month).padStart(2, '0')}-${year}`;
-
   return (
     <>
       <div className="houseDetailContainer">
@@ -67,7 +67,7 @@ const HouseDetail = () => {
             <p>Floor: {house.floor}</p>
           </div>
           <div className="recommendation">
-            <p>Recommendation: {house.recommendation}</p>
+            <p>Recommendation: <Rating averageRating={house.recommendation} /></p>
           </div>
           <div className="landlord">Company: {house.landlord[0]}</div>
         </div>

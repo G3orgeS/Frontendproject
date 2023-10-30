@@ -28,7 +28,7 @@ const Payment = () => {
     const userhouse = userApplications[0];
 
     const handlePayment = () => {
-      navigate(`/confirmed/${username}`);
+      navigate(`/confirmed/${username}/${userhouse.id}`);
     };
 
     return (

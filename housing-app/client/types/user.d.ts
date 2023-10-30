@@ -4,4 +4,5 @@ export interface Users {
     lastName:   string;
     email:      string;
     userName:   string;
+    applications?: Application[]; 
 }
