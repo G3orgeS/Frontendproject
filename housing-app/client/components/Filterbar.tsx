@@ -2,14 +2,24 @@ import { useState } from 'react';
 import '../css/components/Filterbar.css';
 import FilterModal from '../components/FilterModal';
 import FontAw from '../components/icons/FontAw';
+import { House } from '../types/house';
 
 interface FilterbarProps {
-  onFilter: (type: string) => void;
+  onFilter: (filteredHouses: House[], filterType: string) => void;
+  houses: House[];
 }
 
-const Filterbar: React.FC<FilterbarProps> = ({ onFilter }) => {
+const Filterbar: React.FC<FilterbarProps> = ({ onFilter, houses }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleFilterClick = (type: string) => { onFilter(type) };
+
+  const handleFilterClick = (filterType: string) => {
+    if (filterType === 'Filter') {
+      setIsModalOpen(true);
+    } else {
+      setIsModalOpen(false);
+      onFilter([], filterType);
+    }
+  };
 
   return (
     <div className="filterwrapperparent">
@@ -34,7 +44,12 @@ const Filterbar: React.FC<FilterbarProps> = ({ onFilter }) => {
           <FontAw iconName="filter" />
           <p>Filter</p>
         </div>
-        {isModalOpen && <FilterModal onClose={() => setIsModalOpen(false)} isOpen={isModalOpen} />}
+        {isModalOpen &&
+          <FilterModal onClose={() => setIsModalOpen(false)}
+            isOpen={isModalOpen}
+            onFilter={onFilter}
+            houses={houses}
+          />}
       </div>
     </div>
   );

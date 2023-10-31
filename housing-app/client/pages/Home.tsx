@@ -3,10 +3,10 @@ import ImgWrapper from '../components/ImgWrapper';
 import Filterbar from '../components/Filterbar';
 import Showbtn from '../components/Showbtn';
 import Card from '../components/Card';
-import Loader from '../components/Loader'; 
+import Loader from '../components/Loader';
 import '../css/pages/Home.css';
 import { House } from '../types/house';
-import { getAllHouses } from '../data/houseApi'; // Updated import
+import { getAllHouses } from '../data/houseApi';
 
 const homepage = '../resource/Homepage.jpeg';
 
@@ -24,7 +24,7 @@ const Home = () => {
         const allHouses = await getAllHouses();
         setHouses(allHouses);
         setCurrentIndexes(Array(allHouses.length).fill(0));
-        setLoading(false); 
+        setLoading(false);
       } catch (error) {
         console.error('Något gick fel vid hämtning av hus:', error);
       }
@@ -54,13 +54,15 @@ const Home = () => {
     setDisplayedCardCount(displayedCardCount + 12);
   };
 
-  const handleFilter = (type: string) => {
-    if (selectedType === type) {
+  const handleFilter = (filteredHouses: House[], filters: any) => {
+    if (filters.type === selectedType) {
       setSelectedType(null);
     } else {
-      setSelectedType(type);
+      setSelectedType(filters.type);
     }
   };
+  
+
 
   return (
     <>
@@ -70,7 +72,7 @@ const Home = () => {
         <h2>Hitta din nya studentbostad</h2>
         <p>Ansök idag</p>
       </div> */}
-      <Filterbar onFilter={handleFilter} />
+      <Filterbar onFilter={handleFilter} houses={houses} />
       {!loading && (
         <div className="card-display">
           <Card
