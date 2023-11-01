@@ -1,10 +1,9 @@
 import '../css/components/Navbar.css';
-import HamburgerMenu from './HamburgerMenu';
 import { Link } from 'react-router-dom'; 
 import React, { useState, useEffect, useRef } from 'react';
-import FontAw from '../components/icons/FontAw'; 
+import Icon from './icons/Icon';
 
-// const logo = '../resource/studystay-logo 2.jpg';
+const logo = '../resource/studystay-logo 2.jpg';
 
 const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -46,21 +45,21 @@ const Navbar: React.FC = () => {
   return (
     <nav className="navbar">
       <div>
-        {/* <Link to={'/'}>
+        <Link to={'/'}>
           <img src={logo} alt="" />
-        </Link> */}
+        </Link>
       </div>
       <div className="navlink">
       </div>
       <div className={`navHB ${isDropdownOpen ? 'open' : ''}`} ref={navHBRef}>
         <button className="hamburger-button" onClick={toggleDropdown}>
-          <HamburgerMenu />
+        <Icon className='HB' showText={false} include="HB" />
         </button>
-        <button className="profile-button">
-          <Link to={token ? '/profil' : '/login'}>
-            <FontAw iconName="user" />
+        {/* <div className="profile-button"> */}
+          <Link id='navbaricon' to={token ? '/profil' : '/login'}>
+          <Icon showText={false} include="Profil" />
           </Link>
-        </button>
+        {/* </div> */}
         {isDropdownOpen && (
           <div className="dropdown-menu" ref={dropdownRef}>
             <Link to={token ? '/profil' : '/login'} className="dropdownLink">

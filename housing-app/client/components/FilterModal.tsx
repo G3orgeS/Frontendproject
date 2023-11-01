@@ -88,6 +88,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, onFilter, ho
         setSelectedRooms([]);
         setSelectedAmenities([]);
         setSearchText('');
+        onFilter(houses, 'clear');
     };
 
     const applyFilters = () => {
@@ -100,8 +101,8 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, onFilter, ho
             searchText: searchText,
             amenities: selectedAmenities
           };
-          console.log('Alla sökkriterier:', filters); 
-        console.log(houses)
+        //   console.log('Alla sökkriterier:', filters); 
+        // console.log(houses)
         const filteredHouses = houses.filter((house) => {
             if (filters.type && filters.type !== house.type) {
                 return false;
@@ -156,40 +157,40 @@ return (
     </div>
     <div className="filter-section">
         <div className="textwrapper">
-            <h3>Property Type</h3>
-            <p>Search for rooms, entire properties, or other property types.</p>
+            <h3>Boendetyp</h3>
+            <p>Sök efter rum, hela lägenhenheter eller andra typer av boenden.</p>
         </div>
         <div className="btnwrapper">
             <button
                 className={`choicebtn ${selectedType === 'Apartment' ? 'selected' : ''}`}
                 onClick={() => handleTypeSelection('Apartment')}
             >
-                Apartment
+                Lägenhet
             </button>
             <button
                 className={`choicebtn ${selectedType === 'House' ? 'selected' : ''}`}
                 onClick={() => handleTypeSelection('House')}
             >
-                House
+                Hus
             </button>
             <button
                 className={`choicebtn ${selectedType === 'Collective' ? 'selected' : ''}`}
                 onClick={() => handleTypeSelection('Collective')}
             >
-                Collective
+                Korridor
             </button>
             <button
                 className={`choicebtn ${selectedType === 'Room' ? 'selected' : ''}`}
                 onClick={() => handleTypeSelection('Room')}
             >
-                Room
+                Rum
             </button>
         </div>
     </div>
     <div className="filter-section">
         <div className="textwrapper">
-            <h3>Price Range</h3>
-            <p>Monthly rent</p>
+            <h3>Prisintervall</h3>
+            <p>Månadshyra</p>
         </div>
         <div className="inputwrapper">
             <div className="input-container">
@@ -218,14 +219,12 @@ return (
     </div>
     <div className="filter-section">
         <div className="textwrapper">
-            <h3>Search</h3>
-            <p>Search for specific words or phrases in the listing description.</p>
         </div>
         <div className="inputwrapper">
             <div className="input-container">
                 <input
                     type="text"
-                    placeholder="Keyword..."
+                    placeholder="Skriv ett område eller adress..."
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                 />
@@ -235,7 +234,7 @@ return (
     </div>
     <div className="filter-section">
         <div className="textwrapper">
-            <h3>Number of Rooms</h3>
+            <h3>Antal rum</h3>
             <div className="room-buttons">
                 <button
                     className={`choicebtn ${selectedRooms.includes('') ? 'selected' : ''}`}
@@ -256,34 +255,94 @@ return (
         </div>
     </div>
     <div className="filter-section">
-        <div className="textwrapper">
-            <h3>Bekvämligheter</h3>
-            <p>Väsentligheter</p>
+    <div className="textwrapper">
+        <h3>Bekvämligheter</h3>
+        <p>Välj alternativ</p>
+    </div>
+    <div className="checkboxwrapper">
+        <div className="check">
+            <input
+                type="checkbox"
+                name="wifi"
+                id="wifi"
+                checked={selectedAmenities.includes('wifi')}
+                onChange={() => handleAmenitySelection('wifi')}
+            />
+            <label htmlFor="wifi">Wifi</label>
         </div>
-        <div className="checkboxwrapper">
-            <div className="check">
-                <input
-                    type="checkbox"
-                    name="wifi"
-                    id="wifi"
-                    checked={selectedAmenities.includes('wifi')}
-                    onChange={() => handleAmenitySelection('wifi')}
-                />
-                <label htmlFor="wifi">Wifi</label>
-            </div>
-            <div className="check">
-                <input
-                    type="checkbox"
-                    name="kitchen"
-                    id="kitchen"
-                    checked={selectedAmenities.includes('kitchen')}
-                    onChange={() => handleAmenitySelection('kitchen')}
-                />
-                <label htmlFor="kitchen">Kök</label>
-            </div>
-            {/* Implementera liknande kod för andra bekvämligheter */}
+        <div className="check">
+            <input
+                type="checkbox"
+                name="kitchen"
+                id="kitchen"
+                checked={selectedAmenities.includes('kitchen')}
+                onChange={() => handleAmenitySelection('kitchen')}
+            />
+            <label htmlFor="kitchen">Kök</label>
+        </div>
+        <div className="check">
+            <input
+                type="checkbox"
+                name="tvättmaskin"
+                id="tvättmaskin"
+                checked={selectedAmenities.includes('tvättmaskin')}
+                onChange={() => handleAmenitySelection('tvättmaskin')}
+            />
+            <label htmlFor="tvättmaskin">Tvättmaskin</label>
+        </div>
+        <div className="check">
+            <input
+                type="checkbox"
+                name="tv"
+                id="tv"
+                checked={selectedAmenities.includes('tv')}
+                onChange={() => handleAmenitySelection('tv')}
+            />
+            <label htmlFor="tv">TV</label>
+        </div>
+        <div className="check">
+            <input
+                type="checkbox"
+                name="dedikerad-arbetsyta"
+                id="dedikerad-arbetsyta"
+                checked={selectedAmenities.includes('dedikerad-arbetsyta')}
+                onChange={() => handleAmenitySelection('dedikerad-arbetsyta')}
+            />
+            <label htmlFor="dedikerad-arbetsyta">Dedikerad arbetsyta</label>
+        </div>
+        <div className="check">
+            <input
+                type="checkbox"
+                name="parkering"
+                id="parkering"
+                checked={selectedAmenities.includes('parkering')}
+                onChange={() => handleAmenitySelection('parkering')}
+            />
+            <label htmlFor="parkering">Parkering</label>
+        </div>
+        <div className="check">
+            <input
+                type="checkbox"
+                name="balkong"
+                id="balkong"
+                checked={selectedAmenities.includes('balkong')}
+                onChange={() => handleAmenitySelection('balkong')}
+            />
+            <label htmlFor="balkong">Balkong</label>
+        </div>
+        <div className="check">
+            <input
+                type="checkbox"
+                name="hiss"
+                id="hiss"
+                checked={selectedAmenities.includes('hiss')}
+                onChange={() => handleAmenitySelection('hiss')}
+            />
+            <label htmlFor="hiss">Hiss</label>
         </div>
     </div>
+</div>
+
     <div className="filter-section">
         <div className="endwrapper">
             <button onClick={clearFilters} className="black-underline">

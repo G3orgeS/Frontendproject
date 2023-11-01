@@ -1,8 +1,8 @@
 import React from 'react';
 import { House } from '../types/house';
 import '../css/components/InfoContainer.css';
-import { faLocationDot, faMoneyBill, faBed, faCube, faCalendarDays, faBuilding, faDoorOpen, faUsers, faHouse } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Icon from './icons/Icon';
+
 
 interface InfoContainerProps {
   house: House; 
@@ -10,46 +10,45 @@ interface InfoContainerProps {
 }
 
 const InfoContainer: React.FC<InfoContainerProps> = ({ house, formattedDate }) => {
-  let typeIcon;
+  let typeIcon = null;
 
   switch (house.type) {
     case 'Apartment':
-      typeIcon = <FontAwesomeIcon icon={faBuilding} />;
+      typeIcon = <Icon showText={false} include="Buildings" />;
       break;
     case 'Room':
-      typeIcon = <FontAwesomeIcon icon={faDoorOpen} />;
+      typeIcon = <Icon showText={false} include="DoorOpen" />;
       break;
     case 'Collective':
-      typeIcon = <FontAwesomeIcon icon={faUsers} />;
+      typeIcon = <Icon showText={false} include="Collective" />;
       break;
     case 'House':
-      typeIcon = <FontAwesomeIcon icon={faHouse} />;
+      typeIcon = <Icon showText={false} include="House" />;
       break;
     default:
-      typeIcon = null; 
       break;
   }
 
   return (
     <div className="infoContainer">
       <div className="adress">
-        <FontAwesomeIcon icon={faLocationDot} />
+        <Icon include="Map" showText={false} />
         <p>{house.adress}</p>
       </div>
       <div className="rent">
-        <FontAwesomeIcon icon={faMoneyBill} />
-        <p>{house.cost} kr</p>
+        <Icon showText={false} include="Money" />
+        <p>{house.cost} kr/mån</p>
       </div>
       <div className="room">
-        <FontAwesomeIcon icon={faBed} />
+        <Icon showText={false} include="House" />
         <p>{house.numberOfRooms}</p>
       </div>
       <div className="space">
-        <FontAwesomeIcon icon={faCube} />
+        <Icon showText={false} include="BedOutline" />
         <p>{house.size} kvm</p>
       </div>
       <div className="date">
-        <FontAwesomeIcon icon={faCalendarDays} />
+        <Icon showText={false} include="TodayOutline" />
         <p>{formattedDate}</p>
       </div>
       <div className="type">

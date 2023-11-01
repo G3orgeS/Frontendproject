@@ -1,5 +1,5 @@
 import '../css/components/Footer.css'
-import FontAw from '../components/icons/FontAw'
+import Icon from './icons/Icon'
 
 const Footer = () => {
     return (
@@ -35,9 +35,9 @@ const Footer = () => {
                     <h4>© 2023 StudyStay AB.   ·   Integritet   ·   Villkor   ·   Sajtkarta   ·   Företagsuppgifter</h4>
                 </div>
                 <div className="footerbottom2">
-                    <FontAw iconName="facebook" />
-                    <FontAw iconName="instagram" />
-                    <FontAw iconName="linkedin" />
+                    <Icon showText={false} include="Facebook" />
+                    <Icon showText={false} include="Instagram" />
+                    <Icon showText={false} include="Linkedin" />
                 </div>
             </div>
         </>

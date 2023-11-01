@@ -14,8 +14,8 @@ const Home = () => {
   const [currentIndexes, setCurrentIndexes] = useState<number[]>([]);
   const [houses, setHouses] = useState<House[]>([]);
   const [displayedCardCount, setDisplayedCardCount] = useState<number>(12);
-  const [filteredHouses, setFilteredHouses] = useState<House[]>([]);
-  const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [filteredHouses, setFilteredHouses] = useState<House[]>([]); // Filtrerade hus som ska visas
+  const [filterType, setFilterType] = useState<string | null>(null); // Den aktiva filtreringstypen
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,13 +34,14 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (selectedType) {
-      const filtered = houses.filter((house) => house.type === selectedType);
+    // Uppdatera filtrerade hus när `filterType` ändras eller när huslistan ändras
+    if (filterType) {
+      const filtered = houses.filter((house) => house.type === filterType);
       setFilteredHouses(filtered);
     } else {
       setFilteredHouses(houses);
     }
-  }, [selectedType, houses]);
+  }, [filterType, houses]);
 
   const handleIndicatorClick = (index: number, imgIndex: number) => {
     setCurrentIndexes((prevIndexes) => {
@@ -54,24 +55,27 @@ const Home = () => {
     setDisplayedCardCount(displayedCardCount + 12);
   };
 
-  const handleFilter = (filteredHouses: House[], filters: any) => {
-    if (filters.type === selectedType) {
+  // Gör så att filtermodalen filtrerar ut och fungerar.
+  const handleFilter = (filteredHouses: House[]) => {
+    setFilteredHouses(filteredHouses);
+  };
+  /*
+  Gör så att filterbaren fungerar och filtrerar ut boenden.
+  gör även så att filtermodalen ej fungerar
+
+  const handleFilter = (filteredHouses: House[], filterType: string) => {
+    if (filterType === selectedType) {
       setSelectedType(null);
     } else {
-      setSelectedType(filters.type);
+      setSelectedType(filterType);
     }
   };
-  
-
+  */
 
   return (
     <>
       {loading && <Loader size="50px" color="#007BFF" />}
       <ImgWrapper src={homepage} alt={'bild'} />
-      {/* <div className="overlay">
-        <h2>Hitta din nya studentbostad</h2>
-        <p>Ansök idag</p>
-      </div> */}
       <Filterbar onFilter={handleFilter} houses={houses} />
       {!loading && (
         <div className="card-display">
@@ -91,3 +95,4 @@ const Home = () => {
 };
 
 export default Home;
+

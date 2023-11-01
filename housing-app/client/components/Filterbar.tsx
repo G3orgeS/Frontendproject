@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import '../css/components/Filterbar.css';
 import FilterModal from '../components/FilterModal';
-import FontAw from '../components/icons/FontAw';
 import { House } from '../types/house';
+import Icon from '../components/icons/Icon'
 
 interface FilterbarProps {
   onFilter: (filteredHouses: House[], filterType: string) => void;
@@ -11,48 +11,58 @@ interface FilterbarProps {
 
 const Filterbar: React.FC<FilterbarProps> = ({ onFilter, houses }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [activeFilter, setActiveFilter] = useState<string | null>(null);
 
   const handleFilterClick = (filterType: string) => {
-    if (filterType === 'Filter') {
-      setIsModalOpen(true);
+    if (activeFilter === filterType) {
+      setActiveFilter(null); 
     } else {
-      setIsModalOpen(false);
-      onFilter([], filterType);
+      setActiveFilter(filterType);
     }
+    onFilter(houses, filterType);
   };
 
   return (
     <div className="filterwrapperparent">
       <div className="filterwrapper">
-        <div className='filtericon' onClick={() => handleFilterClick('House')}>
-          <FontAw iconName="house" />
+        <div
+          className={`filtericon ${activeFilter === 'House' ? 'active' : ''}`}
+          onClick={() => handleFilterClick('House')}
+        >
+          <Icon showText={false} include="House" />
           <p>Hus</p>
         </div>
-        <div className='filtericon' onClick={() => handleFilterClick('Apartment')}>
-          <FontAw iconName="building" />
+        <div
+          className={`filtericon ${activeFilter === 'Apartment' ? 'active' : ''}`}
+          onClick={() => handleFilterClick('Apartment')}
+        >
+          <Icon showText={false} include="Buildings" />
           <p>Lägenhet</p>
         </div>
-        <div className='filtericon' onClick={() => handleFilterClick('Room')}>
-          <FontAw iconName="door-open" />
+        <div
+          className={`filtericon ${activeFilter === 'Room' ? 'active' : ''}`}
+          onClick={() => handleFilterClick('Room')}
+        >
+          <Icon showText={false} include="DoorOpen" />
           <p>Rum</p>
         </div>
-        <div className='filtericon' onClick={() => handleFilterClick('Collective')}>
-          <FontAw iconName="users" />
+        <div
+          className={`filtericon ${activeFilter === 'Collective' ? 'active' : ''}`}
+          onClick={() => handleFilterClick('Collective')}
+        >
+          <Icon showText={false} include="Collective" />
           <p>Kollektiv</p>
         </div>
         <div className='filtericon' onClick={() => setIsModalOpen(true)}>
-          <FontAw iconName="filter" />
+          <Icon showText={false} include="AdjustmentsHorizontal" />
           <p>Filter</p>
         </div>
-        {isModalOpen &&
-          <FilterModal onClose={() => setIsModalOpen(false)}
-            isOpen={isModalOpen}
-            onFilter={onFilter}
-            houses={houses}
-          />}
+        {isModalOpen && (
+          <FilterModal onClose={() => setIsModalOpen(false)} isOpen={isModalOpen} onFilter={onFilter} houses={houses} />
+        )}
       </div>
     </div>
   );
-}
+};
 
 export default Filterbar;

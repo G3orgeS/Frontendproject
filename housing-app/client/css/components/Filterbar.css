@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     padding-top: 50px;
+    padding-bottom: 50px;
     color: black;
 }
 .filtericon {
@@ -22,3 +23,9 @@
 .filtericon:hover {
     cursor: pointer;
 }
+.filtericon.active {
+    color: red; 
+  }
+  .includes-item p {
+    margin: 0;
+  }

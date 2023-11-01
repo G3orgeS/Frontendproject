@@ -4,10 +4,9 @@ import { getHouseById } from '../data/houseApi';
 import '../css/pages/HouseDetail.css';
 import InfoContainer from '../components/InfoContainer';
 import DetailImg from '../components/DetailImg';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import Rating from '../components/Rating'
+import Icon from '../components/icons/Icon';
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -48,7 +47,6 @@ const HouseDetail = () => {
       <div className="btncont">
         <Link to={`/application/${id}`} className="applybtn">
           Till ansökan
-          <FontAwesomeIcon icon={faArrowRight} />
         </Link>
       </div>
       <div className="descriptionContainer">
@@ -70,6 +68,12 @@ const HouseDetail = () => {
             <p>Recommendation: <Rating averageRating={house.recommendation} /></p>
           </div>
           <div className="landlord">Company: {house.landlord[0]}</div>
+          {house.extras.map((extra, index) => (
+      <div key={index} className='extras'>
+        {extra}
+        <Icon showText={false} include={extra} />
+      </div>
+    ))}
         </div>
       </div>
     </>
