@@ -1,28 +1,31 @@
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import '../css/components/Rating.css'
+import '../css/components/Rating.css';
 
 interface RatingProps {
-    averageRating: number;
-  }
+  averageRating: number;
+  showText: boolean; // Lägg till showText-egenskapen
+}
 
-const Rating: React.FC<RatingProps> = ({ averageRating }) => {
+const Rating: React.FC<RatingProps> = ({ averageRating, showText }) => {
   let stars;
 
   switch (averageRating) {
     case 1:
-        stars = (
-          <div className="star">
-            <BsStarHalf />
-            <BsStar />
-            <BsStar />
-            <BsStar />
-            <BsStar />
-          </div>
-        );
-        break;
+      stars = (
+        <div className="star">
+          {showText && <p>Betyg: </p>}
+          <BsStarHalf />
+          <BsStar />
+          <BsStar />
+          <BsStar />
+          <BsStar />
+        </div>
+      );
+      break;
     case 2:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStar />
           <BsStar />
@@ -34,6 +37,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 3:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarHalf />
           <BsStar />
@@ -45,6 +49,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 4:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStar />
@@ -56,6 +61,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 5:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStarHalf />
@@ -67,6 +73,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 6:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStarFill />
@@ -78,6 +85,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 7:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStarFill />
@@ -89,6 +97,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 8:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStarFill />
@@ -100,6 +109,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 9:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStarFill />
@@ -111,6 +121,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
     case 10:
       stars = (
         <div className="star">
+          {showText && <p>Betyg: </p>}
           <BsStarFill />
           <BsStarFill />
           <BsStarFill />
@@ -120,7 +131,7 @@ const Rating: React.FC<RatingProps> = ({ averageRating }) => {
       );
       break;
     default:
-      stars = <span>No rating available</span>;
+      stars = <span>{showText && 'Inget betyg tillgängligt'}</span>;
       break;
   }
 

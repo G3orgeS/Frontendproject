@@ -158,7 +158,7 @@ const submitApplication = () => {
               <p>Hyresvärd: </p><p>{houseLandlord}</p>
             </div>
             <div className="papplywrap">
-              <p>Betyg </p><p><Rating averageRating={house.recommendation} /></p>
+              <p>Betyg </p><p><Rating averageRating={house.recommendation} showText={false} /></p>
             </div>
           </div>
         </div>
