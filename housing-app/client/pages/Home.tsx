@@ -14,8 +14,8 @@ const Home = () => {
   const [currentIndexes, setCurrentIndexes] = useState<number[]>([]);
   const [houses, setHouses] = useState<House[]>([]);
   const [displayedCardCount, setDisplayedCardCount] = useState<number>(12);
-  const [filteredHouses, setFilteredHouses] = useState<House[]>([]); // Filtrerade hus som ska visas
-  const [filterType, setFilterType] = useState<string | null>(null); // Den aktiva filtreringstypen
+  const [filteredHouses, setFilteredHouses] = useState<House[]>([]); 
+  const [filterType] = useState<string | null>(null); 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -34,7 +34,6 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Uppdatera filtrerade hus när `filterType` ändras eller när huslistan ändras
     if (filterType) {
       const filtered = houses.filter((house) => house.type === filterType);
       setFilteredHouses(filtered);
@@ -74,9 +73,9 @@ const Home = () => {
 
   return (
     <>
-      {loading && <Loader size="50px" color="#007BFF" />}
       <ImgWrapper src={homepage} alt={'bild'} />
       <Filterbar onFilter={handleFilter} houses={houses} />
+      {loading && <Loader/>}
       {!loading && (
         <div className="card-display">
           <Card

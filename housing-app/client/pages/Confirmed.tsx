@@ -4,10 +4,12 @@ import ImgWrapper from '../components/ImgWrapper';
 import { getHouseById } from '../data/houseApi';
 import '../css/pages/Confirmed.css';
 import { House } from '../types/house';
+import Loader from '../components/Loader';
 
 const Confirmed = () => {
   const { houseId } = useParams<{ username: string, houseId: string }>();
   const [house, setHouse] = useState<House | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,11 +23,13 @@ const Confirmed = () => {
       }
     };
     fetchData();
+    setLoading(false);
   }, [houseId]);
 
   return (
     <>
       <div className="confirmed-container">
+      {loading && <Loader/>}
         {house && (
           <div className="confirmed-info">
             <ImgWrapper src={house.img[0]} alt="" style={{ width: '200px', height: '200px' }} />

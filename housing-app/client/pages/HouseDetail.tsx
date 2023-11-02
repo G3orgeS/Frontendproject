@@ -7,16 +7,19 @@ import DetailImg from '../components/DetailImg';
 import { useEffect, useState } from 'react';
 import Rating from '../components/Rating'
 import Icon from '../components/icons/Icon';
+import Loader from '../components/Loader';
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
   const [house, setHouse] = useState<House | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (id) {
       getHouseById(id)
         .then((data) => {
           setHouse(data);
+          setLoading(false);
         })
         .catch((error) => {
           console.error('Error fetching house data:', error);
@@ -25,7 +28,7 @@ const HouseDetail = () => {
   }, [id]);
 
   if (!house) {
-    return <div>Loading...</div>;
+    return loading && <Loader/>
   }
 
   const parsedDate = new Date(house.firstDate);

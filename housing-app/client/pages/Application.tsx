@@ -8,6 +8,7 @@ import { createApplication } from '../data/applicationApi';
 import { Users } from '../types/user';
 import '../css/pages/Application.css';
 import Rating from '../components/Rating';
+import Loader from '../components/Loader';
 
 function getRandomStatus() {
   const statuses = ["untreated", "not approved", "approved"];
@@ -21,6 +22,7 @@ const ApplicationPage: React.FC = () => {
   const [house, setHouse] = useState<House | null>(null);
   const [allConditionsAccepted, setAllConditionsAccepted] = useState(false);
   const [userInfo, setUserInfo] = useState<Users | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -47,6 +49,7 @@ const ApplicationPage: React.FC = () => {
       getHouseById(id)
         .then((houseData) => {
           setHouse(houseData);
+          setLoading(false);
         })
         .catch(() => {
         });
@@ -130,6 +133,7 @@ const submitApplication = () => {
     <div className="applycontainer">
       <h2 className="house-title">{houseTitle}</h2>
       <div className="fullerhouse">
+      {loading && <Loader/>}
       <div className="fullhousewrapperapply">
       {house && (
         <div className='housecardapplyinfo'>

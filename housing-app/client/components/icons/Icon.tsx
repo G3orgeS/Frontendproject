@@ -158,9 +158,9 @@ switch (include) {
     icon = <IoTodayOutline />;
     include = "Idag"
     break;
-  case "Box":
+  case "box":
     icon = <LuBox />;
-    include = "Låda"
+    include = "box"
     break;
   case "Buildings":
     icon = <BsBuildings />;

@@ -2,8 +2,7 @@ import '../css/components/Navbar.css';
 import { Link } from 'react-router-dom'; 
 import React, { useState, useEffect, useRef } from 'react';
 import Icon from './icons/Icon';
-
-const logo = '../resource/studystay-logo 2.jpg';
+import logo from '../resource/studystay-logo2.jpg'
 
 const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

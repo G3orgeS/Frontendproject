@@ -3,10 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../css/pages/Application.css';
 import { House } from '../types/house';
 import { getHouseById } from "../data/houseApi";
+import Loader from "../components/Loader";
 
 const AcceptOffer = () => {
   const { username, houseId } = useParams<{ username: string, houseId: string }>();
   const [house, setHouse] = useState<House | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,12 +23,14 @@ const AcceptOffer = () => {
         console.error("Ett fel uppstod: ", error);
       }
     };
+    setLoading(false);
     fetchData();
   }, [houseId]);
 
   if (house) { 
     return (
       <div className="applycontainer">
+        {loading && <Loader/>}
         <h2 className="house-title">{house.titel}</h2>
         <div className="fullerhouse">
           <div className="fullhousewrapperapply">

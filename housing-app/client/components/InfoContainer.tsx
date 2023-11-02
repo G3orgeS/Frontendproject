@@ -40,11 +40,11 @@ const InfoContainer: React.FC<InfoContainerProps> = ({ house, formattedDate }) =
         <p>{house.cost} kr/mån</p>
       </div>
       <div className="room">
-        <Icon showText={false} include="House" />
+        <Icon showText={false} include="bed" />
         <p>{house.numberOfRooms}</p>
       </div>
       <div className="space">
-        <Icon showText={false} include="BedOutline" />
+        <Icon showText={false} include="box" />
         <p>{house.size} kvm</p>
       </div>
       <div className="date">

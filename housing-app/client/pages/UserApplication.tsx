@@ -4,10 +4,12 @@ import { getApplicationByUser } from "../data/applicationApi";
 import { HouseSelection } from '../types/application';
 import '../css/pages/UserApplication.css';
 import StatusBadge from '../components/StatusBadge'
+import Loader from "../components/Loader";
 
 const UserApplication = () => {
   const { username } = useParams<{ username: string }>();
   const [userApplications, setUserApplications] = useState<HouseSelection[] | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +24,7 @@ const UserApplication = () => {
       }
     };
     fetchData();
+    setLoading(false);
   }, [username]);
 
   const handleNavigation = (house: HouseSelection) => {
@@ -37,6 +40,7 @@ const UserApplication = () => {
           Vi uppdaterar informationen löpande så att du alltid har den senaste informationen till hands.
         </p>
       </div>
+      {loading && <Loader/>}
 
       {userApplications && userApplications.length > 0 ? (
         <div className="user-application-list">

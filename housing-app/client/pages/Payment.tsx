@@ -3,10 +3,12 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getApplicationByUser } from "../data/applicationApi";
 import { HouseSelection } from '../types/application';
 import '../css/pages/Payment.css';
+import Loader from "../components/Loader";
 
 const Payment = () => {
   const { username } = useParams<{ username: string }>();
   const [userApplications, setUserApplications] = useState<HouseSelection[] | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const logo = '../resource/studystay-logo 2.jpg';
 
@@ -22,6 +24,7 @@ const Payment = () => {
       }
     };
     fetchData();
+    setLoading(false);
   }, [username]);
 
   if (userApplications && userApplications.length > 0) {
@@ -34,6 +37,7 @@ const Payment = () => {
     return (
       <div className="payment-container">
         <h2>Betalning</h2>
+        {loading && <Loader/>}
         <div className="payment-text">
           <p>Registrera ditt kort för att slutföra godkännandet av bostaden.</p>
           <p>Depositionen kommer att dras omgående och återbetalas när du flyttar ut.</p>
