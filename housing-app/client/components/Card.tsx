@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 interface CardProps {
   limit?: number;
-  houses: House[]; 
+  houses: House[];
   currentIndexes: number[];
   handleIndicatorClick: (index: number, imgIndex: number) => void;
 }
-
 const Card = ({ limit, currentIndexes, handleIndicatorClick, houses }: CardProps) => {
+
   return (
     <div className="card-grid">
       {houses.slice(0, limit).map((house: House, index: number) => (
@@ -25,23 +25,33 @@ const Card = ({ limit, currentIndexes, handleIndicatorClick, houses }: CardProps
               ) : (
                 <div className="no-image">No Image</div>
               )}
-              <div className="carousel-indicator">
+              <div className="carousel-indicator"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                }}>
                 {house.img && house.img.length > 0 && house.img.map((_: any, imgIndex: number) => (
                   <span
                     key={imgIndex}
                     className={`indicator-dot ${currentIndexes[index] === imgIndex ? 'active' : ''}`}
-                    onClick={() => handleIndicatorClick(index, imgIndex)} 
+                    onClick={(e) => {
+                      handleIndicatorClick(index, imgIndex)
+                    }}
                   ></span>
                 ))}
               </div>
             </div>
-            <div className="info">
-              <div className="titel">{house.titel}</div>
-              <div className="adress">{house.adress}</div>
-              <div className="cost">{house.cost}kr/mån</div>
-              <div className="room">{house.numberOfRooms} RoK</div>
-              <div className="city">{house.city}</div>
-              <div className="size">{house.size}kvm</div>
+            <div className="informationwrapper">
+              <div className="info">
+                <div className="adress">{house.adress}</div>
+                <div className="cost">{house.cost}kr/mån</div>
+                <div className="room">{house.numberOfRooms} RoK</div>
+              </div>
+              <div className="info2">
+                <div className="city">{house.city}</div>
+                <div className='landlord'>Brf {house.landlord[0]}</div>
+                <div className="size">{house.size}kvm</div>
+              </div>
             </div>
           </div>
         </Link>
@@ -49,9 +59,8 @@ const Card = ({ limit, currentIndexes, handleIndicatorClick, houses }: CardProps
     </div>
   );
 }
-
 Card.defaultProps = {
-  limit: 12, 
+  limit: 12,
 };
 
 export default Card;

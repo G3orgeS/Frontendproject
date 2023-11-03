@@ -13,11 +13,13 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "@types/styled-components": "^5.1.29",
     "axios": "^1.5.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
     "react-router-dom": "^6.17.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "styled-components": "^6.1.0"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.4.2",

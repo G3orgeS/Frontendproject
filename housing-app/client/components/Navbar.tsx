@@ -43,7 +43,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="navbar">
-      <div>
+      <div className='navImg'>
         <Link to={'/'}>
           <img src={logo} alt="" />
         </Link>

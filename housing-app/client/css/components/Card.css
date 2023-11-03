@@ -1,20 +1,21 @@
 .card {
-    width: 200px;
-    height: 320px;
+    width: 250px;
+    height: 250px;
     border-radius: 10px;
-    border: 1px solid #ccc;
     margin: 20px;
-    /* padding: 10px; */
     display: flex;
     flex-direction: column;
+    text-decoration: none;
 }
-.imgContainer{
+
+.imgContainer {
     position: relative;
 }
+
 .cardimg {
-    height:150px;
+    height: 150px;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
 }
 .indicator-dot {
     width: 10px;
@@ -22,21 +23,34 @@
     background-color: rgba(255, 255, 255, 0.72);
     border-radius: 50%;
     display: inline-block;
-    margin-right: 5px; 
-    cursor: pointer; 
-  }
-  
-  .indicator-dot.active {
-    background-color: #FFF; 
-  }
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.indicator-dot.active {
+    background-color: #FFF;
+}
 .carousel-indicator {
     position: absolute;
-    top: 230px;
-    left: 110px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    text-align: center;
 }
-.info {
-display: inline-flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 7px;
+.adress, .city, .landlord, .size, .cost, .room {
+    color: black;
+    padding: 5px 0;
+}
+.adress {
+    font-weight: bold;
+    text-decoration: none; 
+}
+.city, .landlord, .size {
+
+    text-align: right;
+}
+
+.informationwrapper {
+    display: flex;
+    justify-content: space-between;
 }

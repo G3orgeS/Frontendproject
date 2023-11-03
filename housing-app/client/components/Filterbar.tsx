@@ -2,10 +2,10 @@ import { useState } from 'react';
 import '../css/components/Filterbar.css';
 import FilterModal from '../components/FilterModal';
 import { House } from '../types/house';
-import Icon from '../components/icons/Icon'
+import Icon from '../components/icons/Icon';
 
 interface FilterbarProps {
-  onFilter: (filteredHouses: House[], filterType: string) => void;
+  onFilter: (filteredHouses: House[], filterType: string | null) => void;
   houses: House[];
 }
 
@@ -15,11 +15,12 @@ const Filterbar: React.FC<FilterbarProps> = ({ onFilter, houses }) => {
 
   const handleFilterClick = (filterType: string) => {
     if (activeFilter === filterType) {
-      setActiveFilter(null); 
+      setActiveFilter(null);
+      onFilter(houses, null); // Återställ filtreringen
     } else {
       setActiveFilter(filterType);
+      onFilter(houses.filter((house) => house.type === filterType), filterType); // Filtrera efter typ
     }
-    onFilter(houses, filterType);
   };
 
   return (

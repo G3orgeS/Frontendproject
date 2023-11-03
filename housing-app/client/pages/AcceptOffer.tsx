@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from 'react-router-dom';
-import '../css/pages/Application.css';
+import '../css/pages/AcceptOffer.css';
 import { House } from '../types/house';
 import { getHouseById } from "../data/houseApi";
 import Loader from "../components/Loader";
+import TermsAndConditions from "../components/TermsAndConditions";
 
 const AcceptOffer = () => {
   const { username, houseId } = useParams<{ username: string, houseId: string }>();
@@ -55,30 +56,11 @@ const AcceptOffer = () => {
               </div>
             </div>
             <div className='applicationbodywrapper'>
-              <div className='textwrap2info'>
-                <p>
-                  <strong>Viktiga krav och villkor från hyresföreningen:</strong>
-                </p>
-                <p>
-                  <strong>1. Deposition:</strong> En deposition om 5 000 kr måste betalas inom 7 dagar från acceptdatumet. Denna summa återbetalas när du flyttar ut, förutsatt att bostaden lämnas i ursprungligt skick.
-                </p>
-                <p>
-                  <strong>2. Husdjur:</strong> Husdjur är tillåtna, men en särskild avgift om 200 kr/månad tillkommer.
-                </p>
-                <p>
-                  <strong>3. Rökning:</strong> Rökning är strikt förbjuden inom bostadens område, inklusive balkonger och gemensamma utrymmen.
-                </p>
-                <p>
-                  <strong>4. Inflyttningsdatum:</strong> Om inflyttningsdatum infaller på en helgdag så är inflyttningsdatumet första vardagen på kommande vecka. Var god se till att koordinera med fastighetsskötaren för att undvika kollisioner.
-                </p>
-                <p>
-                  <strong>5. Uppsägningstid:</strong> Uppsägningstiden är tre månader från och med den första i nästa månad efter att uppsägning har gjorts.
-                </p>
-              </div>
+            <TermsAndConditions />
             </div>
             <div className="checkapplyer">
               <div className="checkboxwrapperapply">
-                <button className='applybtn' onClick={handleDecline}>Tacka nej</button>
+                <button className='applybtnno' onClick={handleDecline}>Tacka nej</button>
                 <button className='applybtn' onClick={handlePayment}>Till betalning</button>
               </div>
             </div>

@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { getHouseById } from '../data/houseApi'; // Updated import
+import { getHouseById } from '../data/houseApi'; 
 import { House } from '../types/house';
 import { Application } from '../types/application';
 import { fetchUserByToken } from '../data/userApi';
 import { createApplication } from '../data/applicationApi';
 import { Users } from '../types/user';
-import '../css/pages/Application.css';
-import Rating from '../components/Rating';
 import Loader from '../components/Loader';
+import Button from '../components/Button';
+import TermsAndConditions from '../components/TermsAndConditions'
+import Summary from '../components/Summary';
+import '../css/pages/Application.css';
 
 function getRandomStatus() {
   const statuses = ["untreated", "not approved", "approved"];
@@ -140,68 +142,23 @@ const submitApplication = () => {
           <div className="house-image">
             <img src={houseImage} alt="House Image" />
           </div>
-          <div className="overview">
-            <h3>Översikt</h3>
-            <div className="papplywrap">
-              <p>hyra:</p><p>{houseCost}kr/mån</p>
-            </div>
-            <div className="papplywrap">
-              <p>Stad:</p><p>{houseCity}, {houseZipCode}</p>
-            </div>
-            <div className="papplywrap">
-              <p>Våning: </p><p>{houseFloor}</p>
-            </div>
-            <div className="papplywrap">
-              <p>Inflytt: </p><p>{formattedHouseFirstDate}</p>
-            </div>
-            <div className="papplywrap">
-              <p>Hyresvärd: </p><p>{houseLandlord}</p>
-            </div>
-            <div className="papplywrap">
-              <p>Betyg </p><p><Rating averageRating={house.recommendation} showText={false} /></p>
-            </div>
-          </div>
+        <div className="summarybox">
+          <Summary city={house.city} floor={house.floor} moveInDate={house.firstDate} applyBy={'12/12-2023'} landlord={house.landlord[0]} rating={house.recommendation} />
+        </div>
         </div>
       )}
       <div className='applicationbodywrapper'>
-        <div className='textwrap2info'>
-        <p>
-        <strong>Viktiga krav och villkor från hyresföreningen:</strong>
-        </p>
-        <p>
-          <strong>1. Deposition:</strong> En deposition om 5 000 kr måste betalas inom 7 dagar från acceptdatumet. Denna summa återbetalas när du flyttar ut, förutsatt att bostaden lämnas i ursprungligt skick.
-        </p>
-        <p>
-          <strong>2. Husdjur:</strong> Husdjur är tillåtna, men en särskild avgift om 200 kr/månad tillkommer.
-        </p>
-        <p>
-          <strong>3. Rökning:</strong> Rökning är strikt förbjuden inom bostadens område, inklusive balkonger och gemensamma utrymmen.
-        </p>
-        <p>
-          <strong>4. Inflyttningsdatum:</strong> Om inflyttningsdatum infaller på en helgdag så är inflyttningsdatumet första vardagen på kommande vecka. Var god se till att koordinera med fastighetsskötaren för att undvika kollisioner.
-        </p>
-        <p>
-          <strong>5. Uppsägningstid:</strong> Uppsägningstiden är tre månader från och med den första i nästa månad efter att uppsägning har gjorts.
-        </p>
-        <label>
-          Vänligen läs igenom alla villkor noga. Om du har några frågor eller funderingar, kontakta hyresföreningen innan du tackar ja.
-        </label>
+      <TermsAndConditions />
         <div className="checkapplyer">
         <div className="checkboxwrapperapply">
-        <input
-          type="checkbox"
-          checked={allConditionsAccepted}
-          onChange={handleMainCheckboxChange}
-          />
-          <label>Jag godkänner alla villkor</label>
-          <button className='applybtn'  onClick={submitApplication}>Skicka in ansökan</button>
+        <input type="checkbox" checked={allConditionsAccepted} onChange={handleMainCheckboxChange}/>
+          <label>Jag godkänner hyresvärdens villkor</label>
           </div>
+          <Button onClick={submitApplication}>ansökan</Button>
           </div>
       </div>
       </div>
       </div>
-    </div>
-    
     </div>
     </>
   );

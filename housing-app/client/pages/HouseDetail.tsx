@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import Icon from '../components/icons/Icon';
 import Loader from '../components/Loader';
 import Summary from '../components/Summary'
+import Button from '../components/Button';
+
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -48,42 +50,39 @@ const HouseDetail = () => {
           ))}
         </div>
       </div>
-    <div className='oversightwrapper'>
+      <div className='oversightwrapper'>
 
 
-      <div className="descriptionContainer">
-        <h1>{house.titel}</h1>
-        <div className="infowrapper">
-          <p>{house.cost} kr</p>
-          <p>{house.numberOfRooms} RoK</p>
-          <p>{house.size} kvm</p>
-        </div>
-        <div className="description">
-          <p>Description: {house.description}</p>
-          <p>Placeholdertext för att fylla ut: </p>
-          <p>Denna mysiga lägenhet har öppen planlösning mellan kök och vardagsrumrum som ger sociala ytor med plats för umgänge. Väggarna är målade väggar i ljus kulör, och golvet är genomgående parkettgolv. I hallen är det grå klinker vid entrédörren. Till lägenheten hör en uteplats som vetter in mot den gemensamma innergården.  Det helkaklade badrummet är utrustat med tvättmaskin, torktumlare, handdukstork och dusch med duschväggar i glas. Köket har vita skåpluckor, glashällsspis med varmluftsugn och diskmaskin.        Lägenheten ligger i en modern och energieffektiv fastighet och varje lägenhet har individuell mätning för el- och vattenförbrukning, därmed betalar du endast för det du själv förbrukar och har större möjlighet att påverka kostnaderna. Kostnaden debiteras separat på din hyresavi. Garageplats finns att hyra separat i mån av ledig plats. Information kring lägenheten finner du/ni i annonsen, vi har dessvärre
-              inte möjlighet att besvara på ytterligare frågor om lägenheten innan du som sökande får ett ev. erbjudande om visning. Välkommen med din ansökan!</p>
-        </div>
-      </div>
-
-<div className="descriptionContainer2">
-  <div className="summarybox">
-          <Summary city={house.city} floor={house.floor} moveInDate={house.firstDate} applyBy={'12/12-2023'} landlord={house.landlord[0]} rating={house.recommendation} />
-          <div className="btncont">
-        <Link to={`/application/${id}`} className="applybtn">
-          Till ansökan
-        </Link>
-      </div>
-      </div>
-          <div className="summaryicons">
-          {house.extras.map((extra, index) => (
-            <div key={index} className='extras'>
-              <Icon showText={true} include={extra} />
-            </div>
-          ))}
+        <div className="descriptionContainer">
+          <h1>{house.titel}</h1>
+          <div className="infowrapper">
+            <p>{house.cost} kr</p>
+            <p>{house.numberOfRooms} RoK</p>
+            <p>{house.size} kvm</p>
           </div>
-</div>
-    </div>
+          <div className="description">
+            <p dangerouslySetInnerHTML={{__html: house.description}}/>
+          </div>
+        </div>
+
+        <div className="descriptionContainer2">
+          <div className="summarybox">
+            <Summary city={house.city} floor={house.floor} moveInDate={house.firstDate} applyBy={'12/12-2023'} landlord={house.landlord[0]} rating={house.recommendation} />
+            <div className="btncont">
+            <Button to={`/application/${id}`}>
+            Till ansökan
+            </Button>
+            </div>
+          </div>
+          <div className="summaryicons">
+            {house.extras.map((extra, index) => (
+              <div key={index} className='extras'>
+                <Icon showText={true} include={extra} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </>
   );
 };

@@ -5,6 +5,7 @@ import { HouseSelection } from '../types/application';
 import '../css/pages/UserApplication.css';
 import StatusBadge from '../components/StatusBadge'
 import Loader from "../components/Loader";
+import Button from "../components/Button";
 
 const UserApplication = () => {
   const { username } = useParams<{ username: string }>();
@@ -44,21 +45,20 @@ const UserApplication = () => {
 
       {userApplications && userApplications.length > 0 ? (
         <div className="user-application-list">
-          {userApplications.map((userhouse, index) => (
-            <div className="user-application-info" key={index}>
-              <div className="user-application-image-container">
-                <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
-              </div>
+        {userApplications.map((userhouse, index) => (
+          <div className="user-application-info" key={index}>
+          <div className="user-application-image-container">
+          <img src={userhouse.img} alt={userhouse.title} className="user-application-image" />
+          </div>
+          <div className="wrapper">
               <div className="user-application-text-container">
                 <h3 className="user-application-title">{userhouse.title}</h3>
-                <p className="user-application-text">Adress: {userhouse.address}</p>
-                <p className="user-application-text">Hyresvärd: {userhouse.landlord}</p>
-                <p className="user-application-text">Storlek: {userhouse.size}</p>
-                <p className="user-application-text">Rum: {userhouse.room}</p>
-                <p className="user-application-text">Status: <StatusBadge status={userhouse.status} /></p>
+                <p className="user-application-text">{userhouse.address}</p>
               </div>
               <div className="user-application-button-container">
+                <StatusBadge status={userhouse.status} />
                 <button className="user-application-button" onClick={() => handleNavigation(userhouse)}>Gå Vidare</button>
+              </div>
               </div>
             </div>
           ))}
