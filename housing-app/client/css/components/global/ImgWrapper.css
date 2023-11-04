@@ -1,0 +1,12 @@
+.img-wrapper {
+    width: 100%;
+    height: 250px;
+    flex-shrink: 0;
+    object-fit: cover; 
+  }
+  @media (max-width: 800px) {
+    .img-wrapper {
+        height: 200px; 
+        width: 100%;
+    }
+}

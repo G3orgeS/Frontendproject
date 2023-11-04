@@ -1,9 +1,9 @@
-import ImgWrapper from '../components/ImgWrapper'
-import RegisterForm from '../components/RegisterForm'
+import ImgWrapper from '../components/global/ImgWrapper'
+import RegisterForm from '../components/form/RegisterForm'
 
 const Register = () => {
 
-  const img = '../resource/registerimage.jpg'
+  const img = '../resource/register.jpg'
 
   return (
     <>

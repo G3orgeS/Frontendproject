@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../css/components/RegisterForm.css';
-import { registerUser } from '../data/userApi';
+import '../../css/components/form/RegisterForm.css';
+import { registerUser } from '../../data/userApi';
+import Button from '../global/Button';
 
-const studystayimg = '../resource/studystay-logo 2.jpg';
+const studystayimg = '../resource/studystay-logo2.jpg';
 
 const RegisterForm = () => {
   const [error, setError] = useState<string | null>(null);
@@ -149,9 +150,7 @@ const RegisterForm = () => {
       </div>
       {error && <p className="error">{error}</p>}
       {successMessage && <p className="success">{successMessage}</p>} 
-      <button className="showbtn" onClick={handleSubmit}>
-        SUBMIT
-      </button>
+      <Button onClick={handleSubmit} >registera</Button>
       <div className="loginLink rightwrap">
         <h2>Står du redan i vår kö?</h2>
         <p>

@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import ImgWrapper from '../components/ImgWrapper';
+import ImgWrapper from '../components/global/ImgWrapper';
 import Filterbar from '../components/Filterbar';
 import Card from '../components/Card';
-import Loader from '../components/Loader';
+import Loader from '../components/global/Loader';
 import '../css/pages/Home.css';
 import { House } from '../types/house';
 import { getAllHouses } from '../data/houseApi';
-import Button from '../components/Button';
+import Button from '../components/global/Button';
 
 const homepage = '../resource/Homepage.jpeg';
 
@@ -63,12 +63,22 @@ const handleFilter = (filteredHouses: House[]) => {
 
 return (
 <>
+<div className="img-wrapper-container">
   <ImgWrapper src={homepage} alt={'bild'} />
+  <div className="overlay">
+          <p>Hitta din nya studentbostad</p>
+          <p>Ansök idag</p>
+        </div>
+  </div>
     <Filterbar onFilter={handleFilter} houses={houses} />
       {loading && <Loader />} {!loading && (
+        <div className="cardwrapper">
         <div className="card-display">
           <Card houses={filteredHouses} currentIndexes={currentIndexes} handleIndicatorClick={handleIndicatorClick} limit={displayedCardCount}/>
+          <div className="btnhomewrapper">
             <Button onClick={handleShowMoreClick}>Visa fler</Button>
+            </div>
+        </div>
         </div>
       )}
 </>

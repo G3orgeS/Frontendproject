@@ -1,8 +1,8 @@
-import '../css/components/Navbar.css';
+import '../../css/components/global/Navbar.css';
 import { Link } from 'react-router-dom'; 
 import React, { useState, useEffect, useRef } from 'react';
-import Icon from './icons/Icon';
-import logo from '../resource/studystay-logo2.jpg'
+import Icon from '../icons/Icon';
+import logo from '../../resource/studystay-logo2.jpg'
 
 const Navbar: React.FC = () => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
   }, []);
 
   const token = localStorage.getItem('token');
-  // const profileLink = token ? '/profil' : '/login';
+  const profileLink = token ? '/profil' : '/login';
 
   const handleLogout = () => {
     localStorage.removeItem('token');
@@ -54,13 +54,16 @@ const Navbar: React.FC = () => {
         <button className="hamburger-button" onClick={toggleDropdown}>
         <Icon className='HB' showText={false} include="HB" />
         </button>
-        {/* <div className="profile-button"> */}
-          <Link id='navbaricon' to={token ? '/profil' : '/login'}>
+        <div className="profile-icon">
+          <Link  id='navbaricon' to={token ? '/profil' : '/login'}>
           <Icon showText={false} include="Profil" />
           </Link>
-        {/* </div> */}
+        </div>
         {isDropdownOpen && (
           <div className="dropdown-menu" ref={dropdownRef}>
+    <span className="close-icon" onClick={toggleDropdown}>
+    &times;
+    </span>
             <Link to={token ? '/profil' : '/login'} className="dropdownLink">
               Min profil
             </Link>

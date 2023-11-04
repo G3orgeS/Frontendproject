@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import '../css/components/FilterModal.css';
 import { House } from '../types/house';
+import Icon from './icons/Icon';
+import Button from './global/Button';
 
 interface FilterModalProps {
     isOpen: boolean;
@@ -16,6 +18,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, onFilter, ho
     const [selectedRooms, setSelectedRooms] = useState<string[]>([]);
     const [searchText, setSearchText] = useState<string>('');
     const [selectedAmenities, setSelectedAmenities] = useState<string[]>([]);
+    const [filterResultsCount, setFilterResultsCount] = useState(0);
 
     const handleOutsideClick = (e: MouseEvent) => {
         const modal = document.querySelector('.modal-content');
@@ -101,7 +104,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, onFilter, ho
             searchText: searchText,
             amenities: selectedAmenities
           };
-        //   console.log('Alla sökkriterier:', filters); 
+        // console.log('Alla sökkriterier:', filters); 
         // console.log(houses)
         const filteredHouses = houses.filter((house) => {
             if (filters.type && filters.type !== house.type) {
@@ -137,7 +140,7 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, onFilter, ho
             return true;
         });
         console.log('Filtrerade hus:', filteredHouses);
-
+        setFilterResultsCount(filteredHouses.length); 
         onFilter(filteredHouses, JSON.stringify(filters));
     } catch (error) {
       console.error('Något gick fel vid filtrering:', error);
@@ -229,7 +232,7 @@ return (
                     onChange={(e) => setSearchText(e.target.value)}
                 />
             </div>
-            <button>Search</button>
+            <button><Icon include={"Search"} showText={false} /></button>
         </div>
     </div>
     <div className="filter-section">
@@ -348,9 +351,12 @@ return (
             <button onClick={clearFilters} className="black-underline">
                 Rensa filter
             </button>
-            <button className="showbtn" onClick={applyFilters}>
-                Visa boende
-            </button>
+            <div>
+            Antal träffar: {filterResultsCount}
+            <br />
+            <br />
+            <Button  onClick={applyFilters}>Visa boende</Button>
+        </div>
         </div>
     </div>
 </div>

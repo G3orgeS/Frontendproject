@@ -4,6 +4,7 @@
     justify-content: space-around;
     height: 5vh;
     width: 50vw;
+    z-index: 10;
 }
 .filterwrapperparent {
     display: flex;

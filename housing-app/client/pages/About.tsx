@@ -1,4 +1,4 @@
-import ImgWrapper from '../components/ImgWrapper'
+import ImgWrapper from '../components/global/ImgWrapper'
 import '../css/pages/about.css'
 const homepage = '../resource/registerimage.jpg'
 

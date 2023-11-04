@@ -4,8 +4,8 @@ import { getApplicationByUser } from "../data/applicationApi";
 import { HouseSelection } from '../types/application';
 import '../css/pages/UserApplication.css';
 import StatusBadge from '../components/StatusBadge'
-import Loader from "../components/Loader";
-import Button from "../components/Button";
+import Loader from "../components/global/Loader";
+import Button from "../components/global/Button";
 
 const UserApplication = () => {
   const { username } = useParams<{ username: string }>();

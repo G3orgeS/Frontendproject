@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import '../css/components/LoginForm.css';
-import { loginUser } from '../data/userApi';
+import '../../css/components/form/LoginForm.css'
+import { loginUser } from '../../data/userApi';
 import { useNavigate } from 'react-router-dom';
 
 const LoginForm: React.FC = () => {
   const [userName, setUserName] = useState('');
   const [passwordHash, setPasswordHash] = useState('');
-  const studystayimg = '../resource/studystay-logo 2.jpg';
+  const studystayimg = '../resource/studystay-logo2.jpg';
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -17,7 +17,6 @@ const LoginForm: React.FC = () => {
 
     if (token) {
       console.log('Inloggning framgångsrik, token sparas i localStorage')
-      // använd React Router för att navigera.
       navigate('/profil');
     }
   };
@@ -53,7 +52,7 @@ const LoginForm: React.FC = () => {
           </div>
         </div>
       </div>
-      <button className="showbtn" onClick={handleLogin}>
+      <button className="registerbtn" onClick={handleLogin}>
         Logga in
       </button>
       <div className="loginLink">

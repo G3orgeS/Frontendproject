@@ -11,7 +11,7 @@ import { LuBox } from 'react-icons/lu'
 import { BsBuildings, BsDoorOpen, BsInstagram, BsLinkedin, BsDropbox, BsFillTreeFill } from 'react-icons/bs'
 import { HiAdjustmentsHorizontal } from 'react-icons/hi2'
 import { ImFacebook2 } from 'react-icons/im'
-import { FaUserCircle, FaChargingStation, FaBowlingBall, FaRecycle, FaBath, FaGasPump, FaBus, FaShower } from 'react-icons/fa'
+import { FaUserCircle, FaChargingStation, FaBowlingBall, FaRecycle, FaBath, FaGasPump, FaBus, FaShower, FaSearch } from 'react-icons/fa'
 
 type IconitemProps = {
   include: string | null,
@@ -193,6 +193,10 @@ switch (include) {
   case "HB":
     icon = <AiOutlineMenu />;
     include = "HB"
+    break;
+  case "Search":
+    icon = <FaSearch />;
+    include = "Search"
     break;
   default:
     break;

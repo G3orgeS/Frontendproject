@@ -1,4 +1,4 @@
-import ImgWrapper from "../components/ImgWrapper"
+import ImgWrapper from "../components/global/ImgWrapper"
 
 const homepage = '../resource/Homepage.jpeg' 
 

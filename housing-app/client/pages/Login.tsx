@@ -1,5 +1,5 @@
-import ImgWrapper from '../components/ImgWrapper';
-import LoginForm from '../components/LoginForm'
+import ImgWrapper from '../components/global/ImgWrapper';
+import LoginForm from '../components/form/LoginForm'
 
 const Login = () => {
   const homepage = '../resource/login.jpg';

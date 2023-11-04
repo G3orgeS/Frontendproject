@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Använd BrowserRouter
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
+import Navbar from '../components/global/Navbar'
+import Footer from '../components/global/Footer'
 import Home from '../pages/Home'
 import HouseDetail from '../pages/HouseDetail'
 import Login from '../pages/Login'
@@ -11,7 +11,6 @@ import UserApplication from '../pages/UserApplication'
 import About from '../pages/About'
 import Contact from '../pages/Contact'
 import Confirmed from '../pages/Confirmed'
-// import Confirm from '../pages/Confirmed'
 import AcceptOffer from '../pages/AcceptOffer'
 import Payment from '../pages/Payment'
 import '../css/index.css'
@@ -35,7 +34,6 @@ const App = () => {
           <Route path='/payment/:username/:houseId'     element={<Payment         />} />
           <Route path='/userapplication/:username'      element={<UserApplication />} />
           <Route path='/acceptoffer/:username/:houseId' element={<AcceptOffer     />} />
-          {/* <Route path='/houselist' element={<HouseList />} /> */}
         </Routes>
         <Footer />
       </Router>

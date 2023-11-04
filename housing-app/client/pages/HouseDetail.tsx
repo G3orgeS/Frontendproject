@@ -6,9 +6,9 @@ import InfoContainer from '../components/InfoContainer';
 import DetailImg from '../components/DetailImg';
 import { useEffect, useState } from 'react';
 import Icon from '../components/icons/Icon';
-import Loader from '../components/Loader';
+import Loader from '../components/global/Loader';
 import Summary from '../components/Summary'
-import Button from '../components/Button';
+import Button from '../components/global/Button';
 
 
 const HouseDetail = () => {

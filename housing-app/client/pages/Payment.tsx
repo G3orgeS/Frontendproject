@@ -3,14 +3,18 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { getApplicationByUser } from "../data/applicationApi";
 import { HouseSelection } from '../types/application';
 import '../css/pages/Payment.css';
-import Loader from "../components/Loader";
+import Loader from "../components/global/Loader";
+import PaymentForm from '../components/form/PaymentForm';
+import '../resource/studystay-logo2.jpg'
 
+const logo = '../resource/studystay-logo2.jpg'
 const Payment = () => {
-  const { username } = useParams<{ username: string }>();
+  const { username, houseId } = useParams<{ username: string; houseId: string }>();
   const [userApplications, setUserApplications] = useState<HouseSelection[] | null>(null);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const logo = '../resource/studystay-logo 2.jpg';
+
+  let userhouse: HouseSelection | null = null;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,47 +22,25 @@ const Payment = () => {
         if (username) {
           const applications = await getApplicationByUser(username);
           setUserApplications(applications);
+
+          if (applications && applications.length > 0) {
+            userhouse = applications[0];
+          }
         }
       } catch (error) {
         console.error("Ett fel uppstod: ", error);
       }
+      setLoading(false);
     };
     fetchData();
-    setLoading(false);
   }, [username]);
 
+  const handlePayment = () => {
+    navigate(`/confirmed/${username}/${houseId}`);
+  };
+
   if (userApplications && userApplications.length > 0) {
-    const userhouse = userApplications[0];
-
-    const handlePayment = () => {
-      navigate(`/confirmed/${username}/${userhouse.id}`);
-    };
-
-    return (
-      <div className="payment-container">
-        <h2>Betalning</h2>
-        {loading && <Loader/>}
-        <div className="payment-text">
-          <p>Registrera ditt kort för att slutföra godkännandet av bostaden.</p>
-          <p>Depositionen kommer att dras omgående och återbetalas när du flyttar ut.</p>
-          <p>Hyran kommer att dras från ditt konto den sista dagen varje månad.</p>
-        </div>
-        <div className="payment-image">
-          {/* Byt ut detta med den faktiska bild-URLen */}
-          <img src={logo} alt="Betalning" />
-        </div>
-        <div className="payment-cost">
-          Kostnad: {userhouse.address} kr/mån
-        </div>
-        <div className="payment-form">
-          <input type="text" placeholder="Namn på bankkortet" />
-          <input type="text" placeholder="Kortnummer" />
-          <input type="text" placeholder="Utgångsdatum" />
-          <input type="text" placeholder="Säkerhetskod" />
-          <button className="payment-button" onClick={handlePayment}>Betala</button>
-        </div>
-      </div>
-    );
+    userhouse = userApplications[0];
   } else {
     return (
       <div>
@@ -66,6 +48,25 @@ const Payment = () => {
       </div>
     );
   }
+
+  return (
+    <div className="payment-container">
+      <h2>Betalning</h2>
+      {loading && <Loader />}
+      <div className="payment-text">
+        <p>Registrera ditt kort för att slutföra godkännandet av bostaden.</p>
+        <p>Depositionen kommer att dras omgående och återbetalas när du flyttar ut.</p>
+        <p>Hyran kommer att dras från ditt konto den sista dagen varje månad.</p>
+      </div>
+      <div className="payment-image">
+        <img src={logo} alt="Betalning" />
+      </div>
+      <div className="payment-cost">
+        Kostnad: {userhouse?.cost} kr/mån
+      </div>
+      <PaymentForm handlePayment={handlePayment} />
+    </div>
+  );
 };
 
 export default Payment;

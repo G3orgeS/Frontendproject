@@ -1,5 +1,5 @@
 import React from 'react'
-import Rating from '../components/Rating'
+import Rating from './icons/Rating'
 import '../css/components/summary.css'
 
 interface SummaryProps {

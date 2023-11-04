@@ -1,5 +1,6 @@
 export interface HouseSelection {
     id: string;
+    zipcode: string;
     title: string;
     address: string;
     img: string;
@@ -7,6 +8,7 @@ export interface HouseSelection {
     size: string;
     room: string;
     cost: number; 
+    city: string;
     status: string;
   }
   

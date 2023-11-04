@@ -1,12 +1,12 @@
-import '../css/components/Footer.css'
-import Icon from './icons/Icon'
+import '../../css/components/global/Footer.css'
+import Icon from '../icons/Icon'
 
 const Footer = () => {
     return (
         <>
             <div className="footerwrapper">
                 <div>
-                    <h1>Stöd</h1>
+                    <h2>Stöd</h2>
                     <p>Hjälpcenter</p>
                     <p>StudyStayCover</p>
                     <p>Antidiskriminering</p>

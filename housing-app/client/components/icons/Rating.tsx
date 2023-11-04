@@ -1,9 +1,9 @@
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
-import '../css/components/Rating.css';
+import '../../css/components/icons/Rating.css';
 
 interface RatingProps {
   averageRating: number;
-  showText: boolean; // Lägg till showText-egenskapen
+  showText: boolean;
 }
 
 const Rating: React.FC<RatingProps> = ({ averageRating, showText }) => {

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import '../css/pages/AcceptOffer.css';
 import { House } from '../types/house';
 import { getHouseById } from "../data/houseApi";
-import Loader from "../components/Loader";
+import Loader from "../components/global/Loader";
 import TermsAndConditions from "../components/TermsAndConditions";
 
 const AcceptOffer = () => {
@@ -81,7 +81,7 @@ const AcceptOffer = () => {
   }
 
   function handlePayment() {
-    navigate(`/payment/${username}/${house?._id}`);
+    navigate(`/payment/${username}/${houseId}`);
   }
 }
 
