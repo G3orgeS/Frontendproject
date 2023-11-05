@@ -32,7 +32,8 @@ const AcceptOffer = () => {
     return (
       <div className="applycontainer">
         {loading && <Loader/>}
-        <h2 className="house-title">{house.titel}</h2>
+        <h2 className="house-title">Grattis! {username}</h2>
+        <p>Din ansökan har blivit godkänd</p>
         <div className="fullerhouse">
           <div className="fullhousewrapperapply">
             <div className="housecardapplyinfo">
@@ -57,12 +58,12 @@ const AcceptOffer = () => {
             </div>
             <div className='applicationbodywrapper'>
             <TermsAndConditions />
-            </div>
             <div className="checkapplyer">
               <div className="checkboxwrapperapply">
                 <button className='applybtnno' onClick={handleDecline}>Tacka nej</button>
                 <button className='applybtn' onClick={handlePayment}>Till betalning</button>
               </div>
+            </div>
             </div>
           </div>
         </div>

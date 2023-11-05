@@ -54,6 +54,8 @@ const UserApplication = () => {
               <div className="user-application-text-container">
                 <h3 className="user-application-title">{userhouse.title}</h3>
                 <p className="user-application-text">{userhouse.address}</p>
+                <p className="user-application-zipcode">{userhouse.zipcode}</p>
+                <p className="user-application-city">{userhouse.city}</p>
               </div>
               <div className="user-application-button-container">
                 <StatusBadge status={userhouse.status} />

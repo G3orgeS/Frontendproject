@@ -1,18 +1,18 @@
-.summarybox {
-    height: 300px;
+.applysummarybox {
+    height: 200px;
     display: flex;
     background-color: #E9E9E9;
     flex-direction: column;
-    width: 260px;
+    width: 250px;
     align-items: center;
     padding-bottom: 20px;
 }
-.summarybox p {
+.applysummarybox p {
     font-weight: 500;
     margin: 3px;
     font-size: 12px;
 }
-.summaryboxdivwrapper {
+.applysummaryboxdivwrapper {
     display: flex;
     justify-content: space-between;
     width: 210px;

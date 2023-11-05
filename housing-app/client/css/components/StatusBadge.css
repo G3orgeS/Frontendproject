@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'Kumbh sans';
+  src: url('./fonts/KumbhSans-Regular.ttf') format('truetype');
+  /* Lägg till olika format (e.g., woff, woff2, otf) för att stödja olika webbläsare */
+}
+
 .status-badge-container {
     display: flex;
     justify-content: space-evenly;
@@ -9,8 +15,11 @@
     width: 20px; 
     height: 20px; 
     background-color: green; 
-    border: 2px solid green;
+    /* border: 2px solid green; */
     border-radius: 50%;
+  }
+  .status-badge-circle span {
+    font-family: 'Kumbh sans', sans-serif;
   }
 
   .badge-untreated {

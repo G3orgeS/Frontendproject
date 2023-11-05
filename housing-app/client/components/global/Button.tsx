@@ -32,6 +32,7 @@ const CustomButton = styled(Link)<{ to?: string }>`
 interface ButtonProps {
   to?: string;
   onClick?: () => void;
+  disabled?: boolean; 
   children: React.ReactNode;
 }
 

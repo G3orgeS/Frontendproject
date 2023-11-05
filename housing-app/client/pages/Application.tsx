@@ -8,8 +8,8 @@ import { createApplication } from '../data/applicationApi';
 import { Users } from '../types/user';
 import Loader from '../components/global/Loader';
 import Button from '../components/global/Button';
-import TermsAndConditions from '../components/TermsAndConditions'
-import Summary from '../components/Summary';
+import TermsAndConditions from '../components/TermsAndConditions';
+import ApplySummary from '../components/ApplySummary';
 import '../css/pages/Application.css';
 
 function getRandomStatus() {
@@ -26,6 +26,8 @@ const ApplicationPage: React.FC = () => {
   const [userInfo, setUserInfo] = useState<Users | null>(null);
   const [loading, setLoading] = useState(true);
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+  const [shouldShake, setShouldShake] = useState(false);
 
   const navigate = useNavigate();
 
@@ -55,8 +57,7 @@ const ApplicationPage: React.FC = () => {
           setHouse(houseData);
           setLoading(false);
         })
-        .catch(() => {
-        });
+        .catch(() => { });
     }
   }, [id]);
 
@@ -65,8 +66,13 @@ const ApplicationPage: React.FC = () => {
   };
 
   const submitApplication = () => {
-    if (!userInfo || !house) {
+    if (!userInfo || !house || !allConditionsAccepted) {
       console.error('Användarnamn eller hus saknas.');
+      setIsCheckboxChecked(false);
+      setShouldShake(true); 
+      setTimeout(() => {
+        setShouldShake(false);
+      }, 1000); 
       return;
     }
 
@@ -79,7 +85,9 @@ const ApplicationPage: React.FC = () => {
     }
 
     if (userInfo && userInfo.applications) {
-      const isAlreadyApplied = userInfo.applications.some((application) => application.houseselection[0].id === id);
+      const isAlreadyApplied = userInfo.applications.some(
+        (application) => application.houseselection[0].id === id
+      );
 
       if (isAlreadyApplied) {
         console.error('En ansökan för detta boende finns redan.');
@@ -88,10 +96,6 @@ const ApplicationPage: React.FC = () => {
     }
 
     let status = getRandomStatus();
-
-    // if (userInfo?.userName === 'gman' && (!userInfo.applications || userInfo.applications.length === 0)) {
-    //   status = 'approved';
-    // }
 
     const applicationData: Application = {
       _id: '',
@@ -133,39 +137,49 @@ const ApplicationPage: React.FC = () => {
   const houseFirstDate = house ? house.firstDate : new Date();
   const houseLandlord = house ? house.landlord[0] : '';
 
-  const formattedHouseFirstDate = houseFirstDate instanceof Date ? houseFirstDate.toLocaleDateString() : '';
+  const formattedHouseFirstDate =
+    houseFirstDate instanceof Date ? houseFirstDate.toLocaleDateString() : '';
 
   return (
     <>
-      <div className="applycontainer">
-        <h2 className="house-title">{houseTitle}</h2>
-        <div className="fullerhouse">
-          {loading && <Loader />}
-          <div className="fullhousewrapperapply">
-            {house && (
-              <div className='housecardapplyinfo'>
-                <div className="house-image">
-                  <img src={houseImage} alt="House Image" />
-                </div>
-                <div className="summarybox">
-                  <Summary city={house.city} floor={house.floor} moveInDate={house.firstDate} applyBy={'12/12-2023'} landlord={house.landlord[0]} rating={house.recommendation} />
-                </div>
-              </div>
-            )}
-            <div className='applicationbodywrapper'>
-              <TermsAndConditions />
-              <div className="checkapplyer">
-              {isUserLoggedIn && ( // Visa endast om användaren är inloggad
-                <div className="checkboxwrapperapply">
-                  <input type="checkbox" checked={allConditionsAccepted} onChange={handleMainCheckboxChange}/>
-                  <label>Jag godkänner hyresvärdens villkor</label>
+      <div className="applycontainerwrapper">
+        <div className="applycontainer">
+          <h2 className="house-title">Ansök till {house?.adress}</h2>
+          <div className="fullerhouse">
+            {loading && <Loader />}
+            <div className="fullhousewrapperapply">
+              {house && (
+                <div className="housecardapplyinfo">
+                  <div className="house-image">
+                    <img src={houseImage} alt="House Image" />
+                  </div>
+                  <ApplySummary city={house.city} floor={house.floor} firstDate={new Date(house.firstDate).toLocaleDateString()} landlord={house.landlord[0]} rating={house.recommendation} />
                 </div>
               )}
-              {isUserLoggedIn ? ( // Visa endast om användaren är inloggad
-                <Button onClick={submitApplication}>Ansökan</Button>
-              ) : (
-                <p className="red-text">*Du måste vara inloggad för att ansöka.</p>
-              )}
+              <div className="applicationbodywrapper">
+                <TermsAndConditions />
+                <p>Vänligen läs igenom alla villkor noga. Om du har några frågor eller funderingar, kontakta hyresföreningen innan du tackar ja.</p>
+                <div className="checkapplyer">
+                  {isUserLoggedIn && (
+                    <div className={`checkboxwrapperapply ${shouldShake ? 'shake' : ''}`}>
+                      <input
+                        type="checkbox"
+                        checked={allConditionsAccepted}
+                        onChange={handleMainCheckboxChange}
+                      />
+                      <label>Jag godkänner hyresvärdens villkor</label>
+                    </div>
+                  )}
+                  {isUserLoggedIn ? (
+                    <Button onClick={submitApplication} disabled={!isCheckboxChecked}>
+                      Ansökan
+                    </Button>
+                  ) : (
+                    <p className="red-text">
+                      *Du måste vara inloggad för att ansöka.
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>

@@ -1,18 +1,29 @@
+.house-titel h2{
+    width: 100vw;
+}
+.applycontainerwrapper {
+    display: flex;
+    justify-content: center;
+}
 .applycontainer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+}
+.applicationbodywrapper {
+    margin: 0;
+    height: 600px;
 }
 .housecardapplyinfo {
-    padding-left: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 600px;
-    width: 50%;
+    gap: 10px;
+    /* height: 600px; */
 }
 .house-image img {
-    height: 300px;
-    width: 300px;
+    object-fit: cover;
+    height: 320px;
+    width: 250px;
     border-radius: 5px;
 }
 .overview {
@@ -40,11 +51,12 @@
     align-items: flex-start;
     display: flex;
     gap: 50px;
-    width: 70vw;
+    width: 84vw;
 }
-.textwrap2info {
-    padding-top: 15px;
-}
+.fullhousewrapperapply > :last-child {
+    margin-top: -18px; 
+  }
+
 .checkapplyer {
     padding-top: 20px;
     display: flex;
@@ -60,3 +72,18 @@
   .red-text {
     color: red;
   }
+  .checkboxwrapperapply input[type="checkbox"] {
+    border-radius: 50% !important;
+    cursor: pointer;
+  }
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(5px); }
+  }
+  .shake {
+    animation: shake 0.5s;
+  }
+  
