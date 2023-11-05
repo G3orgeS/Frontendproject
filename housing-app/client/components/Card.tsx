@@ -17,33 +17,22 @@ const Card = ({ limit, currentIndexes, handleIndicatorClick, houses }: CardProps
           <div className="card">
             <div className="imgContainer">
               {house.img && house.img.length > 0 ? (
-                <img
-                  className='cardimg'
-                  src={house.img[currentIndexes[index]]}
-                  alt={house.titel}
-                />
+                <img className='cardimg' src={house.img[currentIndexes[index]]} alt={house.titel} />
               ) : (
                 <div className="no-image">No Image</div>
               )}
-              <div className="carousel-indicator"
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                }}>
+              <div className="carousel-indicator" 
+              onClick={(e) => { 
+                e.preventDefault() 
+                e.stopPropagation() }}>
                 {house.img && house.img.length > 0 && house.img.map((_: any, imgIndex: number) => (
-                  <span
-                    key={imgIndex}
-                    className={`indicator-dot ${currentIndexes[index] === imgIndex ? 'active' : ''}`}
-                    onClick={(e) => {
-                      handleIndicatorClick(index, imgIndex)
-                    }}
-                  ></span>
+                  <span key={imgIndex} className={`indicator-dot ${currentIndexes[index] === imgIndex ? 'active' : ''}`} onClick={(e) => { handleIndicatorClick(index, imgIndex) }}></span>
                 ))}
               </div>
             </div>
             <div className="informationwrapper">
               <div className="info">
-                <div className="adress">{house.adress}</div>
+                <div id='cardadress' className="adress">{house.adress}</div>
                 <div className="cost">{house.cost}kr/mån</div>
                 <div className="room">{house.numberOfRooms} RoK</div>
               </div>

@@ -4,9 +4,10 @@ import '../../css/components/icons/Rating.css';
 interface RatingProps {
   averageRating: number;
   showText: boolean;
+  className?: string; 
 }
 
-const Rating: React.FC<RatingProps> = ({ averageRating, showText }) => {
+const Rating: React.FC<RatingProps> = ({ averageRating, showText, className }) => {
   let stars;
 
   switch (averageRating) {

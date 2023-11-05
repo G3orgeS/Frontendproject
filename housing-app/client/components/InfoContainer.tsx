@@ -31,7 +31,7 @@ const InfoContainer: React.FC<InfoContainerProps> = ({ house, formattedDate }) =
   return (
     <div className="infoContainer">
       <div className="adress">
-        <Icon include="Map" showText={false} />
+        <Icon showText={false} include="Map" />
         <p>{house.adress}</p>
       </div>
       <div className="infoborder"/>
@@ -42,12 +42,12 @@ const InfoContainer: React.FC<InfoContainerProps> = ({ house, formattedDate }) =
       <div className="infoborder"/>
       <div className="room">
         <Icon showText={false} include="bed" />
-        <p>{house.numberOfRooms}</p>
+        <p>{house.numberOfRooms} rum</p>
       </div>
       <div className="infoborder"/>
       <div className="space">
         <Icon showText={false} include="box" />
-        <p>{house.size} kvm</p>
+        <p>{house.size}m2</p>
       </div>
       <div className="infoborder"/>
       <div className="date">

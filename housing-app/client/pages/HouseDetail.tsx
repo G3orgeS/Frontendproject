@@ -8,8 +8,7 @@ import { useEffect, useState } from 'react';
 import Icon from '../components/icons/Icon';
 import Loader from '../components/global/Loader';
 import Summary from '../components/Summary'
-import Button from '../components/global/Button';
-
+const logo = '../resource/loga.jpg'
 
 const HouseDetail = () => {
   const { id } = useParams<{ id?: string }>();
@@ -51,27 +50,37 @@ const HouseDetail = () => {
         </div>
       </div>
       <div className='oversightwrapper'>
-
-
-        <div className="descriptionContainer">
-          <h1>{house.titel}</h1>
-          <div className="infowrapper">
-            <p>{house.cost} kr</p>
-            <p>{house.numberOfRooms} RoK</p>
-            <p>{house.size} kvm</p>
+        <div className="housedetailinfowrapper">
+          <div className="titeldetailwrapper">
+            <h1>{house.adress}</h1>
           </div>
-          <div className="description">
-            <p dangerouslySetInnerHTML={{__html: house.description}}/>
+          <div className="descriptionContainer">
+            <div className="infowrapper">
+              <div className="detailcost">
+                <p>{house.cost} kr</p>
+              </div>
+              <div className="infoborderdetail">
+                <div className="detailroom">
+                  <p>{house.numberOfRooms} RoK</p>
+                </div>
+              </div>
+              <div className="infoborderdetail">
+                <div className="detailsize">
+                  <p>{house.size} kvm</p>
+                </div>
+              </div>
+            </div>
+            <div className="description">
+              <p dangerouslySetInnerHTML={{ __html: house.description }} />
+            </div>
           </div>
         </div>
-
         <div className="descriptionContainer2">
+          <img src={logo} alt="studystaylogo" />
           <div className="summarybox">
-            <Summary city={house.city} floor={house.floor} moveInDate={house.firstDate} applyBy={'12/12-2023'} landlord={house.landlord[0]} rating={house.recommendation} />
-            <div className="btncont">
-            <Button to={`/application/${id}`}>
-            Till ansökan
-            </Button>
+            <Summary city={house.city} floor={house.floor} firstDate={new Date(house.firstDate).toLocaleDateString()} landlord={house.landlord[0]} rating={house.recommendation} />
+            <div className='detailsummarybtn'>
+              <Link id='detailsummarybtnwhite' to={`/application/${id}`}>Till ansökan</Link>
             </div>
           </div>
           <div className="summaryicons">

@@ -23,6 +23,10 @@ const Icon = ({ include, showText = false }: IconitemProps) => {
   let icon = null;
   let text = include;
 
+  const textStyle = {
+    fontSize: showText ? '14px' : 'inherit', 
+  };
+
 switch (include) {
   case 'charging': 
     icon = <FaChargingStation/>
@@ -205,7 +209,7 @@ switch (include) {
 return (
     <div className='includes-item'>
       <p className='icon'>{icon}</p>
-      {showText && <p>{text}</p>}
+      {showText && <p style={textStyle}>{text}</p>}
     </div>
 );
 }

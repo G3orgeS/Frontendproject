@@ -1,5 +1,23 @@
+.summarybox {
+    height: 280px;
+    display: flex;
+    background-color: #E9E9E9;
+    flex-direction: column;
+    width: 280px;
+    align-items: center;
+    padding-bottom: 25px;
+}
+.summarybox p {
+    font-weight: 500;
+    margin: 3px;
+    font-size: 12px;
+}
 .summaryboxdivwrapper {
     display: flex;
     justify-content: space-between;
-    width: 200px;
+    width: 240px;
+}
+h2 {align-self: flex-start;}
+.rating-star {
+    font-size: 16px !important;
 }

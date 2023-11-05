@@ -1,6 +1,5 @@
 .filterwrapper {
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
     height: 5vh;
     width: 50vw;
@@ -9,24 +8,23 @@
 .filterwrapperparent {
     display: flex;
     justify-content: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    color: black;
+    padding: 50px 0;
 }
 .filtericon {
+    font-size: 18px;
     align-items: center;
     display: flex;
-    text-decoration: none;
-    color: black;
     flex-direction: column;
 }
-
+.filtericon p {
+    margin: 2px;
+}
 .filtericon:hover {
     cursor: pointer;
 }
 .filtericon.active {
-    color: red; 
-  }
-  .includes-item p {
+    color: #A34711; 
+}
+.includes-item p {
     margin: 0;
-  }
+}
