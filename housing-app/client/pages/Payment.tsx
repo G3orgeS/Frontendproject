@@ -7,7 +7,8 @@ import Loader from "../components/global/Loader";
 import PaymentForm from '../components/form/PaymentForm';
 import '../resource/studystay-logo2.jpg'
 
-const logo = '../resource/studystay-logo2.jpg'
+import logo from '../resource/studystay-logo2.jpg';
+
 const Payment = () => {
   const { username, houseId } = useParams<{ username: string; houseId: string }>();
   const [userApplications, setUserApplications] = useState<HouseSelection[] | null>(null);
@@ -49,6 +50,8 @@ const Payment = () => {
     );
   }
 
+  const totalcost = userhouse?.cost + 1000;
+
   return (
     <div className="payment-container">
       <h2>Betalning</h2>
@@ -59,10 +62,14 @@ const Payment = () => {
         <p>Hyran kommer att dras från ditt konto den sista dagen varje månad.</p>
       </div>
       <div className="payment-image">
-        <img src={logo} alt="Betalning" />
+      <img src={logo} alt="Betalning" />
       </div>
       <div className="payment-cost">
-        Kostnad: {userhouse?.cost} kr/mån
+        <p>Att betala</p>
+        <br />
+        <p><p>Hyra:</p><p>{userhouse?.cost}kr</p></p>
+        <p><p>Deposition:</p><p>1000kr</p></p>
+        <p><p>Totalt:</p><p>{totalcost}kr</p></p>
       </div>
       <PaymentForm handlePayment={handlePayment} />
     </div>

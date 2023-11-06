@@ -5,8 +5,9 @@ import { getHouseById } from '../data/houseApi';
 import '../css/pages/Confirmed.css';
 import { House } from '../types/house';
 import Loader from '../components/global/Loader';
-import '../resource/register.jpg';
 import Button from '../components/global/Button';
+
+import confimg from '../resource/confirm.jpg';
 
 const Confirmed = () => {
   const { houseId } = useParams<{ username: string, houseId: string }>();
@@ -29,7 +30,10 @@ const Confirmed = () => {
   }, [houseId]);
 
   return (
+    <>
+      <ImgWrapper src={confimg} alt={''} />
     <div className="confirmed-container">
+      <div className="confwrapper">
       <div className="confirmed-text">
         <h3>Grattis! Här är ditt nya boende.</h3>
         <p>
@@ -46,7 +50,7 @@ const Confirmed = () => {
         </div>
         {loading && <Loader />}
         {house && (
-          <div>
+          <div className='confirmotherinfo'>
             <h2>{house.titel}</h2>
             <div className="address-landlord">
               <p>{house.adress}</p>
@@ -61,8 +65,9 @@ const Confirmed = () => {
           </div>
         )}
       </div>
-      
+      </div>
     </div>
+    </>
   );
 };
 

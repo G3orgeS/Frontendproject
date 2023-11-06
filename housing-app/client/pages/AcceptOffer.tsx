@@ -30,40 +30,36 @@ const AcceptOffer = () => {
 
   if (house) { 
     return (
-      <div className="applycontainer">
+      <div className="AOapplycontainer">
         {loading && <Loader/>}
-        <h2 className="house-title">Grattis! {username}</h2>
+        <h2 className="house-title">Grattis {username}!</h2>
         <p>Din ansökan har blivit godkänd</p>
-        <div className="fullerhouse">
-          <div className="fullhousewrapperapply">
-            <div className="housecardapplyinfo">
+        <div className="acceptofferfullerhouse">
+          <div className="aofullhousewrapperapply">
+            <div className="aohousecardapplyinfo">
               <div className="house-image">
                 <img src={house.img[0]} alt={house.titel} />
               </div>
-              <div className="overview">
-                <h3>Översikt</h3>
-                <div className="papplywrap">
-                  <p>hyra:</p>
-                  <p>{house.size}kr/mån</p>
+              <div className="acceptofferoverview">
+              <div className="papplywrap">
+                  <p>{house.titel}</p>
                 </div>
                 <div className="papplywrap">
-                  <p>Stad:</p>
-                  <p>{house.adress}</p>
+                  <p>{house.adress}, {house.zipcode}</p>
                 </div>
                 <div className="papplywrap">
-                  <p>Våning: </p>
-                  <p>{house.landlord}</p>
+                  <p>Hyresvärd: {house.landlord[0]}</p>
                 </div>
               </div>
             </div>
-            <div className='applicationbodywrapper'>
+            <div className='aoapplicationbodywrapper'>
             <TermsAndConditions />
-            <div className="checkapplyer">
-              <div className="checkboxwrapperapply">
+            <div className="aobtnwrap">
+              <div className="aocheckboxwrapperapply">
                 <button className='applybtnno' onClick={handleDecline}>Tacka nej</button>
                 <button className='applybtn' onClick={handlePayment}>Till betalning</button>
               </div>
-            </div>
+              </div>
             </div>
           </div>
         </div>

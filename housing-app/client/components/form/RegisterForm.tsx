@@ -148,7 +148,7 @@ const RegisterForm = () => {
           </div>
         </div>
       </div>
-      {error && <p className="error">{error}</p>}
+      {error && <p className="error-message">*{error}</p>}
       {successMessage && <p className="success">{successMessage}</p>} 
       <Button onClick={handleSubmit} >registera</Button>
       <div className="loginLink rightwrap">

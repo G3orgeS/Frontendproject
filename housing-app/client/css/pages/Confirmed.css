@@ -1,16 +1,21 @@
 .confirmed-container {
+  padding-top: 40px;
   display: flex;
-  flex-direction: row-reverse;
   margin: 0 auto;
-  width: 500px;
+  width: 100vw;
+  justify-content: center;
+  height: 70vh;
 }
-
+.confwrapper{
+  flex-direction: row-reverse;
+  display: flex;
+}
 .confirmed-img {
   object-fit: cover;
   flex: 1;
   height: 200px;
-  width: 300px;
-  margin: 20px;
+  width: 330px;
+  margin: 10px 0px 10px 0;
   border-radius: 5px; 
 }
 
@@ -30,8 +35,9 @@
 }
 
 .confirmed-text {
-  flex: 1;
-  margin-top: 20px;
+  /* border: 1px solid black; */
+  width: 400px;
+  /* margin-top: 20px; */
 }
 
 .confirmed-text h3 {
@@ -57,5 +63,12 @@
 .other-info {
   justify-content: space-evenly;
   display: flex;
-  width: 325px;
+  width: 300px;
+}
+.confirmotherinfo {
+  /* border: 1px solid black; */
+  width: 350px;
+}
+.confirmotherinfo h2{
+  margin: 0;
 }

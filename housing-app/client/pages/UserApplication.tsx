@@ -34,6 +34,7 @@ const UserApplication = () => {
 
   return (
     <div className="user-application-container">
+      <h2>Mina ansökningar</h2>
       <div className="user-application-welcome">
         <p>
           Välkommen till översikten av dina lägenhetsansökningar. Här kan du enkelt hålla koll på alla de bostäder du har visat intresse för.
