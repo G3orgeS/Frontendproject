@@ -28,3 +28,8 @@
 .includes-item p {
     margin: 0;
 }
+@media (max-width: 800px) {
+    .filterwrapper {
+      width: 100%; 
+    }
+  }

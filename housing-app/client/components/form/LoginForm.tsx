@@ -43,14 +43,14 @@ const LoginForm: React.FC = () => {
         <div className="input">
           <input
             type="email"
-            placeholder="Username"
+            placeholder="JohnDoe"
             value={userName}
             onChange={(e) => setUserName(e.target.value)}
           />
           <div className="pass">
             <input
               type="password"
-              placeholder="Lösenord"
+              placeholder="********"
               value={passwordHash}
               onChange={(e) => setPasswordHash(e.target.value)}
             />

@@ -66,12 +66,10 @@ const RegisterForm = () => {
   return (
     <div className="regformwrapper">
       <div className="infosection1 rightwrap">
-        <h1>Bostadskö för våra hyresrätter</h1>
+        <h1>Gå med i vår bostadskö</h1>
         <span>
-          Välkommen till StudyStays bostadskö för lediga studentbostäder. Vår kö är kostnadsfri och du kan ställa dig i kön när du har fyllt 16 år och söka en bostad när du fyllt 18 år.
+        Välkommen till StudyStays bostadskö för lediga studentbostäder. Vår kö är kostnadsfri och du kan ställa dig i kön när du har fyllt 16 år och söka en bostad när du fyllt 18 år. Allt behöver göra är att registrera dig nedan.
         </span>
-        <br />
-        <h2>Registrera dig kostnadsfritt</h2>
       </div>
       <img src={studystayimg} alt="studystay logo" />
       <div className="reg-inputsection">
@@ -152,7 +150,7 @@ const RegisterForm = () => {
       {successMessage && <p className="success">{successMessage}</p>} 
       <Button onClick={handleSubmit} >registera</Button>
       <div className="loginLink rightwrap">
-        <h2>Står du redan i vår kö?</h2>
+        <h2>Har du redan ett konto?</h2>
         <p>
           <Link to="/login">Klicka här</Link> för att logga in på ditt konto
         </p>

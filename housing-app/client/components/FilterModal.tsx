@@ -205,7 +205,6 @@ return (
                     value={minPrice}
                     onChange={(e) => setMinPrice(e.target.value)}
                 />
-                <label htmlFor="minPrice">Min</label>
             </div>
             <div className="input-container">
                 <input
@@ -216,23 +215,24 @@ return (
                     value={maxPrice}
                     onChange={(e) => setMaxPrice(e.target.value)}
                 />
-                <label htmlFor="maxPrice">Max</label>
             </div>
         </div>
     </div>
     <div className="filter-section">
         <div className="textwrapper">
         </div>
-        <div className="inputwrapper">
-            <div className="input-container">
+        <div className="inputsearchwrapper1">
+            <div className="inputsearchcontainer">
+                <div className="inputsearchwrapper">
                 <input
                     type="text"
                     placeholder="Skriv ett område eller adress..."
                     value={searchText}
                     onChange={(e) => setSearchText(e.target.value)}
                 />
+            <button className='searchbtn'><Icon include={"Search"} showText={false} className='searchmodalcolor' /></button>
             </div>
-            <button><Icon include={"Search"} showText={false} /></button>
+            </div>
         </div>
     </div>
     <div className="filter-section">

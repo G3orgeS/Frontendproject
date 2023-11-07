@@ -6,7 +6,8 @@
 }
 .rightwrap {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    padding-bottom: 50px;
 }
 
 .register-formwrapper {
@@ -38,6 +39,7 @@
   .reg-input input[type="text"],
   .reg-input input[type="email"],
   .reg-input input[type="password"] {
+    border: none;
     background-color: #F2F2F2;
     border: 1px solid #00000066;
     height: 10px;
