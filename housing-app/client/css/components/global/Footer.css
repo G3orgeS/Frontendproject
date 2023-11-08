@@ -113,5 +113,18 @@
     font-weight: light;
     font-size: 13px;
 }
-
+}
+@media (max-width: 430px) {
+    .footerwrapper {
+        width: 410px;
+    }
+    .footerwrapper p {
+        font-size: 15px;
+    }
+    .footerwrapper h2 {
+        font-size: 25px;
+    }
+    .footerwrapper2 {
+        width: 410px;
+    }
 }

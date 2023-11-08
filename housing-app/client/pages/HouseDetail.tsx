@@ -4,6 +4,7 @@ import { getHouseById } from '../data/houseApi';
 import '../css/pages/HouseDetail.css';
 import InfoContainer from '../components/InfoContainer';
 import DetailImg from '../components/DetailImg';
+import MDetailImg from '../components/MDetailImg';
 import { useEffect, useState } from 'react';
 import Icon from '../components/icons/Icon';
 import Loader from '../components/global/Loader';
@@ -41,7 +42,12 @@ const HouseDetail = () => {
   return (
     <>
       <div className="houseDetailContainer">
-        <DetailImg house={house} />
+        <div className="mobile-only" >
+          <MDetailImg house={house} />
+        </div>
+        <div className="detailimg">
+          <DetailImg house={house} />
+        </div>
         <InfoContainer house={house} formattedDate={formattedDate} />
         <div className="imageRow">
           {house.img.slice(0, 4).map((img, index) => (

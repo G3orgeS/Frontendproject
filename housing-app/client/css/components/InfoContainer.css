@@ -17,3 +17,21 @@
     font-size: 14px;
     font-weight: 100;
   }
+@media (max-width: 430px) {
+  .adress, .date, .type {
+    display: none;
+  }
+  .infoContainer .rent .icon,
+  .infoContainer .room .icon,
+  .infoContainer .space .icon
+  {
+    display: none;
+  }
+  .infoContainer .infoborder:nth-child(2),
+  .infoContainer .infoborder:nth-child(2),
+  .infoContainer .infoborder:nth-child(8), 
+  .infoContainer .infoborder:nth-child(10) 
+  {
+    display: none;
+  }
+}

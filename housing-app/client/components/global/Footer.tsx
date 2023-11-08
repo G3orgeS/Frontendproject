@@ -22,7 +22,7 @@ const Footer = () => {
                     <p>Community-form</p>
                 </div>
                 <div>
-                    <h3>StudyStay</h3>
+                    <h2>StudyStay</h2>
                     <p>Pressrum</p>
                     <p>Nya funktioner</p>
                     <p>Lediga tjänster</p>
