@@ -80,3 +80,34 @@
 .aohousecardapplyinfo {
   padding-top: 20px;
 }
+@media (max-width: 430px) {
+  .AOapplycontainer h2 + p{
+    display: flex;
+    width: 300px;
+    justify-content: flex-start;
+    margin: 0;
+  }
+  .AOapplycontainer h2 {
+    display: flex;
+    width: 300px;
+    justify-content: flex-start;
+  }
+  .aofullhousewrapperapply {
+    flex-direction: column;
+    padding-bottom: 0;
+    padding-top: 0;
+    gap: 10px;
+  }
+  .aoapplicationbodywrapper {
+    height: auto;
+    width: auto;
+  }
+  .aohousecardapplyinfo {
+    /* height: 100px; */
+    gap: 100px;
+  }
+  .aobtnwrap {
+    width: 350px;
+    padding-bottom: 50px;
+  }
+}

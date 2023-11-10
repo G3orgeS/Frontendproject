@@ -24,7 +24,7 @@
     object-fit: cover;
     height: 320px;
     width: 250px;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 .overview {
     align-items: center;
@@ -86,4 +86,30 @@
   .shake {
     animation: shake 0.5s;
   }
-  
+  @media (max-width: 430px) {
+
+    .fullhousewrapperapply {
+      /* border: 1px solid black; */
+      width: 430px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .house-image img {
+      width: 350px;
+    }
+    .applysummarybox {
+      width: 350px;
+    }
+    .checkapplyer {
+      width: 300px;
+      flex-direction: row;
+    }
+    .applicationbodywrapper {
+      width: 430px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+  }

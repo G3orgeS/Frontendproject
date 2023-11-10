@@ -114,6 +114,9 @@
   .mobile-only {
     display: none;
   }
+  .detailmonly {
+    display: none;
+  }
 }
 @media (max-width: 430px) {
   .mobile-only {
@@ -136,6 +139,7 @@
     display: flex;
     flex-direction: column;
     width: 430px;
+    height: auto;
   }
   .descriptionContainer2 {
     /* border: 1px solid black; */
@@ -144,13 +148,32 @@
     flex-direction: column-reverse;
     align-items: center;
     padding: 0;
-    height: 400px;
+    /* height: 400px; */
+    height: auto;
     padding-bottom: 70px;
+  }
+  .housedetailinfowrapper {
+    padding: 10px;
   }
   .descriptionContainer2 img {
     display: none;
   }
   .description {
     padding: 20px;
+  }
+  .detailmonly {
+    width: 90vw;
+    display: flex;
+  }
+  .titeldetailwrapper {
+    display: none;
+  }
+  .infoContainer {
+    width: 90vw;
+    padding-bottom: 0px;
+  }
+  .summaryicons {
+    padding-top: 0;
+    gap: 0;
   }
 }

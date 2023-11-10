@@ -48,6 +48,9 @@ const HouseDetail = () => {
         <div className="detailimg">
           <DetailImg house={house} />
         </div>
+        <div className="detailmonly">
+            <h1>{house.adress}</h1>
+          </div>
         <InfoContainer house={house} formattedDate={formattedDate} />
         <div className="imageRow">
           {house.img.slice(0, 4).map((img, index) => (

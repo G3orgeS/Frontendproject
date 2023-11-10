@@ -101,3 +101,20 @@
 .user-application-button:active {
     background-color: #A34711; 
 }
+
+@media (max-width: 430px) {
+  .user-application-container {
+    width: 430px;
+  }
+  .user-application-info {
+    width: 400px;
+  }
+  .user-application-text-container h3 {
+    font-size: 15px;
+  }
+  .user-application-button {
+    width: 100px;
+    height: 30px;
+    font-size: 12px;
+  }
+}
