@@ -31,7 +31,9 @@ const Confirmed = () => {
 
   return (
     <>
+    <div className="confimgwrap">
       <ImgWrapper src={confimg} alt={''} />
+      </div>
     <div className="confirmed-container">
       <div className="confwrapper">
       <div className="confirmed-text">
@@ -40,7 +42,9 @@ const Confirmed = () => {
           Säkerställ noggrant att all information nedan är korrekt innan du bekräftar din bostad.
           Vi önskar dig all lycka med ditt nya boende och dina studier!
         </p>
-        <Button to="/">Home</Button>
+        <div className="confdeskonly">
+          <Button to="/">Home</Button>
+        </div>
       </div>
       <div className="confirmed-info">
         <div className="image-container">
@@ -62,9 +66,24 @@ const Confirmed = () => {
               <p>{house.numberOfRooms} RoK</p>
               <p>{house.city}</p>
             </div>
+            <div className="other-info-mobile-only">
+              <div className="info">
+                <div id='mobileconfirmadress' className="adress">{house.adress}</div>
+                <div className="cost">{house.cost}kr/mån</div>
+                <div className="room">{house.numberOfRooms} RoK</div>
+              </div>
+              <div className="info2">
+                <div className="city">{house.city}</div>
+                <div className='landlord'>Brf {house.landlord[0]}</div>
+                <div className="size">{house.size}kvm</div>
+              </div>
+            </div>
           </div>
         )}
       </div>
+      </div>
+      <div className="confmobonly">
+      <Button to="/">Home</Button>
       </div>
     </div>
     </>

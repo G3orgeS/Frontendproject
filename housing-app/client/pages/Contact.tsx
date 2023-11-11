@@ -1,11 +1,11 @@
 import ImgWrapper from "../components/global/ImgWrapper"
 
-const homepage = '../resource/Homepage.jpeg' 
+import fillerImg from '../resource/about.jpg' 
 
 const Contact = () => {
   return (
 <>
-<ImgWrapper src={homepage} alt={'bild'} />
+<ImgWrapper src={fillerImg} alt={'bild'} />
 </>
   )
 }

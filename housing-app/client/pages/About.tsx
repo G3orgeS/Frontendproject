@@ -1,11 +1,11 @@
 import ImgWrapper from '../components/global/ImgWrapper'
 import '../css/pages/about.css'
-const homepage = '../resource/registerimage.jpg'
+import registerImage from '../resource/register.jpg';
 
 const About = () => {
   return (
     <>
-      <ImgWrapper src={homepage} alt={'bild'} />
+      <ImgWrapper src={registerImage} alt={'bild'} />
       <div className="aboutuswrapper">
         <h2>Om oss</h2>
         <p>

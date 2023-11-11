@@ -262,3 +262,54 @@ input::-webkit-inner-spin-button {
   align-items: center;
   border-bottom: 1px solid rgb(192, 192, 192);
 }
+@media (max-width: 430px) {
+  .modal {
+    width: 430px;
+    padding: 0;
+    margin: 0;
+  }
+  .modal-content {
+    width: 400px;
+  }
+  .filter-section {
+    width: 300px;
+  }
+  .textwrapper {
+    width: 380px;
+  }
+  .btnwrapper {
+    width: 380px;
+  }
+  .inputwrapper {
+    width: 400px;
+  }
+  .input-container,
+  .inputnum {
+    align-items: center;
+    display: flex;
+    width: 150px;
+    border: 1px solid black;
+  }
+  .inputsearchwrapper1 {
+    width: 400px;
+    gap: 0;
+  }
+  .inputsearchcontainer {
+    width: 300px;
+  }
+  .inputsearchwrapper {
+    width: 290px;
+  }
+  .room-buttons {
+    display: block;
+    padding-right: 0;
+    width: 95%;
+  }
+  .checkboxwrapper {
+    gap: 5px;
+    width: 380px;
+  }
+  .endwrapper {
+    width: 370px;
+  }
+}

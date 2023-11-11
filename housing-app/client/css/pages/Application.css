@@ -4,6 +4,7 @@
 .applycontainerwrapper {
     display: flex;
     justify-content: center;
+    height: auto;
 }
 .applycontainer {
     display: flex;
@@ -13,6 +14,7 @@
 .applicationbodywrapper {
     margin: 0;
     height: 600px;
+    min-width: 350px;
 }
 .housecardapplyinfo {
     display: flex;

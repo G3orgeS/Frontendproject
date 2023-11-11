@@ -72,3 +72,75 @@
 .confirmotherinfo h2{
   margin: 0;
 }
+@media (min-width: 430px) {
+  .confmobonly {
+    display: none;
+  }
+}
+@media (max-width: 430px) {
+  .confirmed-container {
+    width: auto;
+    flex-direction: column;
+    padding-top: 0;
+    height: auto;
+  }
+  .confwrapper {
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+    padding-bottom: 40px;
+  }
+  .confimgwrap {
+    display: none;
+  }
+  .confdeskonly {
+    display: none;
+  }
+  .confmobonly {
+    display: block;
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+  }
+  .confirmotherinfo h2{
+    display: none;
+  }
+  .confirmotherinfo {
+    display: flex;
+    justify-content: center;
+  }
+  #mobileconfirmadress {
+    display: block;
+  }
+  .other-info-mobile-only {
+    display: flex;
+    width: 300px;
+    justify-content: space-between;
+  }
+  .info {
+    width: 150px;
+  }
+  .info2 {
+    width: 150px;
+  }
+  .other-info {
+    display: none;
+  }
+  .address-landlord {
+    display: none;
+  }
+  .image-container {
+    width: 330px;
+  }
+  .confirmed-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .confirmed-text {
+    width: 330px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+}

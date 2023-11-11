@@ -55,6 +55,7 @@
 
   .overlay {
     height: 200px; 
+    /* display: none; */
   }
 
   .overlay h2 {
