@@ -1,3 +1,10 @@
 .textwrap2info {
     width: 100%;
 }
+@media (max-width: 800px) {
+    .textwrap2info {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+    }
+}

@@ -72,9 +72,28 @@
 .confirmotherinfo h2{
   margin: 0;
 }
+@media (min-width: 750px) {
+  .confirmed-container {
+    flex-direction: row;
+  }
+}
 @media (min-width: 430px) {
   .confmobonly {
     display: none;
+  }
+  .other-info-mobile-only {
+    display: none;
+  }
+}
+@media (max-width: 750px) {
+  .confirmed-container {
+    height: auto;
+    flex-direction: column;
+    width: auto;
+  }
+  .confwrapper {
+    flex-direction: column-reverse;
+    align-items: center;
   }
 }
 @media (max-width: 430px) {

@@ -110,12 +110,36 @@
   font-size: 14px;
 }
 
+@media (max-width: 760px) {
+  .oversightwrapper {
+    flex-direction: column;
+    width: auto;
+    align-items: center;
+  }
+  .descriptionContainer2 {
+    padding-top: 0;
+  }
+  .summaryicons {
+    gap: 0;
+  }
+}
 @media (min-width: 430px) {
   .mobile-only {
     display: none;
   }
   .detailmonly {
     display: none;
+  }
+}
+@media (max-width: 750px) {
+  .imageRow {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+  }
+  .imageRow img {
+    width: 100px;
+    height: 150px;
   }
 }
 @media (max-width: 430px) {

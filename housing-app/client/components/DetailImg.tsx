@@ -9,6 +9,7 @@ interface DetailImgProps {
 const DetailImg: React.FC<DetailImgProps> = ({ house }) => {
   return (
     <div className="DetailImgContainer">
+      <div className="mobiledetailonly">
       <div className="imgLeft">
         {house.img && house.img.length > 0 && (
           <img
@@ -26,6 +27,7 @@ const DetailImg: React.FC<DetailImgProps> = ({ house }) => {
             alt={house.titel}
           />
         )}
+      </div>
       </div>
       <div className="imgRight">
         {house.img && house.img.length > 2 && (

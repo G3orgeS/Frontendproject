@@ -4,9 +4,9 @@
   align-items: center;
   height: auto;
 }
-.payment-text {
-  /* text-align: center; */
-}
+/* .payment-text {
+  text-align: center;
+} */
 .payment-image {
   padding: 20px 10px 0px 10px;
   width: 220px;
@@ -35,6 +35,8 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  height: auto;
+  padding-bottom: 30px;
 }
 .payment-button {
   background-color: #E78121;
