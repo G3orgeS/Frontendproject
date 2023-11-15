@@ -105,7 +105,6 @@ const FilterModal: React.FC<FilterModalProps> = ({ isOpen, onClose, onFilter, ho
             amenities: selectedAmenities
           };
         // console.log('Alla sökkriterier:', filters); 
-        // console.log(houses)
         const filteredHouses = houses.filter((house) => {
             if (filters.type && filters.type !== house.type) {
                 return false;

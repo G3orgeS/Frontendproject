@@ -4,7 +4,6 @@ import '../css/components/StatusBadge.css';
 interface StatusBadgeProps {
     status: string;
 }
-
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
     let statusText = '';
     let badgeClass = '';
