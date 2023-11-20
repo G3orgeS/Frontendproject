@@ -1,4 +1,4 @@
-import { AiOutlineCar, AiOutlineWifi, AiOutlineHome, AiOutlineMenu, AiFillPhone } from 'react-icons/ai';
+import { AiOutlineCar, AiOutlineHome, AiOutlineMenu, AiFillPhone } from 'react-icons/ai';
 import { MdOutlineLocalLaundryService, MdBalcony, MdOutlineYard, MdComputer, MdOutlineKitchen, MdElevator } from 'react-icons/md';
 import { TbGrill, TbToolsKitchen2 } from 'react-icons/tb';
 import { PiElevator, PiTelevision, PiUsersThreeLight } from 'react-icons/pi';
@@ -11,7 +11,7 @@ import { LuBox } from 'react-icons/lu'
 import { BsBuildings, BsDoorOpen, BsInstagram, BsLinkedin, BsDropbox, BsFillTreeFill } from 'react-icons/bs'
 import { HiAdjustmentsHorizontal } from 'react-icons/hi2'
 import { ImFacebook2 } from 'react-icons/im'
-import { FaUserCircle, FaChargingStation, FaBowlingBall, FaRecycle, FaBath, FaGasPump, FaBus, FaShower, FaSearch } from 'react-icons/fa'
+import { FaUserCircle, FaChargingStation, FaBowlingBall, FaRecycle, FaBath, FaGasPump, FaBus, FaShower, FaSearch, FaWifi } from 'react-icons/fa'
 
 type IconitemProps = {
   include: string | null,
@@ -112,8 +112,8 @@ switch (include) {
     icon = <AiOutlineCar />;
     include = "Parkering"
     break;
-  case "Wifi":
-    icon = <AiOutlineWifi />;
+  case "wifi":
+    icon = <FaWifi />;
     break;
   case "Balcony":
     icon = <MdBalcony />;
@@ -134,7 +134,7 @@ switch (include) {
     icon = <TbToolsKitchen2 />;
     include = "Kök"
     break;
-  case "Tv":
+  case "tv":
     icon = <PiTelevision />;
     include = "TV"
     break;

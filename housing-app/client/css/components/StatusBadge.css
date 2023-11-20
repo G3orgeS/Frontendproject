@@ -1,36 +1,27 @@
-@font-face {
-  font-family: 'Kumbh sans';
-  src: url('./fonts/KumbhSans-Regular.ttf') format('truetype');
-  /* Lägg till olika format (e.g., woff, woff2, otf) för att stödja olika webbläsare */
-}
-
 .status-badge-container {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     width: 105px;
   }
-  
   .status-badge-circle {
-    width: 20px; 
-    height: 20px; 
+    width: 15px; 
+    height: 15px; 
     background-color: green; 
     /* border: 2px solid green; */
     border-radius: 50%;
   }
-  .status-badge-circle span {
-    font-family: 'Kumbh sans', sans-serif;
+  .status-badge-container p {
+    font-family: "Kumbh sans", sans-serif;
+    font-weight: 200;
+    font-size: 15px;
   }
-
   .badge-untreated {
     background-color: #ccc; 
   }
-  
   .badge-not-approved {
     background-color: #ff5733; 
   }
-  
   .badge-approved {
     background-color: #4caf50; 
   }
-  

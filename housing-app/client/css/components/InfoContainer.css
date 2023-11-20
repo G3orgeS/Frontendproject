@@ -1,24 +1,41 @@
 .infoContainer {
-    display: flex;
-    gap: 15px;
-    padding-bottom: 20px;
-  }
-  .infoContainer * {
-    margin: 2px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-.infoborder {
-    border-left: 1px solid #ccc; 
+  display: flex;
+  gap: 15px;
+  padding-bottom: 30px;
+  /* border: 1px solid black; */
+  flex-wrap: wrap;
+  width: 80vw;
+  justify-content: center;
 }
-  .adress, .rent, .room, .space, .date, .type {
-    font-size: 14px;
-    font-weight: 100;
-  }
+.infoContainer * {
+  margin: 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.infoborder {
+  border-left: 1px solid #ccc; 
+}
+.iadress, .irent, .iroom, .ispace, .idate, .itype p{
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 100px;
+  font-weight: 100;
+}
+.itype p {
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 15px;
+  font-weight: 100;
+}
+.itype .icon {
+  font-size: 18px;
+}
+.iadress, .irent, .iroom, .ispace, .idate, .itype .icon {
+  font-size: 14px;
+  font-weight: 100;
+}
 @media (max-width: 430px) {
-  .adress, .date, .type {
+  .iadress, .irent, .iroom, .ispace, .idate, .itype {
     display: none;
   }
   .infoContainer .rent .icon,
@@ -32,6 +49,9 @@
   .infoContainer .infoborder:nth-child(8), 
   .infoContainer .infoborder:nth-child(10) 
   {
+    display: none;
+  }
+  .infoContainer {
     display: none;
   }
 }

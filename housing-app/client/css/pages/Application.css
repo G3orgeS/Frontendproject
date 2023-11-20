@@ -5,6 +5,12 @@
     display: flex;
     justify-content: center;
     height: auto;
+    padding-bottom: 20vh;
+}
+.applyh2wrapper1 h4{
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 35px;
+  font-weight: lighter;
 }
 .applycontainer {
     display: flex;
@@ -12,20 +18,25 @@
     align-items: flex-start;
 }
 .applicationbodywrapper {
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 14px;
     margin: 0;
     height: 600px;
     min-width: 350px;
 }
 .housecardapplyinfo {
+  /* border: 1px solid black; */
+    width: 500px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     /* height: 600px; */
 }
-.house-image img {
+.apply-house-image img {
+  /* border: 1px solid black; */
     object-fit: cover;
-    height: 320px;
-    width: 250px;
+    height: 310px;
+    width: 300px;
     border-radius: 10px;
 }
 .overview {
@@ -50,10 +61,11 @@
     margin: 0;
 }
 .fullhousewrapperapply {
+  /* border: 1px solid red; */
     align-items: flex-start;
     display: flex;
     gap: 50px;
-    width: 84vw;
+    width: 80vw;
 }
 .fullhousewrapperapply > :last-child {
     margin-top: -18px; 
@@ -64,7 +76,7 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    padding-right: 50px;
+    /* padding-right: 50px; */
     gap: 20px;
 }
   .fullerhouse {

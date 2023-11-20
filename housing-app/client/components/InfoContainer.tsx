@@ -4,25 +4,25 @@ import '../css/components/InfoContainer.css';
 import Icon from './icons/Icon';
 
 interface InfoContainerProps {
-  house: House; 
+  house: House;
   formattedDate: string;
 }
 
 const InfoContainer: React.FC<InfoContainerProps> = ({ house, formattedDate }) => {
-  let typeIcon = null;
+  let typeText = '';
 
   switch (house.type) {
     case 'Apartment':
-      typeIcon = <Icon showText={false} include="Buildings" />;
+      typeText = 'Lägenhet';
       break;
     case 'Room':
-      typeIcon = <Icon showText={false} include="DoorOpen" />;
+      typeText = 'Rum';
       break;
     case 'Collective':
-      typeIcon = <Icon showText={false} include="Collective" />;
+      typeText = 'Kollektiv';
       break;
     case 'House':
-      typeIcon = <Icon showText={false} include="House" />;
+      typeText = 'Hus';
       break;
     default:
       break;
@@ -30,34 +30,34 @@ const InfoContainer: React.FC<InfoContainerProps> = ({ house, formattedDate }) =
 
   return (
     <div className="infoContainer">
-      <div className="adress">
+      <div className="iadress">
         <Icon showText={false} include="Map" />
         <p>{house.adress}</p>
       </div>
-      <div className="infoborder"/>
-      <div className="rent">
+      <div className="infoborder" />
+      <div className="irent">
         <Icon showText={false} include="Money" />
         <p>{house.cost} kr/mån</p>
       </div>
-      <div className="infoborder"/>
-      <div className="room">
+      <div className="infoborder" />
+      <div className="iroom">
         <Icon showText={false} include="bed" />
         <p>{house.numberOfRooms} rum</p>
       </div>
-      <div className="infoborder"/>
-      <div className="space">
+      <div className="infoborder" />
+      <div className="ispace">
         <Icon showText={false} include="box" />
         <p>{house.size}m2</p>
       </div>
-      <div className="infoborder"/>
-      <div className="date">
+      <div className="infoborder" />
+      <div className="idate">
         <Icon showText={false} include="TodayOutline" />
         <p>{formattedDate}</p>
       </div>
-      <div className="infoborder"/>
-      <div className="type">
-        {typeIcon} 
-        <p>{house.type}</p>
+      <div className="infoborder" />
+      <div className="itype">
+        <Icon showText={false} include="Buildings" />
+        <p>{typeText}</p>
       </div>
     </div>
   );

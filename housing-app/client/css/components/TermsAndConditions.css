@@ -1,10 +1,20 @@
 .textwrap2info {
     width: 100%;
+    font-family: "Kumbh sans", sans-serif;
+    font-size: 14px;
 }
 @media (max-width: 800px) {
     .textwrap2info {
         display: flex;
         flex-wrap: wrap;
         height: auto;
+    }
+}
+@media (max-width: 430px) {
+    .textwrap2info {
+        display: flex;
+        flex-wrap: wrap;
+        height: auto;
+        width: 350px;
     }
 }

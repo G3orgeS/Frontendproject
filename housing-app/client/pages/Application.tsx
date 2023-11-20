@@ -144,16 +144,18 @@ const ApplicationPage: React.FC = () => {
     <>
       <div className="applycontainerwrapper">
         <div className="applycontainer">
-          <h2 className="house-title">Ansök till {house?.adress}</h2>
+          <div className="applyh2wrapper1">
+          <h4 className="house-title1">Ansök till {house?.adress}</h4>
+          </div>
           <div className="fullerhouse">
             {loading && <Loader />}
             <div className="fullhousewrapperapply">
               {house && (
                 <div className="housecardapplyinfo">
-                  <div className="house-image">
+                  <div className="apply-house-image">
                     <img src={houseImage} alt="House Image" />
                   </div>
-                  <ApplySummary city={house.city} floor={house.floor} firstDate={new Date(house.firstDate).toLocaleDateString()} landlord={house.landlord[0]} rating={house.recommendation} />
+                  <ApplySummary city={house.city} floor={house.floor} firstDate={new Date(house.firstDate).toLocaleDateString()} landlord={house.landlord[0]} rating={house.recommendation} cost={parseFloat(house.cost)} />
                 </div>
               )}
               <div className="applicationbodywrapper">

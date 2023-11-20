@@ -1,6 +1,6 @@
-import React from 'react'
-import Rating from './icons/Rating'
-import '../css/components/ApplySummary.css'
+import React from 'react';
+import Rating from './icons/Rating';
+import '../css/components/ApplySummary.css';
 
 interface SummaryProps {
     city: string;
@@ -8,15 +8,17 @@ interface SummaryProps {
     firstDate: string;
     landlord: string;
     rating: number;
+    cost: number;
 }
+
 const ApplySummary: React.FC<SummaryProps> = ({
     city,
     floor,
     firstDate,
     landlord,
-    rating
+    rating,
+    cost,
 }) => {
-
     return (
         <>
             <div className="applysummarybox">
@@ -24,26 +26,50 @@ const ApplySummary: React.FC<SummaryProps> = ({
                     <h2>Översikt</h2>
                 </div>
                 <div className="applysummaryboxdivwrapper">
-                    <p>Område:</p><p>{city}</p>
+                    <p>Hyra:</p>
+                    <div className="applysummaryboxcontent">
+                        <p>{cost}kr/mån</p>
+                    </div>
                 </div>
                 <div className="applysummaryboxdivwrapper">
-                    <p>Våning:</p><p>{floor}</p>
+                    <p>Område:</p>
+                    <div className="applysummaryboxcontent">
+                        <p>{city}</p>
+                    </div>
                 </div>
                 <div className="applysummaryboxdivwrapper">
-                    <p>Inflytt:</p><p>{firstDate}</p>
+                    <p>Våning:</p>
+                    <div className="applysummaryboxcontent">
+                        <p>{floor}</p>
+                    </div>
                 </div>
                 <div className="applysummaryboxdivwrapper">
-                    <p>Ansök senast:</p><p>2023-12/12</p>
+                    <p>Inflytt:</p>
+                    <div className="applysummaryboxcontent">
+                        <p>{firstDate}</p>
+                    </div>
                 </div>
                 <div className="applysummaryboxdivwrapper">
-                    <p>Hyresvärd:</p><p>{landlord}</p>
+                    <p>Ansök senast:</p>
+                    <div className="applysummaryboxcontent">
+                        <p>2023-12/12</p>
+                    </div>
                 </div>
                 <div className="applysummaryboxdivwrapper">
-                    <p>Betyg</p><Rating showText={false} averageRating={rating} className="rating-star" />
+                    <p>Hyresvärd:</p>
+                    <div className="applysummaryboxcontent">
+                        <p>{landlord}</p>
+                    </div>
+                </div>
+                <div className="applysummaryboxdivwrapper">
+                    <p>Betyg</p>
+                    <div className="applysummaryboxcontent">
+                        <Rating showText={false} averageRating={rating} className="rating-star" />
+                    </div>
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
 
-export default ApplySummary
+export default ApplySummary;

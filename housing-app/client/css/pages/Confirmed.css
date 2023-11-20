@@ -2,7 +2,7 @@
   padding-top: 40px;
   display: flex;
   margin: 0 auto;
-  width: 100vw;
+  width: 80vw;
   justify-content: center;
   height: 70vh;
 }
@@ -13,41 +13,60 @@
 .confirmed-img {
   object-fit: cover;
   flex: 1;
-  height: 200px;
-  width: 330px;
-  margin: 10px 0px 10px 0;
-  border-radius: 5px; 
+  height: 250px;
+  width: 400px;
+  margin: 10px 50px 20px 0;
+  border-radius: 10px; 
 }
-
 .confirmed-info {
   margin: 0;
   flex: 2;
 }
-
 .confirmed-info h2 {
-  font-size: 24px;
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 20px;
+  font-weight: 100;
   margin-bottom: 10px;
 }
 
 .confirmed-info p {
-  font-size: 16px;
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 20px;
+  font-weight: 100;
   margin: 5px 0;
+  padding-bottom: 5px;
 }
-
+.other-info p {
+  font-size: 12px;
+}
+.other-info {
+  justify-content: space-evenly;
+  display: flex;
+  width: 300px;
+}
+.confdeskonly a{
+  font-size: 12px;
+  height: 30px;
+  width: 120px;
+}
 .confirmed-text {
-  /* border: 1px solid black; */
-  width: 400px;
-  /* margin-top: 20px; */
+  width: 350px;
+  /* width: auto; */
 }
 
 .confirmed-text h3 {
-  font-size: 20px;
-  margin-top: 20px;
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 35px;
+  font-weight: lighter;
+  margin-top: 10px;
 }
 
 .confirmed-text p {
-  font-size: 16px;
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 14px;
+  font-weight: 100;
   margin-top: 10px;
+  margin-bottom: 40px;
 }
 .confirmwrapper {
   display: flex;
@@ -60,11 +79,7 @@
   flex-direction: column;
   margin: 0;
 }
-.other-info {
-  justify-content: space-evenly;
-  display: flex;
-  width: 300px;
-}
+
 .confirmotherinfo {
   /* border: 1px solid black; */
   width: 350px;
@@ -88,12 +103,14 @@
 @media (max-width: 750px) {
   .confirmed-container {
     height: auto;
-    flex-direction: column;
+    /* flex-direction: column; */
     width: auto;
+    justify-content: center;
+    padding-bottom: 50px;
   }
   .confwrapper {
     flex-direction: column-reverse;
-    align-items: center;
+    align-items: flex-start;
   }
 }
 @media (max-width: 430px) {
@@ -105,7 +122,7 @@
   }
   .confwrapper {
     flex-direction: column;
-    width: 400px;
+    width: 360px;
     align-items: center;
     padding-bottom: 40px;
   }
@@ -155,11 +172,19 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 400px;
   }
   .confirmed-text {
     width: 330px;
     align-items: center;
     display: flex;
     flex-direction: column;
+  }
+  .confirmed-img img{
+    width: 350px;
+    margin: 0;
+  }
+  .confirmed-img {
+    margin: 0;
   }
 }

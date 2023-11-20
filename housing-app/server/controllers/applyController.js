@@ -10,11 +10,11 @@ const createApplication = async (req, res) => {
   try {
     const { user, houseselection } = req.body;
 
-    console.log('Mottagen användardata:', user);
-    console.log('Mottagen houseselection-data:', houseselection);
+    // console.log('Mottagen användardata:', user);
+    // console.log('Mottagen houseselection-data:', houseselection);
 
     if (!Array.isArray(houseselection)) {
-      console.log('Houseselection är inte en array:', houseselection);
+      // console.log('Houseselection är inte en array:', houseselection);
       return res.status(400).json({ message: 'Houseselection måste vara en array.' });
     }
 

@@ -55,7 +55,7 @@ const Confirmed = () => {
         {loading && <Loader />}
         {house && (
           <div className='confirmotherinfo'>
-            <h2>{house.titel}</h2>
+            {/* <h2>{house.titel}</h2> */}
             <div className="address-landlord">
               <p>{house.adress}</p>
               <p>Hyresvärd: {house.landlord[0]}</p>

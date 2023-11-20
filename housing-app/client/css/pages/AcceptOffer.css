@@ -11,10 +11,28 @@
   padding-top: 50px;
   align-items: flex-start;
   display: flex;
-  gap: 50px;
+  /* gap: 50px; */
   width: 80vw;
   padding-bottom: 10px;
 
+}
+.aotextheader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.aotextheader p{
+  color: grey;
+  margin: 0;
+  font-family: "Kumbh sans", sans-serif;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 14px;
+}
+.aocong {
+  font-family: "Kumbh sans", sans-serif;
+  font-size: 35px;
+  font-weight: 100;
 }
 .aoapplicationbodywrapper {
   width: 50vw;
@@ -23,32 +41,32 @@
 }
 .applybtnno {
   text-transform: uppercase;
-  font-family: 'Montserrat, sans-serif';
+  font-family: "Kumbh sans", sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   background-color: white;
   border: 1px solid black;
   color: black;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border-radius: 24px;
   cursor: pointer;
-  width: 160px;
-  height: 40px;
+  width: 140px;
+  height: 30px;
   transition: background-color 0.3s, color 0.3s;
 }
 .applybtn {
   text-transform: uppercase;
-  font-family: 'Montserrat, sans-serif';
+  font-family: "Kumbh sans", sans-serif;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   background-color: #E78121;
   color: #FFFFFF;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   border: none;
   border-radius: 24px;
   cursor: pointer;
-  width: 160px;
-  height: 40px;
+  width: 140px;
+  height: 30px;
   transition: background-color 0.3s, color 0.3s;
 }
 .applybtn:hover {
@@ -63,9 +81,14 @@
 .applybtnno:hover {
   background-color: rgb(223, 223, 223);
 }
-/* .acceptofferoverview {
-  border: 1px solid black;
-} */
+.acceptofferoverview {
+  font-family: "Kumbh sans", sans-serif;
+  /* border: 1px solid black; */
+  font-size: 12px;
+} 
+.papplywrap1 {
+  font-weight: bold;
+}
 .aobtnwrap {
   padding-top: 20px;
   display: flex;
@@ -75,11 +98,19 @@
 .aocheckboxwrapperapply {
   display: flex;
   flex-wrap: nowrap;
-  width: 350px;
+  width: 320px;
   justify-content: space-between;
 }
 .aohousecardapplyinfo {
   padding-top: 20px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.house-image img{
+  width: 220px;
+  height: 250px;
 }
 
 @media (max-width: 750px) {
@@ -122,7 +153,7 @@
   }
   .aohousecardapplyinfo {
     /* height: 100px; */
-    gap: 100px;
+    /* gap: 100px; */
   }
   .aobtnwrap {
     width: 350px;

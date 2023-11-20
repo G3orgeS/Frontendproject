@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const CustomButton = styled(Link)<{ to?: string }>`
-  font-family: 'Montserrat, sans-serif';
+  font-family: 'Montserrat', sans-serif;
   font-weight: 500;
   font-size: 16px;
   text-transform: uppercase;

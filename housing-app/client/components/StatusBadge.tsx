@@ -10,7 +10,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
 
     switch (status) {
         case 'untreated':
-            statusText = 'Ej behandlad';
+            statusText = 'Obehandlad';
             badgeClass = 'badge-untreated';
             break;
         case 'Not approved':
@@ -28,7 +28,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
     return (
         <div className="status-badge-container">
             <div className={`status-badge-circle ${badgeClass}`}></div>
-            <span>{statusText}</span>
+            <p>{statusText}</p>
         </div>
     );
 };

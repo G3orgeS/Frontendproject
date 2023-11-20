@@ -39,9 +39,9 @@ const Summary: React.FC<SummaryProps> = ({
                     <p>Hyresvärd:</p><p>{landlord}</p>
                 </div>
                 <div className="summaryboxdivwrapper">
-                    <p>Betyg</p><Rating showText={false} averageRating={rating} className="rating-star" />
+                    <p>Betyg</p><p><Rating showText={false} averageRating={rating} className="rating-star" /></p>
                 </div>
-                <div className="summaryboxdivwrapper">
+                <div className="summaryboxdivwrapperlast">
                     <p>Ansökan är öppen och görs via vår bostadskö.</p>
                 </div>
             </div>

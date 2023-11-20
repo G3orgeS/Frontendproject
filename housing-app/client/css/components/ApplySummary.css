@@ -1,19 +1,33 @@
 .applysummarybox {
+    font-family: "Kumbh sans", sans-serif;
     height: 200px;
     display: flex;
     background-color: #E9E9E9;
     flex-direction: column;
-    width: 250px;
+    width: 300px;
     align-items: center;
     padding-bottom: 20px;
+    border-radius: 10px;
 }
 .applysummarybox p {
+    display: flex;
     font-weight: 500;
     margin: 3px;
     font-size: 12px;
 }
+.applysummaryboxdivwrapper h2 {
+    font-size: 18px;
+    font-weight: lighter;
+    font-family: "Kumbh sans", sans-serif;
+}
 .applysummaryboxdivwrapper {
     display: flex;
     justify-content: space-between;
-    width: 210px;
+    width: 250px;
 }
+.applysummaryboxcontent {
+    width: 100px; 
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }

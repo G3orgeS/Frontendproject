@@ -42,6 +42,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
+    <div className="navbarwrapper">
     <nav className="navbar">
       <div className='navImg'>
         <Link to={'/'}>
@@ -86,6 +87,7 @@ const Navbar: React.FC = () => {
         )}
       </div>
     </nav>
+    </div>
   );
 };
 

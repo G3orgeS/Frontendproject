@@ -10,13 +10,17 @@
   width: 750px;
 }
 .imageRow img {
-  width: 150px;
-  height: 200px;
+  width: 175px;
+  height: 225px;
   border-radius: 5px;
 }
 .titeldetailwrapper {
   display: flex;
   width: 250px;
+}
+.titeldetailwrapper h1{
+  font-family: "Kumbh sans", sans-serif;
+  font-weight: 100;
 }
 .housedetailinfowrapper {
   display: flex;
@@ -26,8 +30,11 @@
   display: flex;
   gap: 15px;
 }
-.infowrapper p {
+.infowrapper p{
   margin: 5px;
+  font-style: italic;
+  font-weight: 100;
+  font-size: 17px;
 }
 .infoborderdetail {
   border-left: 1px solid #ccc;
@@ -41,10 +48,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  font-family: "Kumbh sans", sans-serif;
   /* border: 1px solid black; */
 }
 .descriptionContainer2 {
   padding-top: 6rem;
+  gap: 10px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -63,10 +72,11 @@
   padding: 20px;
 }
 .summaryicons {
-  padding-top: 40px;
+  font-family: "Kumbh sans", sans-serif;
+  /* padding-top: 40px; */
   gap: 20px;
   flex-wrap: wrap;
-  width: 150px;
+  width: 250px;
   display: flex;
   width: 280px;
   justify-content: center;
@@ -77,6 +87,7 @@
   gap: 20px;
   width: 750px;
   margin: 0 auto;
+  padding-bottom: 60px;
 }
 .detailsummarybtn {
   font-family: 'Montserrat, sans-serif';
@@ -106,8 +117,10 @@
 }
 .description p {
   font-family: "Kumbh sans", sans-serif;
-  font-weight: 300; /* Light weight */
-  font-size: 14px;
+  padding: 10px;
+  font-weight: lighter; 
+  color: #3d3d3d;
+  font-size: 13px;
 }
 
 @media (max-width: 760px) {
@@ -138,8 +151,8 @@
     width: auto;
   }
   .imageRow img {
-    width: 100px;
-    height: 150px;
+    width: 175px;
+    height: 175px;
   }
 }
 @media (max-width: 430px) {
@@ -156,7 +169,13 @@
     display: flex;
   }
   .infowrapper {
-    display: none;
+    display: flex;
+    justify-content: center;
+  }
+  .infowrapper p{
+    /* font-style: italic; */
+    font-weight: 100;
+    font-size: 20px;
   }
   .oversightwrapper {
     padding: 0;
@@ -177,17 +196,22 @@
     padding-bottom: 70px;
   }
   .housedetailinfowrapper {
-    padding: 10px;
+    /* padding: 10px; */
   }
   .descriptionContainer2 img {
     display: none;
   }
   .description {
-    padding: 20px;
+    padding: 0 10px 0px 10px;
   }
   .detailmonly {
     width: 90vw;
     display: flex;
+  }
+  .detailmonly h1{
+    font-weight:  lighter;
+    font-family: 'Phetsarath', sans-serif;
+    margin-bottom: 5px;
   }
   .titeldetailwrapper {
     display: none;

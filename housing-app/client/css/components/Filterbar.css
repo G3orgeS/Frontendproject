@@ -11,13 +11,19 @@
     padding: 50px 0;
 }
 .filtericon {
-    font-size: 18px;
+    font-size: 1px;
     align-items: center;
     display: flex;
     flex-direction: column;
 }
+.filtericon svg {
+    font-size: 20px;
+    font-weight: 400;
+}
 .filtericon p {
+    font-family: 'Montserrat', sans-serif;
     margin: 2px;
+    font-size: 13px;
 }
 .filtericon:hover {
     cursor: pointer;

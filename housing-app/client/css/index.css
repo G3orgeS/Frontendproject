@@ -4,23 +4,15 @@ body {
 * {
     text-decoration: none;
 }
-h1 {
-    font-family: Montserrat;
-    font-weight: regular;
-  }
-  h2 {
-    font-family: Montserrat;
-    font-style: italic;
-  }
-  p.bold {
-    font-family: Kumbh sans;
-    font-weight: bold;
-  }
-  p.half-bold {
-    font-family: Kumbh sans;
-    font-weight: normal;
-  }
-  p {
-    font-family: Kumbh sans;
-    font-weight: light;
-  }
+@font-face {
+  font-family: 'KumbhSansRegular';
+  src: url('./fonts/KumbhSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'MontserratRegular';
+  src: url('./fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

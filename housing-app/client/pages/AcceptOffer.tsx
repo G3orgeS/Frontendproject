@@ -18,7 +18,7 @@ const AcceptOffer = () => {
         if (houseId) {
           const selectedHouse = await getHouseById(houseId);
           setHouse(selectedHouse);
-          console.log(selectedHouse);
+          // console.log(selectedHouse);
         }
       } catch (error) {
         console.error("Ett fel uppstod: ", error);
@@ -32,8 +32,10 @@ const AcceptOffer = () => {
     return (
       <div className="AOapplycontainer">
         {loading && <Loader/>}
-        <h2 className="house-title">Grattis {username}!</h2>
+        <div className="aotextheader">
+        <h2 className="aocong">Grattis {username}!</h2>
         <p>Din ansökan har blivit godkänd</p>
+        </div>
         <div className="acceptofferfullerhouse">
           <div className="aofullhousewrapperapply">
             <div className="aohousecardapplyinfo">
@@ -41,13 +43,13 @@ const AcceptOffer = () => {
                 <img src={house.img[0]} alt={house.titel} />
               </div>
               <div className="acceptofferoverview">
-              <div className="papplywrap">
+              <div className="papplywrap1">
                   <p>{house.titel}</p>
                 </div>
-                <div className="papplywrap">
+                <div className="papplywrap2">
                   <p>{house.adress}, {house.zipcode}</p>
                 </div>
-                <div className="papplywrap">
+                <div className="papplywrap3">
                   <p>Hyresvärd: {house.landlord[0]}</p>
                 </div>
               </div>

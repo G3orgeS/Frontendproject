@@ -62,14 +62,23 @@ const Payment = () => {
         <p>Hyran kommer att dras från ditt konto den sista dagen varje månad.</p>
       </div>
       <div className="payment-image">
-      <img src={logo} alt="Betalning" />
+        <img src={logo} alt="Betalning" />
       </div>
       <div className="payment-cost">
-        <p>Att betala</p>
+        <p className="payment-label">Att betala</p>
         <br />
-        <p><p>Hyra:</p><p>{userhouse?.cost}kr</p></p>
-        <p><p>Deposition:</p><p>1000kr</p></p>
-        <p><p>Totalt:</p><p>{totalcost}kr</p></p>
+        <div className="cost-item">
+          <p>Hyra:</p>
+          <p>{userhouse?.cost}kr</p>
+        </div>
+        <div className="cost-item">
+          <p>Deposition:</p>
+          <p>1000kr</p>
+        </div>
+        <div className="cost-item total-cost">
+          <p>Totalt:</p>
+          <p>{totalcost}kr</p>
+        </div>
       </div>
       <PaymentForm handlePayment={handlePayment} />
     </div>
