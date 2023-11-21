@@ -174,11 +174,7 @@
   .infowrapper {
     display: flex;
     justify-content: center;
-  }
-  .infowrapper p{
-    /* font-style: italic; */
-    font-weight: 100;
-    font-size: 20px;
+    font-size: 10px;
   }
   .oversightwrapper {
     padding: 0;
@@ -186,10 +182,11 @@
     flex-direction: column;
     width: 430px;
     height: auto;
+    align-items: center;
   }
   .descriptionContainer2 {
     /* border: 1px solid black; */
-    width: 430px;
+    width: auto;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -200,6 +197,7 @@
   }
   .housedetailinfowrapper {
     /* padding: 10px; */
+    align-items: center;
   }
   .descriptionContainer2 img {
     display: none;
@@ -214,6 +212,7 @@
   .detailmonly h1{
     font-weight:  lighter;
     font-family: 'Phetsarath', sans-serif;
+    font-size: 20px;
     margin-bottom: 5px;
   }
   .titeldetailwrapper {
@@ -226,5 +225,8 @@
   .summaryicons {
     padding-top: 0;
     gap: 0;
+  }
+  .descriptionContainer {
+    width: 80%;
   }
 }

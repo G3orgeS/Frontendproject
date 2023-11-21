@@ -25,3 +25,9 @@
   .badge-approved {
     background-color: #4caf50; 
   }
+  @media (max-width: 430px) {
+    .status-badge-container {
+      padding-top: 20px;
+      height: 10px;
+    }
+  }

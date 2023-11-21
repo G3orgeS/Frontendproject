@@ -6,6 +6,10 @@
     margin-top: 20px;
     font-family: "Kumbh sans", sans-serif;
   }
+  .user-application-welcome-text-mobile {
+    display: none;
+    font-family: "Kumbh sans", sans-serif;
+  }
   .user-application-welcome {
     max-width: 800px;
     /* width: 800px; */
@@ -122,17 +126,36 @@
 }
 @media (max-width: 430px) {
   .user-application-container {
-    width: 430px;
+    width: 300px;
+  }
+  .user-application-container h2 {
+    font-size: 25px;
   }
   .user-application-info {
-    width: 400px;
+    width: 300px;
   }
   .user-application-text-container h3 {
     font-size: 15px;
+  }
+  .user-application-welcome {
+    display: none;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+  }
+  .user-application-welcome-text-mobile {
+    display: flex;
   }
   .user-application-button {
     width: 100px;
     height: 30px;
     font-size: 12px;
+  }
+  .userapplicationmonly {
+    display: flex;
+    width: 98%;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
   }
 }

@@ -32,8 +32,12 @@ const UserApplication = () => {
   };
 
   return (
+    <div className="userapplicationmonly">
     <div className="user-application-container">
       <h2>Mina ansökningar</h2>
+      <div className="user-application-welcome-text-mobile">
+        <p>Nedan kan du se lägenheter som du har ansökt om och vad det är för status idag.</p>
+      </div>
       <div className="user-application-welcome">
         <p>
           Välkommen till översikten av dina lägenhetsansökningar. Här kan du enkelt hålla koll på alla de bostäder du har visat intresse för.
@@ -70,6 +74,7 @@ const UserApplication = () => {
           <p>Inga ansökningar hittades för användaren.</p>
         </div>
       )}
+    </div>
     </div>
   );
 };

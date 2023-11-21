@@ -121,14 +121,26 @@
   }
   @media (max-width: 430px) {
     .fullhousewrapperapply {
-      /* border: 1px solid black; */
-      width: 430px;
+      width: 90%;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-    .house-image img {
-      width: 350px;
+    .applyh2wrapper1 h4 {
+      font-size: 20px;
+    }
+    .applyh2wrapper1 {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      justify-content: center;
+    }
+    .housecardapplyinfo, .apply-house-image, .house-image {
+      width: auto;
+    }
+    .apply-house-image {
+      display: flex;
+      justify-content: center;
     }
     .applysummarybox {
       width: 350px;
@@ -138,10 +150,12 @@
       flex-direction: row;
     }
     .applicationbodywrapper {
-      width: 430px;
+      width: auto;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
+    .applycontainerwrapper {
+      padding-bottom: 0;
+    }
   }
