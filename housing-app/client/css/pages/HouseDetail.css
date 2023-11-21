@@ -31,10 +31,12 @@
   gap: 15px;
 }
 .infowrapper p{
+  font-family: "Kumbh sans", sans-serif;
   margin: 5px;
+  color: grey;
   font-style: italic;
   font-weight: 100;
-  font-size: 17px;
+  font-size: 14px;
 }
 .infoborderdetail {
   border-left: 1px solid #ccc;
@@ -78,7 +80,7 @@
   flex-wrap: wrap;
   width: 250px;
   display: flex;
-  width: 280px;
+  width: 300px;
   justify-content: center;
 }
 .oversightwrapper {
@@ -90,7 +92,8 @@
   padding-bottom: 60px;
 }
 .detailsummarybtn {
-  font-family: 'Montserrat, sans-serif';
+  /* font-family: 'Montserrat, sans-serif'; */
+  font-weight: 100;
   font-style: white;
   font-size: 12px;
   text-transform: uppercase;
