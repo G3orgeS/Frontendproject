@@ -89,7 +89,9 @@ const HouseDetail = () => {
           <div className="summarybox">
             <Summary city={house.city} floor={house.floor} firstDate={new Date(house.firstDate).toLocaleDateString()} landlord={house.landlord[0]} rating={house.recommendation} />
             <div className='detailsummarybtn'>
-              <Link id='detailsummarybtnwhite' to={`/application/${id}`}>Till ansökan</Link>
+              <Link onClick={()=> {
+                window.scrollTo(0,0)
+              }} id='detailsummarybtnwhite' to={`/application/${id}`}>Till ansökan</Link>
             </div>
           </div>
           <div className="summaryicons">

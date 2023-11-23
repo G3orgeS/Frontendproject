@@ -37,6 +37,7 @@ const Payment = () => {
   }, [username]);
 
   const handlePayment = () => {
+      window.scrollTo(0,0)
     navigate(`/confirmed/${username}/${houseId}`);
   };
 

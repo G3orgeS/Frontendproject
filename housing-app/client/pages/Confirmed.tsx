@@ -29,63 +29,71 @@ const Confirmed = () => {
     fetchData();
   }, [houseId]);
 
+  const LinkToHome = (props:any) => <Button
+    to='/'
+    onClick={() => {
+      window.scrollTo(0, 0)
+    }}
+    {...props}
+  >Home</Button> 
+
   return (
     <>
-    <div className="confimgwrap">
-      <ImgWrapper src={confimg} alt={''} />
+      <div className="confimgwrap">
+        <ImgWrapper src={confimg} alt={''} />
       </div>
-    <div className="confirmed-container">
-      <div className="confwrapper">
-      <div className="confirmed-text">
-        <h3>Grattis! Här är ditt nya boende.</h3>
-        <p>
-          Säkerställ noggrant att all information nedan är korrekt innan du bekräftar din bostad.
-          Vi önskar dig all lycka med ditt nya boende och dina studier!
-        </p>
-        <div className="confdeskonly">
-          <Button to="/">Home</Button>
-        </div>
-      </div>
-      <div className="confirmed-info">
-        <div className="image-container">
-          {house && (
-            <img alt={'test'} src={house.img[0]} className="confirmed-img" />
-          )}
-        </div>
-        {loading && <Loader />}
-        {house && (
-          <div className='confirmotherinfo'>
-            {/* <h2>{house.titel}</h2> */}
-            <div className="address-landlord">
-              <p>{house.adress}</p>
-              <p>Hyresvärd: {house.landlord[0]}</p>
-            </div>
-            <div className="other-info">
-              <p>{house.size}kvm</p>
-              <p>{house.cost}kr/mån</p>
-              <p>{house.numberOfRooms} RoK</p>
-              <p>{house.city}</p>
-            </div>
-            <div className="other-info-mobile-only">
-              <div className="info">
-                <div id='mobileconfirmadress' className="adress">{house.adress}</div>
-                <div className="cost">{house.cost}kr/mån</div>
-                <div className="room">{house.numberOfRooms} RoK</div>
-              </div>
-              <div className="info2">
-                <div className="city">{house.city}</div>
-                <div className='landlord'>Brf {house.landlord[0]}</div>
-                <div className="size">{house.size}kvm</div>
-              </div>
+      <div className="confirmed-container">
+        <div className="confwrapper">
+          <div className="confirmed-text">
+            <h3>Grattis! Här är ditt nya boende.</h3>
+            <p>
+              Säkerställ noggrant att all information nedan är korrekt innan du bekräftar din bostad.
+              Vi önskar dig all lycka med ditt nya boende och dina studier!
+            </p>
+            <div className="confdeskonly">
+              <LinkToHome/>
             </div>
           </div>
-        )}
+          <div className="confirmed-info">
+            <div className="image-container">
+              {house && (
+                <img alt={'test'} src={house.img[0]} className="confirmed-img" />
+              )}
+            </div>
+            {loading && <Loader />}
+            {house && (
+              <div className='confirmotherinfo'>
+                {/* <h2>{house.titel}</h2> */}
+                <div className="address-landlord">
+                  <p>{house.adress}</p>
+                  <p>Hyresvärd: {house.landlord[0]}</p>
+                </div>
+                <div className="other-info">
+                  <p>{house.size}kvm</p>
+                  <p>{house.cost}kr/mån</p>
+                  <p>{house.numberOfRooms} RoK</p>
+                  <p>{house.city}</p>
+                </div>
+                <div className="other-info-mobile-only">
+                  <div className="info">
+                    <div id='mobileconfirmadress' className="adress">{house.adress}</div>
+                    <div className="cost">{house.cost}kr/mån</div>
+                    <div className="room">{house.numberOfRooms} RoK</div>
+                  </div>
+                  <div className="info2">
+                    <div className="city">{house.city}</div>
+                    <div className='landlord'>Brf {house.landlord[0]}</div>
+                    <div className="size">{house.size}kvm</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="confmobonly">
+        <LinkToHome/>
+        </div>
       </div>
-      </div>
-      <div className="confmobonly">
-      <Button to="/">Home</Button>
-      </div>
-    </div>
     </>
   );
 };

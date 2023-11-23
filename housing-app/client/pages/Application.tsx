@@ -121,6 +121,7 @@ const ApplicationPage: React.FC = () => {
     createApplication(applicationData, userInfo?.userName)
       .then((response) => {
         console.log('Ansökan skickades:', response);
+        window.scrollTo(0, 0)
         navigate(`/userapplication/${userInfo?.userName}`);
       })
       .catch((error) => {

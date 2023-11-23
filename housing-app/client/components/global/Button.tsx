@@ -39,7 +39,7 @@ interface ButtonProps {
 const Button: React.FC<ButtonProps> = ({ to, onClick, children }) => {
   if (to) {
     return (
-      <CustomButton to={to}>
+      <CustomButton to={to} onClick={onClick}>
         {children}
       </CustomButton>
     );
