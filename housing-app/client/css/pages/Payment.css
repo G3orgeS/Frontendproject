@@ -6,10 +6,12 @@
   height: auto;
 }
 .payment-container h2 {
-  font-weight: 300; 
-  font-size: 2rem; 
+  font-family: 'Kumbh Sans', sans-serif;
+  font-weight: 100; 
+  font-size: 2.5rem; 
 }
 .payment-container .payment-text {
+  font-family: 'Kumbh Sans', sans-serif;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -33,16 +35,18 @@
   height: 110px;
 }
 .payment-cost {
+  font-family: 'Kumbh Sans', sans-serif;
   flex-direction: column;
   background-color: #E9E9E9;
-  width: 200px;
+  width: 250px;
   display: flex;
   padding: 25px; 
   font-weight: 100;
   font-size: 14px;
 }
 .payment-label {
-  font-weight: 500;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-weight: 600;
   font-size: 16px;
 }
 .payment-cost p {
